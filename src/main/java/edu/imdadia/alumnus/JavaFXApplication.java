@@ -39,7 +39,7 @@ public class JavaFXApplication extends Application {
 
   private ConfigurableApplicationContext springBootApplicationContext() {
     final SpringApplicationBuilder builder = new SpringApplicationBuilder(
-        employeesApplication.class);
+        AlumnusApplication.class);
     final String[] args = getParameters().getRaw().stream().toArray(String[]::new);
     return builder.run(args);
   }
