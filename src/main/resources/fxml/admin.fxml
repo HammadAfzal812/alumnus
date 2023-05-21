@@ -61,12 +61,6 @@
         </Label>
         <TextField fx:id="confirmPasswordTxt" layoutX="98.0" layoutY="321.0" prefHeight="30.0" prefWidth="169.0" />
         <CheckBox fx:id="showConfirmPasswordBox" layoutX="98.0" layoutY="362.0" mnemonicParsing="false" onAction="#showConfirmPasswordBox" text="Show" />
-        <Label layoutX="2.0" layoutY="388.0" text="Salary">
-            <font>
-                <Font name="System Bold" size="15.0" />
-            </font>
-        </Label>
-        <TextField fx:id="salary" layoutX="98.0" layoutY="383.0" prefHeight="31.0" prefWidth="169.0" promptText="Salary" />
         <Button layoutX="11.0" layoutY="440.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
             <font>
                 <Font name="System Bold" size="14.0" />
