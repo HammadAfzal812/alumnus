@@ -1,4 +1,4 @@
-package edu.imdadia.employees.config;
+package edu.imdadia.alumnus.config;
 
 import java.io.IOException;
 import java.util.ResourceBundle;

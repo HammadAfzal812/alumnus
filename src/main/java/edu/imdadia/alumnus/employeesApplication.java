@@ -1,7 +1,5 @@
-package edu.imdadia.employees;
+package edu.imdadia.alumnus;
 
-import edu.imdadia.employees.controller.AdminController;
-import edu.imdadia.employees.entity.AdminEntity;
 import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

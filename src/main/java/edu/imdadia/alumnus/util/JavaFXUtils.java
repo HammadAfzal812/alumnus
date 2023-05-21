@@ -1,4 +1,4 @@
-package edu.imdadia.employees.util;
+package edu.imdadia.alumnus.util;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

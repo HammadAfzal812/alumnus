@@ -1,25 +1,23 @@
-package edu.imdadia.employees.controller;
+package edu.imdadia.alumnus.controller;
 
-import edu.imdadia.employees.config.SpringFXMLLoader;
-import edu.imdadia.employees.config.StageManager;
-import edu.imdadia.employees.entity.AdminEntity;
-import edu.imdadia.employees.enumuration.FxmlView;
-import edu.imdadia.employees.repository.AdminRepo;
-import edu.imdadia.employees.services.AdminService;
-import edu.imdadia.employees.util.JavaFXUtils;
+import edu.imdadia.alumnus.config.SpringFXMLLoader;
+import edu.imdadia.alumnus.config.StageManager;
+import edu.imdadia.alumnus.entity.AdminEntity;
+import edu.imdadia.alumnus.enumuration.FxmlView;
+import edu.imdadia.alumnus.repository.AdminRepo;
+import edu.imdadia.alumnus.services.AdminService;
+import edu.imdadia.alumnus.util.JavaFXUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -41,8 +39,6 @@ public class AdminController implements Initializable {
     private TableColumn<AdminEntity, String> addressColum;
     @FXML
     private TableColumn<AdminEntity, String> phoneNumberColum;
-    @FXML
-    private TableColumn<AdminEntity, String> salaryColum;
     @FXML
     private TableColumn<AdminEntity, String> idCardColum;
     @FXML
@@ -69,8 +65,6 @@ public class AdminController implements Initializable {
     @FXML
     private TextField address;
     @FXML
-    private TextField salary;
-    @FXML
     private TextField idCard;
     private final AdminRepo adminRepo;
     private  AdminEntity searchedAdmin;
@@ -80,8 +74,8 @@ public class AdminController implements Initializable {
 
     @FXML
     public void addButton() {
-     if (id.getText().equals("")||name.getText().equals("")||fatherName.getText().equals("")||idCard.getText().equals("")||passwordField.getText().equals("")||confirmPasswordField.getText().equals("")||phoneNumber.getText().equals("")||salary.getText().equals("")){
-         JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ,salary");
+     if (id.getText().equals("")||name.getText().equals("")||fatherName.getText().equals("")||idCard.getText().equals("")||passwordField.getText().equals("")||confirmPasswordField.getText().equals("")||phoneNumber.getText().equals("")){
+         JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
      }else{
          if (passwordField.getText().equals(confirmPasswordField.getText())){
              AdminEntity adminEntity = new AdminEntity();
@@ -90,7 +84,6 @@ public class AdminController implements Initializable {
              adminEntity.setFatherName(fatherName.getText());
              adminEntity.setAddress(address.getText());
              adminEntity.setPassword(passwordField.getText());
-             adminEntity.setSalary(Double.valueOf(salary.getText()));
              adminEntity.setPhoneNumber(phoneNumber.getText());
              adminEntity.setIdCardNumber(idCard.getText());
              adminService.save(adminEntity);
@@ -114,7 +107,6 @@ public class AdminController implements Initializable {
             fatherName.setText(searchedAdmin.getFatherName());
             phoneNumber.setText(String.valueOf(searchedAdmin.getPhoneNumber()));
             address.setText(searchedAdmin.getAddress());
-            salary.setText(String.valueOf(searchedAdmin.getSalary()));
             idCard.setText(String.valueOf(searchedAdmin.getIdCardNumber()));
         } else {
             JavaFXUtils.showError("Admin with Id " + id.getText() + " does not exist");
@@ -133,7 +125,6 @@ public class AdminController implements Initializable {
             fatherName.setText(searchedAdmin.getFatherName());
             phoneNumber.setText(String.valueOf(searchedAdmin.getPhoneNumber()));
             address.setText(searchedAdmin.getAddress());
-            salary.setText(String.valueOf(searchedAdmin.getSalary()));
             idCard.setText(String.valueOf(searchedAdmin.getIdCardNumber()));
         } else {
             JavaFXUtils.showError("Admin with Name " + name.getText() + " does not exist");
@@ -151,7 +142,6 @@ public class AdminController implements Initializable {
             admin.setFatherName(fatherName.getText());
             admin.setAddress(address.getText());
             admin.setIdCardNumber(idCard.getText());
-            admin.setSalary(Double.valueOf(salary.getText()));
             admin.setPhoneNumber(phoneNumber.getText());
             admin.setPassword(passwordField.getText());
             adminService.save(admin);
@@ -179,7 +169,6 @@ public class AdminController implements Initializable {
         passwordField.clear();
         confirmPasswordField.clear();
         phoneNumber.clear();
-        salary.clear();
         passwordTxt.clear();
         confirmPasswordTxt.clear();
     }
@@ -222,7 +211,6 @@ public class AdminController implements Initializable {
         this.fatherNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getFatherName())));
         this.addressColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAddress())));
         this.phoneNumberColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPhoneNumber())));
-        this.salaryColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getSalary())));
         this.idCardColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCardNumber())));
     }
 

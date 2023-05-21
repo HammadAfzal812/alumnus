@@ -1,6 +1,6 @@
-package edu.imdadia.employees.config;
+package edu.imdadia.alumnus.config;
 
-import edu.imdadia.employees.enumuration.FxmlView;
+import edu.imdadia.alumnus.enumuration.FxmlView;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

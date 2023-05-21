@@ -1,18 +1,12 @@
-package edu.imdadia.employees.controller;
+package edu.imdadia.alumnus.controller;
 
-import edu.imdadia.employees.config.StageManager;
-import edu.imdadia.employees.entity.EmployeeEntity;
-import edu.imdadia.employees.enumuration.FxmlView;
-import edu.imdadia.employees.repository.EmployeeRepo;
-import edu.imdadia.employees.util.JavaFXUtils;
+import edu.imdadia.alumnus.config.StageManager;
+import edu.imdadia.alumnus.enumuration.FxmlView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
-
-import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -35,13 +29,8 @@ public class HomeController {
         stageManager.switchScene(FxmlView.ADMIN);
     }
 
-    @FXML
-    public void employeeManagement() {
-        stageManager.switchScene(FxmlView.EMPLOYEES);
-    }
 
-    @FXML
-    public void attendance() {stageManager.switchScene(FxmlView.ATTENDANCE);}
+
 
     @FXML
     public void close() {

@@ -1,9 +1,7 @@
-package edu.imdadia.employees.services;
+package edu.imdadia.alumnus.services;
 
-import edu.imdadia.employees.entity.AdminEntity;
-import edu.imdadia.employees.entity.EmployeeEntity;
+import edu.imdadia.alumnus.entity.AdminEntity;
 
-import java.awt.*;
 import java.util.Optional;
 
 public interface AdminService {

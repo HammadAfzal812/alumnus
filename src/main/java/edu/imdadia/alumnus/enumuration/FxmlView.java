@@ -1,4 +1,4 @@
-package edu.imdadia.employees.enumuration;
+package edu.imdadia.alumnus.enumuration;
 
 import java.util.ResourceBundle;
 
@@ -39,29 +39,7 @@ public enum FxmlView {
         }
     },
 
-    ATTENDANCE {
-        @Override
-        public String getTitle() {
-            return getStringFromResourceBundle("attendance.title");
-        }
 
-        @Override
-        public String getFxmlFile() {
-            return "/fxml/attendance.fxml";
-        }
-    },
-
-    EMPLOYEES {
-        @Override
-        public String getTitle() {
-            return getStringFromResourceBundle("employees.title");
-        }
-
-        @Override
-        public String getFxmlFile() {
-            return "/fxml/employees.fxml";
-        }
-    },
     ADMIN {
         @Override
         public String getTitle() {

@@ -1,27 +1,21 @@
-package edu.imdadia.employees.controller;
+package edu.imdadia.alumnus.controller;
 
-import edu.imdadia.employees.config.StageManager;
-import edu.imdadia.employees.entity.AdminEntity;
-import edu.imdadia.employees.enumuration.FxmlView;
-import edu.imdadia.employees.repository.AdminRepo;
-import edu.imdadia.employees.services.AdminService;
-import edu.imdadia.employees.util.JavaFXUtils;
+import edu.imdadia.alumnus.config.StageManager;
+import edu.imdadia.alumnus.entity.AdminEntity;
+import edu.imdadia.alumnus.enumuration.FxmlView;
+import edu.imdadia.alumnus.repository.AdminRepo;
+import edu.imdadia.alumnus.services.AdminService;
+import edu.imdadia.alumnus.util.JavaFXUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
-import java.util.Optional;
-
-import static javafx.scene.control.Alert.AlertType.INFORMATION;
 
 @Controller
 public class LoginController {
@@ -64,25 +58,24 @@ public class LoginController {
             this.password.requestFocus();
             return;
         }
-        List<AdminEntity> allAdmins= adminRepo.findAll();
-        if (allAdmins.size()<1){
+        List<AdminEntity> allAdmins = adminRepo.findAll();
+        if (allAdmins.size() < 1) {
             stageManager.switchScene(FxmlView.ADMIN);
-        }else{
-
-            for (int i = 0;i<allAdmins.size();){
-            for (AdminEntity a : allAdmins) {
-                if (a.getPassword().equals(password.getText()) && a.getAdminName().equals(username.getText())) {
-                    stageManager.switchScene(FxmlView.HOME);
-                    adminEntity=a;
-                    break;
+        } else {
+            for (int i = 0; i < allAdmins.size(); ) {
+                for (AdminEntity a : allAdmins) {
+                    if (a.getPassword().equals(password.getText()) && a.getAdminName().equals(username.getText())) {
+                        stageManager.switchScene(FxmlView.HOME);
+                        adminEntity = a;
+                        break;
+                    }
+                    i++;
+                    if (i == allAdmins.size()) {
+                        JavaFXUtils.showError("Admin not found or password not match");
+                    }
                 }
-                i++;
-                if (i==allAdmins.size()){
-                    JavaFXUtils.showError("Admin not found or password not match");
-                }
+                break;
             }
-            break;
-        }
 
         }
     }

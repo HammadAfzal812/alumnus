@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.imdadia.employees.config;
+package edu.imdadia.alumnus.config;
 
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package edu.imdadia.employees.config;
+package edu.imdadia.alumnus.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

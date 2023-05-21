@@ -1,7 +1,7 @@
-package edu.imdadia.employees;
+package edu.imdadia.alumnus;
 
-import edu.imdadia.employees.config.StageManager;
-import edu.imdadia.employees.enumuration.FxmlView;
+import edu.imdadia.alumnus.config.StageManager;
+import edu.imdadia.alumnus.enumuration.FxmlView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;

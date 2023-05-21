@@ -1,12 +1,10 @@
-package edu.imdadia.employees.services;
+package edu.imdadia.alumnus.services;
 
-import edu.imdadia.employees.entity.AdminEntity;
-import edu.imdadia.employees.entity.EmployeeEntity;
-import edu.imdadia.employees.repository.AdminRepo;
+import edu.imdadia.alumnus.entity.AdminEntity;
+import edu.imdadia.alumnus.repository.AdminRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.Optional;
 
 @Service

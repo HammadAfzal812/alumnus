@@ -1,7 +1,6 @@
-package edu.imdadia.employees.entity;
+package edu.imdadia.alumnus.entity;
 
 import lombok.Data;
-import lombok.NonNull;
 
 
 import javax.persistence.Column;
@@ -11,7 +10,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(schema ="ems", name = "admins")
+@Table(schema ="alumnus", name = "admins")
 public class AdminEntity {
 
 
@@ -33,10 +32,6 @@ public class AdminEntity {
 
     @Column(name = "address")
     private String address;
-
-
-    @Column(name = "salary")
-    private Double salary;
 
     @Column(name = "password")
     private String password;
