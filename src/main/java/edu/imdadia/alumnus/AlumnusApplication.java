@@ -9,9 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 @ComponentScan({"edu.imdadia"})
-public class employeesApplication {
+public class AlumnusApplication {
 
-  private static final Logger LOG = LoggerFactory.getLogger(employeesApplication.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AlumnusApplication.class);
 
   public static void main(final String[] args) {
     Application.launch(JavaFXApplication.class, args);
