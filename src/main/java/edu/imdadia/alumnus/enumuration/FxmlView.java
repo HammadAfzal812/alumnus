@@ -51,6 +51,18 @@ public enum FxmlView {
             return "/fxml/admin.fxml";
         }
     },
+
+    ALUMNUS {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("alumnus.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/fxml/alumnus.fxml";
+        }
+    },
     ADMIN_INFO {
         @Override
         public String getTitle() {

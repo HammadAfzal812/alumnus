@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1044.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.AlumnusController">
+    <children>
+        <Label layoutX="15.0" layoutY="28.0" prefHeight="30.0" prefWidth="94.0" text="Alumnus ID">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="id" layoutX="146.0" layoutY="28.0" prefHeight="31.0" prefWidth="169.0" promptText="ID" />
+        <Label layoutX="10.0" layoutY="65.0" prefHeight="31.0" prefWidth="112.0" text="Alumnus Name">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="name" layoutX="146.0" layoutY="65.0" prefHeight="31.0" prefWidth="169.0" promptText="Name" />
+        <Label layoutX="10.0" layoutY="110.0" text="Father Name">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="fatherName" layoutX="146.0" layoutY="106.0" prefHeight="30.0" prefWidth="169.0" promptText="Father Name" />
+        <Label layoutX="5.0" layoutY="151.0" prefHeight="21.0" prefWidth="141.0" text="Parmanent Address">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+      <Label layoutX="18.0" layoutY="198.0" text="District">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="76.0" layoutY="251.0" text="Year of completion of education">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="complete" layoutX="146.0" layoutY="285.0" prefHeight="31.0" prefWidth="169.0" promptText="Year of completion of education" />
+      <TextField fx:id="district" layoutX="146.0" layoutY="193.0" prefHeight="31.0" prefWidth="169.0" promptText="District" />
+        <TextField fx:id="permanentAddress" layoutX="146.0" layoutY="146.0" prefHeight="31.0" prefWidth="169.0" promptText="Parmanent Address" />
+        <Label layoutX="29.0" layoutY="340.0" text="ID Card">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="idCard" layoutX="146.0" layoutY="335.0" prefHeight="31.0" prefWidth="169.0" promptText="ID Card Number" />
+        <Label layoutX="15.0" layoutY="386.0" text="Ph Number">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="phoneNumber" layoutX="146.0" layoutY="381.0" prefHeight="30.0" prefWidth="169.0" promptText="Phone Number " />
+        <TableView fx:id="adminsTable" layoutX="454.0" layoutY="28.0" prefHeight="686.0" prefWidth="765.0">
+            <columns>
+                <TableColumn fx:id="idColum" prefWidth="39.0" text="ID" />
+                <TableColumn fx:id="nameColum" prefWidth="89.0" text="Name" />
+                <TableColumn fx:id="fatherNameColum" prefWidth="92.0" text="S/O" />
+                <TableColumn fx:id="addressColum" prefWidth="172.0" text="Adress" />
+                <TableColumn fx:id="phoneNumberColum" minWidth="0.0" prefWidth="133.0" text="Ph Number" />
+                <TableColumn fx:id="idCardColum" minWidth="0.0" prefWidth="135.0" text="ID Card" />
+            <TableColumn fx:id="addressColum1" prefWidth="174.0" text="Parmanent Address" />
+            <TableColumn fx:id="addressColum11" prefWidth="157.0" text="District" />
+            </columns>
+        </TableView>
+      <Button id="currentAdmin" fx:id="currentAdmin" layoutX="43.0" layoutY="618.0" mnemonicParsing="false" onAction="#currentAdmin" prefHeight="40.0" prefWidth="141.0" text="Current Admin">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

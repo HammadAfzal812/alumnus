@@ -29,21 +29,27 @@ public class HomeController {
         stageManager.switchScene(FxmlView.ADMIN);
     }
 
-
+    @FXML
+    public void alumnusManagement() {
+        stageManager.switchScene(FxmlView.ALUMNUS);
+    }
 
 
     @FXML
     public void close() {
         Platform.exit();
     }
+
     @FXML
     public void logOut() {
         LoginController.adminEntity = null;
         stageManager.switchScene(FxmlView.LOGIN);
     }
+
     @FXML
-    public void currentAdmin(){
+    public void currentAdmin() {
         stageManager.switchScene(FxmlView.ADMIN_INFO);
     }
+
 
 }
