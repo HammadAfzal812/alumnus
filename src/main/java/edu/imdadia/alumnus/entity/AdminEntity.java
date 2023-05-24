@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(schema ="alumnus", name = "admins")
+@Table(schema ="alumnus", name = "alumnus")
 public class AdminEntity {
 
 
