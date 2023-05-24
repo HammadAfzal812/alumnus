@@ -16,6 +16,8 @@ public class HomeController {
     private MenuItem employeeManagement;
     @FXML
     private MenuItem attendance;
+    @FXML
+    private MenuItem alumnusManagement;
 
     private final StageManager stageManager;
 

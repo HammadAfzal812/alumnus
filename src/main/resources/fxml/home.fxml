@@ -22,7 +22,7 @@
               <MenuItem id="AdminManagement" fx:id="adminManagement" mnemonicParsing="false" onAction="#adminManagement" text="Admin management" />
                 <MenuItem fx:id="LogOut" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
                 <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
-                  <MenuItem id="AdminManagement" fx:id="adminManagement1" mnemonicParsing="false" onAction="#alumnusManagement" text="Alumnus Management" />
+                  <MenuItem id="AlumnusManagement" fx:id="alumnusManagement" mnemonicParsing="false" onAction="#alumnusManagement" text="Alumnus Management" />
             </items>
           </Menu>
         </menus>
