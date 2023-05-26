@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import java.awt.*;
 
 @Controller
-public class AlumnusController {
+public class AlumnusController  {
     @FXML
-    private TableView<AlumnusEntity> adminsTable;
+    private TableView<AlumnusEntity> alumnusEntityTableViewTable;
     @FXML
     private TableColumn<AlumnusEntity, String> idColum;
     @FXML
@@ -48,4 +48,5 @@ public class AlumnusController {
     private TextField idCard;
     @FXML
     private TextField greduationYear;
+
 }
