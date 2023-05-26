@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -45,12 +46,12 @@
          </font>
       </Label>
       <TextField fx:id="district" layoutX="180.0" layoutY="240.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label fx:id="greduationYear" layoutX="10.0" layoutY="285.0" text="Greduation Year">
+      <Label layoutX="10.0" layoutY="285.0" text="Greduation Year">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="180.0" layoutY="286.0" prefHeight="25.0" prefWidth="182.0" />
+      <TextField fx:id="greduationYear" layoutX="180.0" layoutY="286.0" prefHeight="25.0" prefWidth="182.0" />
       <TextField fx:id="idCard" layoutX="180.0" layoutY="329.0" prefHeight="25.0" prefWidth="182.0" />
       <Label layoutX="10.0" layoutY="328.0" text="ID Card">
          <font>
@@ -69,5 +70,20 @@
             <TableColumn fx:id="idCardColum" prefWidth="75.0" text="ID Card" />
         </columns>
       </TableView>
+      <Button layoutX="40.0" layoutY="373.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="40.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Delete">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="40.0" layoutY="437.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Search Alumnus">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

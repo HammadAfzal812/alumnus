@@ -2,15 +2,14 @@ package edu.imdadia.alumnus.controller;
 import edu.imdadia.alumnus.entity.AlumnusEntity;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.TextField;
 import org.springframework.stereotype.Controller;
-import java.awt.*;
+
 
 @Controller
 public class AlumnusController  {
-    @FXML
-    private TableView<AlumnusEntity> alumnusEntityTableViewTable;
+
+//    private TableView<AlumnusEntity> alumnusEntityTableViewTable;
     @FXML
     private TableColumn<AlumnusEntity, String> idColum;
     @FXML
@@ -29,8 +28,8 @@ public class AlumnusController  {
     private TableColumn<AlumnusEntity, String> typeColum;
     @FXML
     private TableColumn<AlumnusEntity, String> yearColum;
-    @FXML
-    private BorderPane rootBorderPane;
+
+//    private BorderPane rootBorderPane;
 
     @FXML
     private TextField name;
@@ -46,7 +45,6 @@ public class AlumnusController  {
     private TextField district;
     @FXML
     private TextField idCard;
-    @FXML
-    private TextField greduationYear;
+
 
 }
