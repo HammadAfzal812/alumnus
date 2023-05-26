@@ -70,17 +70,27 @@
             <TableColumn fx:id="idCardColum" prefWidth="75.0" text="ID Card" />
         </columns>
       </TableView>
-      <Button layoutX="40.0" layoutY="373.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
+      <Button layoutX="22.0" layoutY="374.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="40.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Delete">
+      <Button layoutX="22.0" layoutY="432.0" mnemonicParsing="false" onAction="#delete" prefHeight="39.0" prefWidth="114.0" text="Delete">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="40.0" layoutY="437.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="182.0" text="Search Alumnus">
+      <Button layoutX="89.0" layoutY="491.0" mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="182.0" text="Search Alumnus">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="220.0" layoutY="374.0" mnemonicParsing="false" onAction="#clear" prefHeight="39.0" prefWidth="130.0" text="Clear">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="159.0" layoutY="432.0" mnemonicParsing="false" onAction="#cruntSituation" prefHeight="39.0" prefWidth="188.0" text="Crunnt Situation">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
