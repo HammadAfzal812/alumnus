@@ -1,5 +1,5 @@
 package edu.imdadia.alumnus.controller;
-
+import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.enumuration.FxmlView;
@@ -17,7 +17,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +25,11 @@ import java.util.ResourceBundle;
 
 @Controller
 public class AlumnusController implements Initializable {
-
     private final AlumnusEntity alumnusEntity;
     private final StageManager stageManager;
-    private final
-    AlumnusService alumnusService;
+    private final AlumnusService alumnusService;
     @FXML
-    private TableView<AlumnusEntity> alumnusEntityTableView;
+    TableView<AlumnusEntity> alumnusEntityTableView;
     @FXML
     private TableColumn<AlumnusEntity, String> idColum;
     @FXML
@@ -72,12 +69,15 @@ public class AlumnusController implements Initializable {
     private TextField district;
     @FXML
     private TextField idCard;
+    @FXML
+    private final SpringFXMLLoader springFXMLLoader;
 
     private final AlumnusRepo alumnusRepo;
 
-    public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService, AlumnusRepo alumnusRepo) {
+    public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService, SpringFXMLLoader springFXMLLoader, AlumnusRepo alumnusRepo) {
         this.stageManager = stageManager;
         this.alumnusService = alumnusService;
+        this.springFXMLLoader = springFXMLLoader;
         this.alumnusEntity = new AlumnusEntity();
         this.alumnusRepo = alumnusRepo;
     }
@@ -101,10 +101,11 @@ public class AlumnusController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         final List<String> choiceConditionList = new ArrayList<>();
-        choiceConditionList.add("Present");
-        choiceConditionList.add("Leave");
-        choiceConditionList.add("Absent");
-//        typeChoice.getItems().addAll(choiceConditionList);
+        choiceConditionList.add("Mufti");
+        choiceConditionList.add("Scholar");
+        choiceConditionList.add("Reader");
+        choiceConditionList.add("Hafiz");
+        typeChoice.getItems().addAll(choiceConditionList);
 //        setUpTable();
     }
 
@@ -119,13 +120,13 @@ public class AlumnusController implements Initializable {
         graduationYear.clear();
     }
 
-//    @FXML
-//    public void delete() {
-//        alumnusService.delete(alumnusEntity);
-//        JavaFXUtils.showSuccessMessage("Alumnus With " + id.getText() + "Alumnus With Name" + name.getText() + " Deleted Successfully");
-//        setUpTable();
-//        clear();
-//    }
+    @FXML
+    public void delete() {
+        alumnusService.delete(alumnusEntity);
+        JavaFXUtils.showSuccessMessage("Alumnus With " + id.getText() + "Alumnus With Name" + name.getText() + " Deleted Successfully");
+        setUpTable();
+        clear();
+    }
 
 
     @FXML

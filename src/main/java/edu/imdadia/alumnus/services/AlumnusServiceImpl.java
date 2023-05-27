@@ -15,10 +15,10 @@ public class AlumnusServiceImpl implements AlumnusService {
         return alumnusRepo.findAllByDistrict(district);
     }
 
-//    @Override
-//    public List<AlumnusEntity> findAllByType(String type) {
-//        return alumnusRepo.findAllByType(type);
-//    }
+    @Override
+    public List<AlumnusEntity> findAllByType(String type) {
+        return alumnusRepo.findByType(type);
+    }
 
     @Override
     public AlumnusEntity save(AlumnusEntity alumnusEntity) {

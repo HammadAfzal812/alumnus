@@ -91,7 +91,7 @@ public class AdminController implements Initializable {
              this.clearFields();
              setUpTable();
          }else{
-             JavaFXUtils.showError("password confiram password not match");
+             JavaFXUtils.showError("password confirm password not match");
          }
      }
     }
@@ -231,6 +231,4 @@ public class AdminController implements Initializable {
    public void currentAdmin(){
         stageManager.switchScene(FxmlView.ADMIN_INFO);
    }
-
-
 }
