@@ -26,16 +26,16 @@ public class AlumnusEntity {
     @Column(name = "idCard_number")
     private String idCardNumber;
 
-    @Column(name = "permanentAddress")
-    private String address;
+    @Column(name = "permanent_Address")
+    private String permanentAddress;
 
     @Column(name = "district")
     private String district;
 
-    @Column(name = "complete")
-    private String complete;
+    @Column(name = "graduation_year")
+    private String graduation_year;
 
     @Column(name = "Type")
-    private String Type;
+    private String type;
 
 }

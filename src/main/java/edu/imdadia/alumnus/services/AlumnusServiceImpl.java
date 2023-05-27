@@ -2,10 +2,11 @@ package edu.imdadia.alumnus.services;
 
 import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.repository.AlumnusRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class AlumnusServiceImpl implements AlumnusService {
     private AlumnusRepo alumnusRepo;
 
@@ -14,10 +15,10 @@ public class AlumnusServiceImpl implements AlumnusService {
         return alumnusRepo.findAllByDistrict(district);
     }
 
-    @Override
-    public List<AlumnusEntity> findAllByType(String type) {
-        return alumnusRepo.findAllByType(type);
-    }
+//    @Override
+//    public List<AlumnusEntity> findAllByType(String type) {
+//        return alumnusRepo.findAllByType(type);
+//    }
 
     @Override
     public AlumnusEntity save(AlumnusEntity alumnusEntity) {

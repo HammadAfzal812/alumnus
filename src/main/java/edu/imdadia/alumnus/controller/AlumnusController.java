@@ -1,15 +1,38 @@
 package edu.imdadia.alumnus.controller;
+
+import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AlumnusEntity;
+import edu.imdadia.alumnus.enumuration.FxmlView;
+import edu.imdadia.alumnus.repository.AlumnusRepo;
+import edu.imdadia.alumnus.services.AlumnusService;
+import edu.imdadia.alumnus.util.JavaFXUtils;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 
 @Controller
-public class AlumnusController  {
+public class AlumnusController implements Initializable {
 
-//    private TableView<AlumnusEntity> alumnusEntityTableViewTable;
+    private final AlumnusEntity alumnusEntity;
+    private final StageManager stageManager;
+    private final
+    AlumnusService alumnusService;
+    @FXML
+    private TableView<AlumnusEntity> alumnusEntityTableView;
     @FXML
     private TableColumn<AlumnusEntity, String> idColum;
     @FXML
@@ -27,9 +50,11 @@ public class AlumnusController  {
     @FXML
     private TableColumn<AlumnusEntity, String> typeColum;
     @FXML
-    private TableColumn<AlumnusEntity, String> yearColum;
+    private TableColumn<AlumnusEntity, String> graduationYearColum;
 
-//    private BorderPane rootBorderPane;
+    @FXML
+    private ChoiceBox<String> typeChoice;
+
 
     @FXML
     private TextField name;
@@ -42,9 +67,95 @@ public class AlumnusController  {
     @FXML
     private TextField permanentAddress;
     @FXML
+    private TextField graduationYear;
+    @FXML
     private TextField district;
     @FXML
     private TextField idCard;
 
+    private final AlumnusRepo alumnusRepo;
 
+    public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService, AlumnusRepo alumnusRepo) {
+        this.stageManager = stageManager;
+        this.alumnusService = alumnusService;
+        this.alumnusEntity = new AlumnusEntity();
+        this.alumnusRepo = alumnusRepo;
+    }
+
+
+    private void setUpTable() {
+        ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
+        alumnusEntityObservableList.stream().sorted();
+        alumnusEntityTableView.setItems(alumnusEntityObservableList);
+        this.idColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAlumnusId())));
+        this.nameColum.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAlumnusName()));
+        this.fatherNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getFatherName())));
+        this.addressColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPermanentAddress())));
+        this.phoneNumberColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPhoneNumber())));
+        this.idCardColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCardNumber())));
+        this.districtColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getDistrict())));
+        this.typeColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getType())));
+        this.graduationYearColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getGraduation_year())));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        final List<String> choiceConditionList = new ArrayList<>();
+        choiceConditionList.add("Present");
+        choiceConditionList.add("Leave");
+        choiceConditionList.add("Absent");
+//        typeChoice.getItems().addAll(choiceConditionList);
+//        setUpTable();
+    }
+
+    public void clear() {
+        id.clear();
+        name.clear();
+        fatherName.clear();
+        idCard.clear();
+        permanentAddress.clear();
+        district.clear();
+        phoneNumber.clear();
+        graduationYear.clear();
+    }
+
+//    @FXML
+//    public void delete() {
+//        alumnusService.delete(alumnusEntity);
+//        JavaFXUtils.showSuccessMessage("Alumnus With " + id.getText() + "Alumnus With Name" + name.getText() + " Deleted Successfully");
+//        setUpTable();
+//        clear();
+//    }
+
+
+    @FXML
+    public void add() {
+        if (id.getText().equals("")||name.getText().equals("")||fatherName.getText().equals("")||graduationYear.getText().equals("")||permanentAddress.getText().equals("")||phoneNumber.getText().equals("")||district.getText().equals("")||idCard.getText().equals("")||typeChoice.getValue().equals("")){
+            JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type");
+        }else{
+            AlumnusEntity alumnus = new AlumnusEntity();
+            alumnus.setAlumnusId(Integer.valueOf(id.getText()));
+            alumnus.setAlumnusName(name.getText());
+            alumnus.setFatherName(fatherName.getText());
+            alumnus.setPermanentAddress(permanentAddress.getText());
+            alumnus.setIdCardNumber(idCard.getText());
+            alumnus.setPhoneNumber(phoneNumber.getText());
+            alumnus.setDistrict(district.getText());
+            alumnus.setGraduation_year(graduationYear.getText());
+            alumnus.setType(typeChoice.getValue());
+//            Optional<AlumnusEntity> employeeEntity = alumnusEntity.findByIdCardNumber(Integer.valueOf(idCard.getText()));
+//            if (employeeEntity != null) {
+//                employeeService.save(alumnus);
+//                JavaFXUtils.showSuccessMessage("Alumnus added successfully");
+//                this.clear();
+//            } else {
+//                JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
+//            }
+//            setUpTable();
+        }
+    }
+    @FXML
+    public void back() {
+        stageManager.switchScene(FxmlView.HOME);
+    }
 }
