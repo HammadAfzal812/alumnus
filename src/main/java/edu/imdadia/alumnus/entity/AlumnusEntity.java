@@ -12,10 +12,10 @@ public class AlumnusEntity {
 
     @Id
     @Column(name = "alumnus_id")
-    private Integer adminId;
+    private Integer alumnusId;
 
     @Column(name = "alumnus_Name")
-    private String adminName;
+    private String alumnusName;
 
     @Column(name = "father_name")
     private String fatherName;
