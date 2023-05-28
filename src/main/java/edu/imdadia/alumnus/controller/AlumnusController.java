@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -131,7 +132,7 @@ public class AlumnusController implements Initializable {
 
     @FXML
     public void add() {
-        if (id.getText().equals("")||name.getText().equals("")||fatherName.getText().equals("")||graduationYear.getText().equals("")||permanentAddress.getText().equals("")||phoneNumber.getText().equals("")||district.getText().equals("")||idCard.getText().equals("")||typeChoice.getValue().equals("")){
+        if (id.getText().equals("")||name.getText().equals("")||fatherName.getText().equals("")||graduationYear.getText().equals("")||permanentAddress.getText().equals("")||phoneNumber.getText().equals("")||district.getText().equals("")||idCard.getText().equals("")){
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type");
         }else{
             AlumnusEntity alumnus = new AlumnusEntity();
@@ -153,6 +154,26 @@ public class AlumnusController implements Initializable {
 //                JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
 //            }
 //            setUpTable();
+        }
+    }
+
+    @FXML
+    public void search() {
+        Optional<AlumnusEntity> s = alumnusRepo.findByAlumnusName(name.getText());
+        AlumnusEntity alumnus = s.orElse(null);
+        if (alumnus != null) {
+            name.setText(String.valueOf(alumnus.getAlumnusName()));
+            id.setText(String.valueOf(alumnus.getAlumnusId()));
+            fatherName.setText(alumnus.getFatherName());
+            phoneNumber.setText(String.valueOf(alumnus.getPhoneNumber()));
+            permanentAddress.setText(alumnus.getPermanentAddress());
+            district.setText(alumnus.getDistrict());
+            graduationYear.setText(alumnus.getGraduation_year());
+            typeChoice.getValue();
+            idCard.setText(String.valueOf(alumnus.getIdCardNumber()));
+        } else {
+            JavaFXUtils.showError("Alumnus with Name " + name.getText() + " does not exist");
+            clear();
         }
     }
     @FXML
