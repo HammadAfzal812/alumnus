@@ -107,7 +107,7 @@ public class AlumnusController implements Initializable {
         choiceConditionList.add("Reader");
         choiceConditionList.add("Hafiz");
         typeChoice.getItems().addAll(choiceConditionList);
-//        setUpTable();
+        setUpTable();
     }
 
     public void clear() {
@@ -159,7 +159,7 @@ public class AlumnusController implements Initializable {
 
     @FXML
     public void search() {
-        Optional<AlumnusEntity> s = alumnusRepo.findByAlumnusName(name.getText());
+        Optional<AlumnusEntity> s = alumnusService.findByAlumnusName(name.getText());
         AlumnusEntity alumnus = s.orElse(null);
         if (alumnus != null) {
             name.setText(String.valueOf(alumnus.getAlumnusName()));
