@@ -4,18 +4,6 @@ import java.util.ResourceBundle;
 
 public enum FxmlView {
 
-
-    MENU {
-        @Override
-        public String getTitle() {
-            return getStringFromResourceBundle("menu.title");
-        }
-
-        @Override
-        public String getFxmlFile() {
-            return "/fxml/menu.fxml";
-        }
-    },
     HOME {
         @Override
         public String getTitle() {

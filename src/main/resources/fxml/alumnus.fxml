@@ -65,7 +65,7 @@
          </font>
       </Label>
       <ChoiceBox fx:id="typeChoice" layoutX="180.0" layoutY="366.0" prefHeight="25.0" prefWidth="182.0" />
-      <TableView layoutX="362.0" prefHeight="544.0" prefWidth="394.0">
+      <TableView fx:id="alumnusEntityTableView" layoutX="362.0" prefHeight="544.0" prefWidth="394.0">
         <columns>
           <TableColumn fx:id="nameColum" prefWidth="50.0" text="Name" />
             <TableColumn fx:id="idColum" prefWidth="49.0" text="ID" />
@@ -83,7 +83,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="7.0" layoutY="452.0" mnemonicParsing="false" onAction="#delete" prefHeight="39.0" prefWidth="114.0" text="Delete">
+      <Button layoutX="7.0" layoutY="452.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" text="Delete">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

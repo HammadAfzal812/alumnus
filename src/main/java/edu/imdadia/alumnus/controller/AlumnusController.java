@@ -1,4 +1,5 @@
 package edu.imdadia.alumnus.controller;
+
 import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AlumnusEntity;
@@ -17,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,9 +72,9 @@ public class AlumnusController implements Initializable {
     private TextField district;
     @FXML
     private TextField idCard;
-    @FXML
+    //    @FXML
     private final SpringFXMLLoader springFXMLLoader;
-
+    //
     private final AlumnusRepo alumnusRepo;
 
     public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService, SpringFXMLLoader springFXMLLoader, AlumnusRepo alumnusRepo) {
@@ -83,7 +85,8 @@ public class AlumnusController implements Initializable {
         this.alumnusRepo = alumnusRepo;
     }
 
-
+    //
+//
     private void setUpTable() {
         ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
         alumnusEntityObservableList.stream().sorted();
@@ -121,20 +124,21 @@ public class AlumnusController implements Initializable {
         graduationYear.clear();
     }
 
-    @FXML
-    public void delete() {
-        alumnusService.delete(alumnusEntity);
-        JavaFXUtils.showSuccessMessage("Alumnus With " + id.getText() + "Alumnus With Name" + name.getText() + " Deleted Successfully");
-        setUpTable();
-        clear();
-    }
-
-
+    //
+//    @FXML
+//    public void delete() {
+//        alumnusService.delete(alumnusEntity);
+//        JavaFXUtils.showSuccessMessage("Alumnus With " + id.getText() + "Alumnus With Name" + name.getText() + " Deleted Successfully");
+//        setUpTable();
+//        clear();
+//    }
+//
+//
     @FXML
     public void add() {
-        if (id.getText().equals("")||name.getText().equals("")||fatherName.getText().equals("")||graduationYear.getText().equals("")||permanentAddress.getText().equals("")||phoneNumber.getText().equals("")||district.getText().equals("")||idCard.getText().equals("")){
+        if (id.getText().equals("") || name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || district.getText().equals("") || idCard.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type");
-        }else{
+        } else {
             AlumnusEntity alumnus = new AlumnusEntity();
             alumnus.setAlumnusId(Integer.valueOf(id.getText()));
             alumnus.setAlumnusName(name.getText());
@@ -144,20 +148,20 @@ public class AlumnusController implements Initializable {
             alumnus.setPhoneNumber(phoneNumber.getText());
             alumnus.setDistrict(district.getText());
             alumnus.setGraduation_year(graduationYear.getText());
-            alumnus.setType(typeChoice.getValue());
-//            Optional<AlumnusEntity> employeeEntity = alumnusEntity.findByIdCardNumber(Integer.valueOf(idCard.getText()));
-//            if (employeeEntity != null) {
-//                employeeService.save(alumnus);
-//                JavaFXUtils.showSuccessMessage("Alumnus added successfully");
-//                this.clear();
-//            } else {
-//                JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
-//            }
-//            setUpTable();
+//            alumnus.setType(typeChoice.getValue());
+            Optional<AlumnusEntity> employeeEntity = alumnusRepo.findByIdCardNumber(idCard.getText());
+            if (employeeEntity != null) {
+                alumnusService.save(alumnus);
+                JavaFXUtils.showSuccessMessage("Alumnus added successfully");
+                this.clear();
+            } else {
+                JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
+            }
+            setUpTable();
         }
     }
 
-    @FXML
+        @FXML
     public void search() {
         Optional<AlumnusEntity> s = alumnusService.findByAlumnusName(name.getText());
         AlumnusEntity alumnus = s.orElse(null);

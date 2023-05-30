@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class AlumnusServiceImpl implements AlumnusService {
-    private AlumnusRepo alumnusRepo;
+    private final AlumnusRepo alumnusRepo;
+
+    public AlumnusServiceImpl(AlumnusRepo alumnusRepo) {
+        this.alumnusRepo = alumnusRepo;
+    }
 
     @Override
     public List<AlumnusEntity> findAllByDistrict(String district) {
@@ -21,8 +25,14 @@ public class AlumnusServiceImpl implements AlumnusService {
     }
 
     @Override
-    public AlumnusEntity save(AlumnusEntity alumnusEntity) {
-        return alumnusRepo.save(alumnusEntity);
+    public void save(AlumnusEntity alumnusEntity) {
+
+        try {
+            alumnusRepo.save(alumnusEntity);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

@@ -52,6 +52,4 @@ public class HomeController {
     public void currentAdmin() {
         stageManager.switchScene(FxmlView.ADMIN_INFO);
     }
-
-
 }
