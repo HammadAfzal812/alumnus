@@ -19,6 +19,9 @@ public class HomeController {
     @FXML
     private MenuItem alumnusManagement;
 
+    @FXML
+    private MenuItem alumnusTableManagement;
+
     private final StageManager stageManager;
 
 
@@ -36,7 +39,6 @@ public class HomeController {
         stageManager.switchScene(FxmlView.ALUMNUS);
     }
 
-
     @FXML
     public void close() {
         Platform.exit();
@@ -52,4 +54,11 @@ public class HomeController {
     public void currentAdmin() {
         stageManager.switchScene(FxmlView.ADMIN_INFO);
     }
+
+    @FXML
+    public void tableSearchTable() {
+        stageManager.switchScene(FxmlView.ALUMNUSTABLE);
+    }
 }
+
+

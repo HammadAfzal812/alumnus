@@ -51,6 +51,20 @@ public enum FxmlView {
             return "/fxml/alumnus.fxml";
         }
     },
+
+    ALUMNUSTABLE {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("alumnusTable.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/fxml/alumnusSearchTable.fxml";
+        }
+    },
+
+
     ADMIN_INFO {
         @Override
         public String getTitle() {

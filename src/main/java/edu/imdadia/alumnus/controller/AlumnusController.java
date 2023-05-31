@@ -124,16 +124,14 @@ public class AlumnusController implements Initializable {
         graduationYear.clear();
     }
 
-    //
-//    @FXML
-//    public void delete() {
-//        alumnusService.delete(alumnusEntity);
-//        JavaFXUtils.showSuccessMessage("Alumnus With " + id.getText() + "Alumnus With Name" + name.getText() + " Deleted Successfully");
-//        setUpTable();
-//        clear();
-//    }
-//
-//
+    public void delete() {
+        alumnusRepo.deleteById(Integer.valueOf(id.getText()));
+        JavaFXUtils.showSuccessMessage("Alumnus With Name " + name.getText() + " And ID " + id.getText() + " Deleted Successfully");
+        setUpTable();
+        clear();
+    }
+
+
     @FXML
     public void add() {
         if (id.getText().equals("") || name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || district.getText().equals("") || idCard.getText().equals("")) {
@@ -148,7 +146,7 @@ public class AlumnusController implements Initializable {
             alumnus.setPhoneNumber(phoneNumber.getText());
             alumnus.setDistrict(district.getText());
             alumnus.setGraduation_year(graduationYear.getText());
-//            alumnus.setType(typeChoice.getValue());
+            alumnus.setType(typeChoice.getValue());
             Optional<AlumnusEntity> employeeEntity = alumnusRepo.findByIdCardNumber(idCard.getText());
             if (employeeEntity != null) {
                 alumnusService.save(alumnus);
@@ -161,8 +159,8 @@ public class AlumnusController implements Initializable {
         }
     }
 
-        @FXML
-    public void search() {
+    @FXML
+    public void searchByName() {
         Optional<AlumnusEntity> s = alumnusService.findByAlumnusName(name.getText());
         AlumnusEntity alumnus = s.orElse(null);
         if (alumnus != null) {
@@ -180,6 +178,7 @@ public class AlumnusController implements Initializable {
             clear();
         }
     }
+
     @FXML
     public void back() {
         stageManager.switchScene(FxmlView.HOME);

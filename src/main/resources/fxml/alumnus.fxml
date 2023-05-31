@@ -83,27 +83,27 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="7.0" layoutY="452.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" text="Delete">
+      <Button layoutX="7.0" layoutY="452.0" mnemonicParsing="false" onAction="#delete" prefHeight="39.0" prefWidth="80.0" text="Delete">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="497.0" mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="182.0" text="Search Alumnus">
+      <Button layoutX="14.0" layoutY="497.0" mnemonicParsing="false" onAction="#searchByName" prefHeight="39.0" prefWidth="182.0" text="Search By Name">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="198.0" layoutY="407.0" mnemonicParsing="false" onAction="#clear" prefHeight="39.0" prefWidth="130.0" text="Clear">
+      <Button layoutX="198.0" layoutY="407.0" mnemonicParsing="false" onAction="#clear" prefHeight="39.0" prefWidth="73.0" text="Clear">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="126.0" layoutY="452.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="188.0" text="Crunnt Situation">
+      <Button layoutX="97.0" layoutY="452.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="166.0" text="Crunnt Situation">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="198.0" layoutY="497.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="130.0" text="Back">
+      <Button layoutX="274.0" layoutY="407.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="80.0" text="Back">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
