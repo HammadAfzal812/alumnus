@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1044.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1072.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.AdminController">
     <children>
         <Label layoutX="15.0" layoutY="28.0" prefHeight="30.0" prefWidth="40.0" text="ID">
             <font>
@@ -61,7 +61,7 @@
         </Label>
         <TextField fx:id="confirmPasswordTxt" layoutX="98.0" layoutY="321.0" prefHeight="30.0" prefWidth="169.0" />
         <CheckBox fx:id="showConfirmPasswordBox" layoutX="98.0" layoutY="362.0" mnemonicParsing="false" onAction="#showConfirmPasswordBox" text="Show" />
-        <Button layoutX="11.0" layoutY="440.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
+        <Button layoutX="12.0" layoutY="498.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -71,17 +71,12 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="75.0" layoutY="440.0" mnemonicParsing="false" onAction="#editButton" prefHeight="30.0" prefWidth="48.0" text="Edit">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
-      <Button layoutX="8.0" layoutY="498.0" mnemonicParsing="false" onAction="#searchByNameButton" prefHeight="30.0" prefWidth="127.0" text="Search By Name">
+      <Button layoutX="6.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByNameButton" prefHeight="30.0" prefWidth="127.0" text="Search By Name">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="6.0" layoutY="560.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="30.0" prefWidth="127.0" text="Remove By ID">
+        <Button layoutX="25.0" layoutY="560.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="30.0" prefWidth="127.0" text="Remove By ID">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -91,19 +86,19 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-      <Button layoutX="215.0" layoutY="560.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="30.0" prefWidth="53.0" text="Clear">
+      <Button layoutX="73.0" layoutY="498.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="30.0" prefWidth="53.0" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="146.0" layoutY="560.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="62.0" text="Back">
+        <Button layoutX="192.0" layoutY="560.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="62.0" text="Back">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
         <PasswordField fx:id="passwordField" layoutX="99.0" layoutY="276.0" prefHeight="31.0" prefWidth="169.0" promptText="Password" />
         <PasswordField fx:id="confirmPasswordField" layoutX="98.0" layoutY="321.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" />
-        <TableView fx:id="adminsTable" layoutX="454.0" layoutY="28.0" prefHeight="686.0" prefWidth="765.0">
+        <TableView fx:id="adminsTable" layoutX="296.0" layoutY="9.0" prefHeight="686.0" prefWidth="681.0">
             <columns>
                 <TableColumn fx:id="idColum" prefWidth="39.0" text="ID" />
                 <TableColumn fx:id="nameColum" prefWidth="89.0" text="Name" />

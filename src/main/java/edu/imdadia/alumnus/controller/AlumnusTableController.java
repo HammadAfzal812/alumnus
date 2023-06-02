@@ -150,10 +150,4 @@ public class AlumnusTableController implements Initializable {
     public void findAll(){
         setUpTable();
     }
-
-    public void delete() {
-        alumnusRepo.delete(alumnusEntity);
-        JavaFXUtils.showSuccessMessage("Alumnus With Name " + districtNamefield.getText() + " And ID " + graduationYearfield.getText() + " Deleted Successfully");
-        clear();
-    }
 }

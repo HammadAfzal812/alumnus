@@ -133,25 +133,6 @@ public class AdminController implements Initializable {
     }
 
 
-    @FXML
-    public void editButton() {
-        if (searchedAdmin.getPassword().equals(passwordField.getText()) && confirmPasswordField.equals(searchedAdmin.getPassword())) {
-            AdminEntity admin = new AdminEntity();
-            admin.setAdminId(Integer.valueOf(id.getText()));
-            admin.setAdminName(name.getText());
-            admin.setFatherName(fatherName.getText());
-            admin.setAddress(address.getText());
-            admin.setIdCardNumber(idCard.getText());
-            admin.setPhoneNumber(phoneNumber.getText());
-            admin.setPassword(passwordField.getText());
-            adminService.save(admin);
-            addButton();
-        } else {
-            JavaFXUtils.showError("password required and confirm password should same to the password");
-        }
-    }
-
-
     public AdminController(@Lazy StageManager stageManager, AdminService adminService, AdminRepo adminRepo, SpringFXMLLoader springFXMLLoader) {
         this.stageManager = stageManager;
         this.adminService = adminService;
