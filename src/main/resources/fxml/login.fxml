@@ -8,31 +8,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="444.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.LoginController">
+<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="444.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.LoginController">
    <children>
-      <Label layoutX="190.0" layoutY="14.0" text="Login" textFill="#e3e8e6">
+      <Label layoutX="190.0" layoutY="14.0" text="Login">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="81.0" text="UserName" textFill="#eaeeed">
+      <Label layoutX="38.0" layoutY="81.0" text="UserName">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <TextField fx:id="username" layoutX="148.0" layoutY="77.0" prefHeight="35.0" prefWidth="177.0" promptText="Enter The User Name" />
-      <Label layoutX="35.0" layoutY="127.0" prefHeight="27.0" prefWidth="88.0" text="Password" textFill="#eeecec">
+      <Label layoutX="35.0" layoutY="127.0" prefHeight="27.0" prefWidth="88.0" text="Password" textFill="#2f2c2c">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <PasswordField fx:id="password" layoutX="148.0" layoutY="123.0" prefHeight="35.0" prefWidth="177.0" promptText="Enter The Password" />
-      <CheckBox fx:id="check" layoutX="148.0" layoutY="166.0" mnemonicParsing="false" onAction="#showPassword" text="Show Password" textFill="#edeeee">
+      <CheckBox fx:id="check" layoutX="148.0" layoutY="166.0" mnemonicParsing="false" onAction="#showPassword" text="Show Password">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </CheckBox>
-      <Button layoutX="126.0" layoutY="222.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="35.0" prefWidth="88.0" text="Login" textFill="#313632">
+      <Button layoutX="148.0" layoutY="222.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="35.0" prefWidth="88.0" text="Login" textFill="#313632">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

@@ -17,4 +17,9 @@ public interface AlumnusRepo extends JpaRepository<AlumnusEntity, Integer> {
 
     List<AlumnusEntity> findByType(String type);
 
+    List<AlumnusEntity> findByGraduationYear(String type);
+
+
+    List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear,String District ,String Type);
+
 }

@@ -33,7 +33,7 @@ public class AlumnusEntity {
     private String district;
 
     @Column(name = "graduation_year")
-    private String graduation_year;
+    private String graduationYear;
 
     @Column(name = "Type")
     private String type;

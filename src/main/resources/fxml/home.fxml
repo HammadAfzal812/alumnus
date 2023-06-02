@@ -20,10 +20,10 @@
           <Menu mnemonicParsing="false" text="Pages">
             <items>
               <MenuItem id="AdminManagement" fx:id="adminManagement" mnemonicParsing="false" onAction="#adminManagement" text="Admin management" />
-                <MenuItem fx:id="LogOut" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
-                <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
                   <MenuItem id="AlumnusManagement" fx:id="alumnusManagement" mnemonicParsing="false" onAction="#alumnusManagement" text="Alumnus Management" />
                   <MenuItem id="AlumnusManagement" fx:id="alumnusSearchTable" mnemonicParsing="false" onAction="#tableSearchTable" text="Alumnus Search Management" />
+                <MenuItem fx:id="LogOut" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
+                <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
             </items>
           </Menu>
         </menus>

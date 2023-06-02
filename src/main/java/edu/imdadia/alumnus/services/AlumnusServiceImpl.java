@@ -49,4 +49,19 @@ public class AlumnusServiceImpl implements AlumnusService {
     public Optional<AlumnusEntity> findByAlumnusNameAndFatherName(String name, String fatherName) {
         return alumnusRepo.findByAlumnusNameAndFatherName(name,fatherName);
     }
+
+    @Override
+    public List<AlumnusEntity> findByType(String type) {
+        return alumnusRepo.findByType(type);
+    }
+
+    @Override
+    public List<AlumnusEntity> findByGraduationYear(String year) {
+        return alumnusRepo.findByGraduationYear(year);
+    }
+
+    @Override
+    public List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear, String District, String Type) {
+        return alumnusRepo.findByGraduationYearAndDistrictAndType(GraduationYear, District ,Type);
+    }
 }

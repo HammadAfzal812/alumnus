@@ -3,107 +3,82 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="756.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.AlumnusController">
    <children>
-      <Label layoutX="14.0" layoutY="24.0" text="Alumnus Name">
+      <Label layoutX="131.0" layoutY="24.0" text="Alumnus Name">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="name" layoutX="180.0" layoutY="25.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="14.0" layoutY="65.0" text="Alumnus ID">
+      <TextField fx:id="name" layoutX="322.0" layoutY="25.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="131.0" layoutY="65.0" text="Alumnus ID">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="id" layoutX="180.0" layoutY="66.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="14.0" layoutY="107.0" text="S/O">
+      <TextField fx:id="id" layoutX="322.0" layoutY="66.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="132.0" layoutY="107.0" text="S/O">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="fatherName" layoutX="180.0" layoutY="108.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="14.0" layoutY="153.0" text="Phone Number">
+      <TextField fx:id="fatherName" layoutX="322.0" layoutY="108.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="132.0" layoutY="153.0" text="Phone Number">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneNumber" layoutX="180.0" layoutY="154.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="14.0" layoutY="199.0" text="Permanent Address">
+      <TextField fx:id="phoneNumber" layoutX="322.0" layoutY="154.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="131.0" layoutY="199.0" text="Permanent Address">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="permanentAddress" layoutX="180.0" layoutY="200.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="14.0" layoutY="239.0" text="District">
+      <TextField fx:id="permanentAddress" layoutX="322.0" layoutY="200.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="133.0" layoutY="239.0" text="District">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="district" layoutX="180.0" layoutY="240.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="10.0" layoutY="285.0" text="Greduation Year">
+      <TextField fx:id="district" layoutX="322.0" layoutY="240.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="133.0" layoutY="285.0" text="Greduation Year">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="graduationYear" layoutX="180.0" layoutY="286.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="13.0" layoutY="327.0" text="ID Card">
+      <TextField fx:id="graduationYear" layoutX="322.0" layoutY="286.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="132.0" layoutY="327.0" text="ID Card">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="idCard" layoutX="180.0" layoutY="328.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="14.0" layoutY="365.0" text="Degree Type">
+      <TextField fx:id="idCard" layoutX="322.0" layoutY="328.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="127.0" layoutY="365.0" text="Degree Type">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="typeChoice" layoutX="180.0" layoutY="366.0" prefHeight="25.0" prefWidth="182.0" />
-      <TableView fx:id="alumnusEntityTableView" layoutX="362.0" prefHeight="544.0" prefWidth="394.0">
-        <columns>
-          <TableColumn fx:id="nameColum" prefWidth="50.0" text="Name" />
-            <TableColumn fx:id="idColum" prefWidth="49.0" text="ID" />
-            <TableColumn fx:id="fatherNameColum" prefWidth="60.0" text="S/O" />
-            <TableColumn fx:id="phoneNumberColum" prefWidth="73.0" text="Phone Number" />
-            <TableColumn fx:id="addressColum" minWidth="0.0" prefWidth="89.0" text="Adress" />
-            <TableColumn fx:id="districtColum" prefWidth="129.0" text="District" />
-            <TableColumn fx:id="graduationYearColum" prefWidth="75.0" text="GraduationYear" />
-            <TableColumn fx:id="idCardColum" prefWidth="75.0" text="ID Card" />
-            <TableColumn fx:id="typeColum" prefWidth="75.0" text="Degree" />
-        </columns>
-      </TableView>
-      <Button layoutX="6.0" layoutY="407.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
+      <ChoiceBox fx:id="typeChoice" layoutX="322.0" layoutY="366.0" prefHeight="25.0" prefWidth="182.0" />
+      <Button layoutX="322.0" layoutY="409.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="7.0" layoutY="452.0" mnemonicParsing="false" onAction="#delete" prefHeight="39.0" prefWidth="80.0" text="Delete">
+      <Button layoutX="322.0" layoutY="480.0" mnemonicParsing="false" onAction="#clear" prefHeight="39.0" prefWidth="80.0" text="Clear">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="497.0" mnemonicParsing="false" onAction="#searchByName" prefHeight="39.0" prefWidth="182.0" text="Search By Name">
+      <Button layoutX="424.0" layoutY="480.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="80.0" text="Back">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="198.0" layoutY="407.0" mnemonicParsing="false" onAction="#clear" prefHeight="39.0" prefWidth="73.0" text="Clear">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="97.0" layoutY="452.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="166.0" text="Crunnt Situation">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="274.0" layoutY="407.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="80.0" text="Back">
+      <Button layoutX="54.0" layoutY="409.0" mnemonicParsing="false" onAction="#goToAlumnusPage" prefHeight="113.0" prefWidth="253.0" text="Go To Alumnus Table page">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
