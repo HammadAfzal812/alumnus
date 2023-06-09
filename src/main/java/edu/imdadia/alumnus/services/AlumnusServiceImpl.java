@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class AlumnusServiceImpl implements AlumnusService {
-    private AlumnusRepo alumnusRepo;
+    private final AlumnusRepo alumnusRepo;
+
+    public AlumnusServiceImpl(AlumnusRepo alumnusRepo) {
+        this.alumnusRepo = alumnusRepo;
+    }
 
     @Override
     public List<AlumnusEntity> findAllByDistrict(String district) {
@@ -21,8 +25,14 @@ public class AlumnusServiceImpl implements AlumnusService {
     }
 
     @Override
-    public AlumnusEntity save(AlumnusEntity alumnusEntity) {
-        return alumnusRepo.save(alumnusEntity);
+    public void save(AlumnusEntity alumnusEntity) {
+
+        try {
+            alumnusRepo.save(alumnusEntity);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -38,5 +48,20 @@ public class AlumnusServiceImpl implements AlumnusService {
     @Override
     public Optional<AlumnusEntity> findByAlumnusNameAndFatherName(String name, String fatherName) {
         return alumnusRepo.findByAlumnusNameAndFatherName(name,fatherName);
+    }
+
+    @Override
+    public List<AlumnusEntity> findByType(String type) {
+        return alumnusRepo.findByType(type);
+    }
+
+    @Override
+    public List<AlumnusEntity> findByGraduationYear(String year) {
+        return alumnusRepo.findByGraduationYear(year);
+    }
+
+    @Override
+    public List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear, String District, String Type) {
+        return alumnusRepo.findByGraduationYearAndDistrictAndType(GraduationYear, District ,Type);
     }
 }

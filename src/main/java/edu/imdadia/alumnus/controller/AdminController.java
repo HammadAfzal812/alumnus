@@ -67,33 +67,33 @@ public class AdminController implements Initializable {
     @FXML
     private TextField idCard;
     private final AdminRepo adminRepo;
-    private  AdminEntity searchedAdmin;
+    private AdminEntity searchedAdmin;
     @FXML
     private final SpringFXMLLoader springFXMLLoader;
 
 
     @FXML
     public void addButton() {
-     if (id.getText().equals("")||name.getText().equals("")||fatherName.getText().equals("")||idCard.getText().equals("")||passwordField.getText().equals("")||confirmPasswordField.getText().equals("")||phoneNumber.getText().equals("")){
-         JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
-     }else{
-         if (passwordField.getText().equals(confirmPasswordField.getText())){
-             AdminEntity adminEntity = new AdminEntity();
-             adminEntity.setAdminId(Integer.valueOf(id.getText()));
-             adminEntity.setAdminName(name.getText());
-             adminEntity.setFatherName(fatherName.getText());
-             adminEntity.setAddress(address.getText());
-             adminEntity.setPassword(passwordField.getText());
-             adminEntity.setPhoneNumber(phoneNumber.getText());
-             adminEntity.setIdCardNumber(idCard.getText());
-             adminService.save(adminEntity);
-             JavaFXUtils.showSuccessMessage("Admin added successfully");
-             this.clearFields();
-             setUpTable();
-         }else{
-             JavaFXUtils.showError("password confirm password not match");
-         }
-     }
+        if (id.getText().equals("") || name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || passwordField.getText().equals("") || confirmPasswordField.getText().equals("") || phoneNumber.getText().equals("")) {
+            JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
+        } else {
+            if (passwordField.getText().equals(confirmPasswordField.getText())) {
+                AdminEntity adminEntity = new AdminEntity();
+                adminEntity.setAdminId(Integer.valueOf(id.getText()));
+                adminEntity.setAdminName(name.getText());
+                adminEntity.setFatherName(fatherName.getText());
+                adminEntity.setAddress(address.getText());
+                adminEntity.setPassword(passwordField.getText());
+                adminEntity.setPhoneNumber(phoneNumber.getText());
+                adminEntity.setIdCardNumber(idCard.getText());
+                adminService.save(adminEntity);
+                JavaFXUtils.showSuccessMessage("Admin added successfully");
+                this.clearFields();
+                setUpTable();
+            } else {
+                JavaFXUtils.showError("password confirm password not match");
+            }
+        }
     }
 
     @FXML
@@ -129,25 +129,6 @@ public class AdminController implements Initializable {
         } else {
             JavaFXUtils.showError("Admin with Name " + name.getText() + " does not exist");
             clearFields();
-        }
-    }
-
-
-    @FXML
-    public void editButton() {
-        if (searchedAdmin.getPassword().equals(passwordField.getText()) && confirmPasswordField.equals(searchedAdmin.getPassword())) {
-            AdminEntity admin = new AdminEntity();
-            admin.setAdminId(Integer.valueOf(id.getText()));
-            admin.setAdminName(name.getText());
-            admin.setFatherName(fatherName.getText());
-            admin.setAddress(address.getText());
-            admin.setIdCardNumber(idCard.getText());
-            admin.setPhoneNumber(phoneNumber.getText());
-            admin.setPassword(passwordField.getText());
-            adminService.save(admin);
-            addButton();
-        }else{
-            JavaFXUtils.showError("password required and confirm password should same to the password");
         }
     }
 
@@ -226,8 +207,9 @@ public class AdminController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
     }
-   @FXML
-   public void currentAdmin(){
+
+    @FXML
+    public void currentAdmin() {
         stageManager.switchScene(FxmlView.ADMIN_INFO);
-   }
+    }
 }
