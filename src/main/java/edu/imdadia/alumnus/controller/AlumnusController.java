@@ -7,9 +7,14 @@ import edu.imdadia.alumnus.enumuration.FxmlView;
 import edu.imdadia.alumnus.repository.AlumnusRepo;
 import edu.imdadia.alumnus.services.AlumnusService;
 import edu.imdadia.alumnus.util.JavaFXUtils;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
@@ -26,6 +31,38 @@ public class AlumnusController implements Initializable {
     private final AlumnusEntity alumnusEntity;
     private final StageManager stageManager;
     private final AlumnusService alumnusService;
+
+    @FXML
+    private TableView<AlumnusEntity> tableView;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> idColum;
+
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> nameColum;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> fatherNameColum;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> idCardColum;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> phoneNumberColum;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> typeColum;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> districtColum;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> permanentAddressColum;
+
+    @FXML
+    private TableColumn<AlumnusEntity, String> graduationYearColum;
+
     @FXML
     private ChoiceBox<String> typeChoice;
 
@@ -56,28 +93,6 @@ public class AlumnusController implements Initializable {
         this.alumnusEntity = new AlumnusEntity();
         this.alumnusRepo = alumnusRepo;
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        final List<String> choiceConditionList = new ArrayList<>();
-        choiceConditionList.add("Mufti");
-        choiceConditionList.add("Scholar");
-        choiceConditionList.add("Reader");
-        choiceConditionList.add("Hafiz");
-        typeChoice.getItems().addAll(choiceConditionList);
-    }
-
-    public void clear() {
-        id.clear();
-        name.clear();
-        fatherName.clear();
-        idCard.clear();
-        permanentAddress.clear();
-        district.clear();
-        phoneNumber.clear();
-        graduationYear.clear();
-    }
-
 
 
     @FXML
@@ -130,8 +145,78 @@ public class AlumnusController implements Initializable {
     public void back() {
         stageManager.switchScene(FxmlView.HOME);
     }
+
+
+
+
+
+    private void setUpTable() {
+        ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
+        alumnusEntityObservableList.stream().sorted();
+        tableView.setItems(alumnusEntityObservableList);
+        this.idColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAlumnusId())));
+        this.nameColum.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAlumnusName()));
+        this.fatherNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getFatherName())));
+        this.permanentAddressColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPermanentAddress())));
+        this.phoneNumberColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPhoneNumber())));
+        this.idCardColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCardNumber())));
+        this.districtColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getDistrict())));
+        this.typeColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getType())));
+        this.graduationYearColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getGraduationYear())));
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        final List<String> choiceConditionList = new ArrayList<>();
+        choiceConditionList.add("Mufti");
+        choiceConditionList.add("Scholar");
+        choiceConditionList.add("Reader");
+        choiceConditionList.add("Hafiz");
+        typeChoice.getItems().addAll(choiceConditionList);
+        setUpTable();
+    }
+
+    public void graduationYear() {
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYear(graduationYear.getText()));
+        tableView.setItems(alumnusEntities);
+        graduationYear.clear();
+    }
+
+
+    public void degreeType() {
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByType(typeChoice.getValue()));
+        tableView.setItems(alumnusEntities);
+        typeChoice.setValue("");
+    }
+
+    public void findByDistrictTypeYear() {
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(),district.getText(),typeChoice.getValue()));
+        tableView.setItems(alumnusEntities);
+        clear();
+    }
+
+    public void districtName() {
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(district.getText()));
+        tableView.setItems(alumnusEntities);
+        district.clear();
+    }
+
     @FXML
-    public void goToAlumnusPage() {
-        stageManager.switchScene(FxmlView.ALUMNUSTABLE);
+    private void clear(){
+        typeChoice.setValue("");
+        id.clear();
+        name.clear();
+        fatherName.clear();
+        idCard.clear();
+        permanentAddress.clear();
+        district.clear();
+        phoneNumber.clear();
+        graduationYear.clear();
+
+    }
+
+    public void findAll(){
+        setUpTable();
     }
 }

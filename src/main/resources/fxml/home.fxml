@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="717.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="717.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.HomeController">
    <children>
       <Label layoutX="22.0" layoutY="77.0" prefHeight="206.0" prefWidth="706.0" text="Welcome  To Alumnus Management  System">
          <font>
@@ -21,7 +21,6 @@
             <items>
               <MenuItem id="AdminManagement" fx:id="adminManagement" mnemonicParsing="false" onAction="#adminManagement" text="Admin management" />
                   <MenuItem id="AlumnusManagement" fx:id="alumnusManagement" mnemonicParsing="false" onAction="#alumnusManagement" text="Alumnus Management" />
-                  <MenuItem id="AlumnusManagement" fx:id="alumnusSearchTable" mnemonicParsing="false" onAction="#tableSearchTable" text="Alumnus Search Management" />
                 <MenuItem fx:id="LogOut" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
                 <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
             </items>

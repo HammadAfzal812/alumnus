@@ -3,11 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="756.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.AlumnusController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1265.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.AlumnusController">
    <children>
       <Label layoutX="131.0" layoutY="24.0" text="Alumnus Name">
          <font>
@@ -63,22 +65,55 @@
          </font>
       </Label>
       <ChoiceBox fx:id="typeChoice" layoutX="322.0" layoutY="366.0" prefHeight="25.0" prefWidth="182.0" />
-      <Button layoutX="322.0" layoutY="409.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
+      <Button layoutX="32.0" layoutY="428.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="322.0" layoutY="480.0" mnemonicParsing="false" onAction="#clear" prefHeight="39.0" prefWidth="80.0" text="Clear">
+      <Button layoutX="32.0" layoutY="480.0" mnemonicParsing="false" onAction="#clear" prefHeight="39.0" prefWidth="80.0" text="Clear">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="424.0" layoutY="480.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="80.0" text="Back">
+      <Button layoutX="133.0" layoutY="480.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="80.0" text="Back">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="54.0" layoutY="409.0" mnemonicParsing="false" onAction="#goToAlumnusPage" prefHeight="113.0" prefWidth="253.0" text="Go To Alumnus Table page">
+      <TableView fx:id="tableView" layoutX="511.0" layoutY="21.0" prefHeight="608.0" prefWidth="729.0">
+        <columns>
+          <TableColumn fx:id="nameColum" prefWidth="67.0" text="Name" />
+          <TableColumn fx:id="fatherNameColum" prefWidth="73.0" text="S/O" />
+            <TableColumn fx:id="idColum" prefWidth="39.0" text="ID" />
+            <TableColumn fx:id="idCardColum" prefWidth="102.0" text="ID Card" />
+            <TableColumn fx:id="phoneNumberColum" prefWidth="94.0" text="Phone Number" />
+            <TableColumn fx:id="graduationYearColum" prefWidth="97.0" text="Graduation Year" />
+            <TableColumn fx:id="typeColum" prefWidth="77.0" text="Degree Type" />
+            <TableColumn fx:id="districtColum" prefWidth="59.0" text="District" />
+            <TableColumn fx:id="permanentAddressColum" prefWidth="126.0" text="Permanent Address" />
+        </columns>
+      </TableView>
+      <Button layoutX="280.0" layoutY="532.0" mnemonicParsing="false" onAction="#graduationYear" prefHeight="39.0" prefWidth="224.0" text="Search By Graduation Year">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="27.0" layoutY="588.0" mnemonicParsing="false" onAction="#findByDistrictTypeYear" prefHeight="39.0" prefWidth="478.0" text="Search By District,Degree Type And Graduation Year">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="280.0" layoutY="480.0" mnemonicParsing="false" onAction="#degreeType" prefHeight="39.0" prefWidth="224.0" text="Search By Degree Type">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="280.0" layoutY="428.0" mnemonicParsing="false" onAction="#districtName" prefHeight="39.0" prefWidth="224.0" text="Search By District">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="32.0" layoutY="532.0" mnemonicParsing="false" onAction="#findAll" prefHeight="39.0" prefWidth="182.0" text="Find All Data">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
