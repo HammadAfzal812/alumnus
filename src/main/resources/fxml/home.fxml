@@ -22,7 +22,6 @@
                <items>
                   <MenuItem fx:id="adminManagement" mnemonicParsing="false" onAction="#adminManagement" text="Admin Management" />
                   <MenuItem fx:id="alumnusManagement" mnemonicParsing="false" onAction="#alumnusManagement" text="Alumnus Management" />
-                  <MenuItem fx:id="alumnusSearchTable" mnemonicParsing="false" onAction="#tableSearchTable" text="Alumnus search table" />
                   <MenuItem fx:id="currentAdmin" mnemonicParsing="false" onAction="#currentAdmin" text="Curent Admin" />
                   <MenuItem fx:id="LogOut" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
                   <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
