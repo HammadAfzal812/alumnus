@@ -18,7 +18,9 @@ public class AppJavaConfig {
   private final SpringFXMLLoader springFXMLLoader;
 
   @Bean
-  @Lazy() //Stage will be created only after Spring context bootstrap
+  @Lazy()
+
+  //Stage will be created only after Spring context bootstrap
   public StageManager stageManager(final Stage stage) {
     return new StageManager(springFXMLLoader, stage);
   }

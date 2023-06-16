@@ -41,8 +41,8 @@ public class AdminController implements Initializable {
     private TableColumn<AdminEntity, String> phoneNumberColum;
     @FXML
     private TableColumn<AdminEntity, String> idCardColum;
-    @FXML
-    private BorderPane rootBorderPane;
+//    @FXML
+//    private BorderPane rootBorderPane;
 
     @FXML
     private TextField name;

@@ -1,15 +1,25 @@
 package edu.imdadia.alumnus.controller;
 
+import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.enumuration.FxmlView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
+import java.io.IOException;
+
 @Controller
 public class HomeController {
+    @FXML
+    private BorderPane rootBorderPane;
+
+    private SpringFXMLLoader springFXMLLoader;
     @FXML
     private MenuItem adminManagement;
     @FXML
@@ -51,7 +61,7 @@ public class HomeController {
     }
 
     @FXML
-    public void currentAdmin() {
+    public void currentAdmin() throws IOException {
         stageManager.switchScene(FxmlView.ADMIN_INFO);
     }
 
@@ -59,6 +69,15 @@ public class HomeController {
     public void tableSearchTable() {
         stageManager.switchScene(FxmlView.ALUMNUSTABLE);
     }
+
+
+
+
+//    private void switchView(final FxmlView fxmlView) throws IOException {
+//        final Parent view = springFXMLLoader.load(fxmlView.getFxmlFile());
+//        stageManager.getStage().setTitle(fxmlView.getTitle());
+//        rootBorderPane.setTop(view);
+//    }
 }
 
 
