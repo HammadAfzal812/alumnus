@@ -53,35 +53,27 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="passwordTxt" layoutX="98.0" layoutY="276.0" prefHeight="30.0" prefWidth="169.0" />
+        <PasswordField fx:id="passwordField" layoutX="99.0" layoutY="276.0" prefHeight="31.0" prefWidth="169.0" promptText="Password" />
+        <TextField fx:id="passwordTxt" layoutX="98.0" layoutY="276.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
         <Label layoutX="7.0" layoutY="326.0" text="Confirm ">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="confirmPasswordTxt" layoutX="98.0" layoutY="321.0" prefHeight="30.0" prefWidth="169.0" />
+        <PasswordField fx:id="confirmPasswordField" layoutX="98.0" layoutY="321.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" />
+        <TextField fx:id="confirmPasswordTxt" layoutX="98.0" layoutY="321.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
         <CheckBox fx:id="showConfirmPasswordBox" layoutX="98.0" layoutY="362.0" mnemonicParsing="false" onAction="#showConfirmPasswordBox" text="Show" />
-        <Button layoutX="12.0" layoutY="498.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
-        <Button layoutX="146.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByIdButton" prefHeight="30.0" prefWidth="120.0" text="Search By Id">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
       <Button layoutX="6.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByNameButton" prefHeight="30.0" prefWidth="127.0" text="Search By Name">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="25.0" layoutY="560.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="30.0" prefWidth="127.0" text="Remove By ID">
+        <Button layoutX="146.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByIdButton" prefHeight="30.0" prefWidth="120.0" text="Search By Id">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="148.0" layoutY="498.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="120.0" text="Log Out">
+        <Button layoutX="12.0" layoutY="498.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -91,13 +83,26 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+        <Button layoutX="148.0" layoutY="498.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="120.0" text="Log Out">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <Button layoutX="25.0" layoutY="560.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="30.0" prefWidth="127.0" text="Remove By ID">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
         <Button layoutX="192.0" layoutY="560.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="62.0" text="Back">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <PasswordField fx:id="passwordField" layoutX="99.0" layoutY="276.0" prefHeight="31.0" prefWidth="169.0" promptText="Password" />
-        <PasswordField fx:id="confirmPasswordField" layoutX="98.0" layoutY="321.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" />
+      <Button id="currentAdmin" fx:id="currentAdmin" layoutX="43.0" layoutY="618.0" mnemonicParsing="false" onAction="#currentAdmin" prefHeight="40.0" prefWidth="141.0" text="Current Admin">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
         <TableView fx:id="adminsTable" layoutX="296.0" layoutY="9.0" prefHeight="686.0" prefWidth="681.0">
             <columns>
                 <TableColumn fx:id="idColum" prefWidth="39.0" text="ID" />
@@ -108,10 +113,5 @@
                 <TableColumn fx:id="idCardColum" prefWidth="152.0" text="ID Card" />
             </columns>
         </TableView>
-      <Button id="currentAdmin" fx:id="currentAdmin" layoutX="43.0" layoutY="618.0" mnemonicParsing="false" onAction="#currentAdmin" prefHeight="40.0" prefWidth="141.0" text="Current Admin">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
     </children>
 </AnchorPane>
