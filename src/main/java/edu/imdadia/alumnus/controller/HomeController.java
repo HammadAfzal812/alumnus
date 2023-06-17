@@ -73,11 +73,12 @@ public class HomeController {
 
 
 
-//    private void switchView(final FxmlView fxmlView) throws IOException {
-//        final Parent view = springFXMLLoader.load(fxmlView.getFxmlFile());
-//        stageManager.getStage().setTitle(fxmlView.getTitle());
-//        rootBorderPane.setTop(view);
-//    }
+    @FXML
+    private void switchView(final FxmlView fxmlView) throws IOException {
+        final Parent view = springFXMLLoader.load(fxmlView.getFxmlFile());
+        stageManager.getStage().setTitle(fxmlView.getTitle());
+        rootBorderPane.setCenter(view);
+    }
 }
 
 

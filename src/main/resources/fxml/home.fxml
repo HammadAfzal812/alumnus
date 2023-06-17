@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.HomeController">
+<BorderPane fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.HomeController">
    <center>
       <Label prefHeight="169.0" prefWidth="677.0" text="WELL    COME    TO     ALUMNUS     PROJECT" BorderPane.alignment="CENTER">
          <font>
@@ -18,7 +18,7 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu fx:id="aboutAdmin" mnemonicParsing="false" onAction="#currentAdmin" text="Fiels">
+          <Menu fx:id="aboutAdmin" mnemonicParsing="false" text="Fiels">
                <items>
                   <MenuItem fx:id="adminManagement" mnemonicParsing="false" onAction="#adminManagement" text="Admin Management" />
                   <MenuItem fx:id="alumnusManagement" mnemonicParsing="false" onAction="#alumnusManagement" text="Alumnus Management" />

@@ -64,10 +64,18 @@ public class LoginController {
         } else {
             for (int i = 0; i < allAdmins.size(); ) {
                 for (AdminEntity a : allAdmins) {
-                    if (a.getPassword().equals(password.getText()) && a.getAdminName().equals(username.getText())) {
-                        stageManager.switchScene(FxmlView.HOME);
-                        adminEntity = a;
-                        break;
+                    if (check.isSelected()){
+                        if (a.getPassword().equals(plainPassword.getText()) && a.getAdminName().equals(username.getText())) {
+                            stageManager.switchScene(FxmlView.HOME);
+                            adminEntity = a;
+                            break;
+                        }
+                    } else if (!check.isSelected()){
+                        if (a.getPassword().equals(password.getText()) && a.getAdminName().equals(username.getText())) {
+                            stageManager.switchScene(FxmlView.HOME);
+                            adminEntity = a;
+                            break;
+                        }
                     }
                     i++;
                     if (i == allAdmins.size()) {
@@ -82,14 +90,18 @@ public class LoginController {
 
     @FXML
     public void showPassword() {
+        String a;
         if (check.isSelected()) {
-            plainPassword.setText(password.getText());
+             a =password.getText();
+            plainPassword.setText(a);
             password.setVisible(false);
             plainPassword.setVisible(true);
-            return;
+        }else {
+            a=plainPassword.getText();
+            password.setText(a);
+            plainPassword.setVisible(false);
+            password.setVisible(true);
         }
-        plainPassword.setVisible(false);
-        password.setVisible(true);
     }
 
 
