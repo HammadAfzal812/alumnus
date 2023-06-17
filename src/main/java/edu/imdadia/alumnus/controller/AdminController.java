@@ -169,8 +169,11 @@ public class AdminController implements Initializable {
             passwordTxt.setText(passwordField.getText());
             passwordField.setVisible(false);
             passwordTxt.setVisible(true);
+            passwordField.setText(passwordTxt.getText());
+            confirmPasswordField.setText(confirmPasswordTxt.getText());
             return;
         }
+
         confirmPasswordTxt.setVisible(false);
         confirmPasswordField.setVisible(true);
         passwordTxt.setVisible(false);
