@@ -74,10 +74,12 @@ public class AdminController implements Initializable {
 
     @FXML
     public void addButton() {
-        if (id.getText().equals("") || name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || passwordField.getText().equals("") || confirmPasswordField.getText().equals("") || phoneNumber.getText().equals("")) {
+        if (id.getText().equals("") || name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("")  || phoneNumber.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
-        } else {
-            if (passwordField.getText().equals(confirmPasswordField.getText())) {
+        } else if (showConfirmPasswordBox.isSelected()) {
+            if (passwordTxt.equals("")||confirmPasswordTxt.equals("")) {
+                JavaFXUtils.showWarningMessage("password and confirm password required");
+            }else if(passwordTxt.getText().equals(confirmPasswordTxt.getText())) {
                 AdminEntity adminEntity = new AdminEntity();
                 adminEntity.setAdminId(Integer.valueOf(id.getText()));
                 adminEntity.setAdminName(name.getText());
@@ -90,11 +92,28 @@ public class AdminController implements Initializable {
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
                 this.clearFields();
                 setUpTable();
-            } else {
+            } }else if (!showConfirmPasswordBox.isSelected()){
+            if (passwordField.equals("")||confirmPasswordField.equals("")) {
+                JavaFXUtils.showWarningMessage("password and confirm password required");
+            }else if (passwordField.getText().equals(confirmPasswordField.getText())) {
+                    AdminEntity adminEntity = new AdminEntity();
+                    adminEntity.setAdminId(Integer.valueOf(id.getText()));
+                    adminEntity.setAdminName(name.getText());
+                    adminEntity.setFatherName(fatherName.getText());
+                    adminEntity.setAddress(address.getText());
+                    adminEntity.setPassword(passwordField.getText());
+                    adminEntity.setPhoneNumber(phoneNumber.getText());
+                    adminEntity.setIdCardNumber(idCard.getText());
+                    adminService.save(adminEntity);
+                    JavaFXUtils.showSuccessMessage("Admin added successfully");
+                    this.clearFields();
+                    setUpTable();
+            }else{
                 JavaFXUtils.showError("password confirm password not match");
             }
         }
     }
+
 
     @FXML
     public void searchByIdButton() {
@@ -164,16 +183,15 @@ public class AdminController implements Initializable {
     public void showConfirmPasswordBox() {
         if (showConfirmPasswordBox.isSelected()) {
             confirmPasswordTxt.setText(confirmPasswordField.getText());
+            passwordTxt.setText(passwordField.getText());
             confirmPasswordField.setVisible(false);
             confirmPasswordTxt.setVisible(true);
-            passwordTxt.setText(passwordField.getText());
             passwordField.setVisible(false);
             passwordTxt.setVisible(true);
-            passwordField.setText(passwordTxt.getText());
-            confirmPasswordField.setText(confirmPasswordTxt.getText());
             return;
         }
-
+        confirmPasswordField.setText(confirmPasswordTxt.getText());
+        passwordField.setText(passwordTxt.getText());
         confirmPasswordTxt.setVisible(false);
         confirmPasswordField.setVisible(true);
         passwordTxt.setVisible(false);
@@ -201,7 +219,7 @@ public class AdminController implements Initializable {
     @FXML
     public void removeButton() {
         adminService.deleteById(Integer.valueOf(id.getText()));
-        JavaFXUtils.showSuccessMessage("Admin With " + id.getText() + " Deleted Successfully");
+        JavaFXUtils.showWarningMessage("Admin With " + id.getText() + " Deleted Successfully");
         setUpTable();
         clearFields();
     }
