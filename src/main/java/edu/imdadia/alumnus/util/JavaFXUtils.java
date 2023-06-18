@@ -2,13 +2,18 @@ package edu.imdadia.alumnus.util;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
 
 public class JavaFXUtils {
 
-  public static void showAlert(final AlertType alertType, final String title) {
+  public static Optional<ButtonType> showAlert(final AlertType alertType, final String title,
+                                               final String errorMessage) {
     final Alert alert = new Alert(alertType);
     alert.setTitle(title);
-    alert.showAndWait();
+    alert.setContentText(errorMessage);
+    return alert.showAndWait();
   }
 
   public static void showSuccessMessage(final String successMessage) {
