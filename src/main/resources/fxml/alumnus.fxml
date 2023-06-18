@@ -17,36 +17,30 @@
          </font>
       </Label>
       <TextField fx:id="name" layoutX="148.0" layoutY="13.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="5.0" layoutY="53.0" text="Alumnus ID">
+      <Label layoutX="12.0" layoutY="56.0" text="S/O">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="id" layoutX="148.0" layoutY="54.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="14.0" layoutY="95.0" text="S/O">
+      <TextField fx:id="fatherName" layoutX="148.0" layoutY="57.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="5.0" layoutY="96.0" text="Phone Number">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="fatherName" layoutX="148.0" layoutY="95.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="4.0" layoutY="139.0" text="Phone Number">
+      <TextField fx:id="phoneNumber" layoutX="148.0" layoutY="97.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="10.0" layoutY="229.0" text="Address">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneNumber" layoutX="148.0" layoutY="139.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="12.0" layoutY="186.0" text="Address">
+      <TextField fx:id="permanentAddress" layoutX="148.0" layoutY="230.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="5.0" layoutY="136.0" text="Province">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="permanentAddress" layoutX="148.0" layoutY="186.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="5.0" layoutY="227.0" text="District">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tableView" layoutX="338.0" prefHeight="681.0" prefWidth="764.0">
+      <TableView fx:id="tableView" layoutX="339.0" prefHeight="681.0" prefWidth="763.0">
          <columns>
             <TableColumn fx:id="nameColum" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="fatherNameColum" prefWidth="75.0" text="S/O" />
@@ -59,7 +53,6 @@
             <TableColumn fx:id="permanentAddressColum" prefWidth="141.0" text="Permanent Address" />
          </columns>
       </TableView>
-      <TextField fx:id="district" layoutX="148.0" layoutY="228.0" prefHeight="25.0" prefWidth="182.0" />
       <Label layoutY="271.0" text="Greduation Year">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -78,7 +71,7 @@
          </font>
       </Label>
       <ChoiceBox fx:id="typeChoice" layoutX="148.0" layoutY="366.0" prefHeight="25.0" prefWidth="182.0" />
-      <Button layoutX="148.0" layoutY="408.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="182.0" text="Add Alumnus">
+      <Button layoutX="156.0" layoutY="408.0" mnemonicParsing="false" onAction="#add" prefHeight="39.0" prefWidth="176.0" text="Add Alumnus">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -88,9 +81,51 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="258.0" layoutY="642.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="80.0" text="Back">
+      <Button layoutX="220.0" layoutY="612.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="80.0" text="Back">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="findByName" layoutX="2.0" layoutY="474.0" mnemonicParsing="false" onAction="#findByName" prefHeight="55.0" prefWidth="107.0" text="Find   By  Name">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="findByDigree" layoutX="113.0" layoutY="472.0" mnemonicParsing="false" onAction="#findByDigree" prefHeight="55.0" prefWidth="107.0" text="Find   By   digree">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="findByYear" layoutX="227.0" layoutY="472.0" mnemonicParsing="false" onAction="#findByYear" prefHeight="55.0" prefWidth="107.0" text="Find   By  Year">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="findByDateAndDigree" layoutX="138.0" layoutY="546.0" mnemonicParsing="false" onAction="#findByDateAndDigree" prefHeight="47.0" prefWidth="196.0" text="Find      By    Date       adn         Digree">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="findByDistrict" layoutX="11.0" layoutY="546.0" mnemonicParsing="false" onAction="#findByDistrict" prefHeight="47.0" prefWidth="113.0" text="Find     By    district">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="2.0" layoutY="614.0" mnemonicParsing="false" text="Update">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="18.0" />
+         </font>
+      </Button>
+      <ChoiceBox layoutX="145.0" layoutY="137.0" prefHeight="25.0" prefWidth="182.0" />
+      <ChoiceBox layoutX="149.0" layoutY="181.0" prefHeight="25.0" prefWidth="176.0" />
+      <Label layoutX="5.0" layoutY="180.0" text="District">
          <font>
             <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="107.0" layoutY="614.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" text="Delete">
+         <font>
+            <Font name="1 MUHAMMADI QURANIC" size="18.0" />
          </font>
       </Button>
    </children>
