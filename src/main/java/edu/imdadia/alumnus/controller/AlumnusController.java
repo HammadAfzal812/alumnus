@@ -66,6 +66,12 @@ public class AlumnusController implements Initializable {
     @FXML
     private ChoiceBox<String> typeChoice;
 
+    @FXML
+    private ChoiceBox<String> provinceChoice;
+
+    @FXML
+    private ChoiceBox<String> districtChoice;
+
 
     @FXML
     private TextField name;
@@ -168,35 +174,55 @@ public class AlumnusController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        final List<String> choiceConditionList = new ArrayList<>();
-        choiceConditionList.add("Mufti");
-        choiceConditionList.add("Scholar");
-        choiceConditionList.add("Reader");
-        choiceConditionList.add("Hafiz");
-        typeChoice.getItems().addAll(choiceConditionList);
+        final List<String> choiceDegreeTypeList = new ArrayList<>();
+        final List<String> choiceProvincrList = new ArrayList<>();
+        final List<String> choiceDistrictList = new ArrayList<>();
+
+        choiceDegreeTypeList.add("Mufti");
+        choiceDegreeTypeList.add("Scholar");
+        choiceDegreeTypeList.add("Reader");
+        choiceDegreeTypeList.add("Hafiz");
+        typeChoice.getItems().addAll(choiceDegreeTypeList);
+
+        choiceProvincrList.add("Punjab");
+        choiceProvincrList.add("KPk");
+        choiceProvincrList.add("Sindh");
+        choiceProvincrList.add("Balochictan");
+        choiceProvincrList.add("Gilgit");
+        choiceProvincrList.add("Fata");
+        choiceProvincrList.add("Kashmir");
+        choiceProvincrList.add("federal");
+
+        provinceChoice.getItems().addAll(choiceProvincrList);
+
+        choiceDistrictList.add("Mufti");
+        choiceDistrictList.add("Scholar");
+        choiceDistrictList.add("Reader");
+        choiceDistrictList.add("Hafiz");
+        districtChoice.getItems().addAll(choiceDegreeTypeList);
         setUpTable();
     }
 
-    public void graduationYear() {
+    public void findByYear() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYear(graduationYear.getText()));
         tableView.setItems(alumnusEntities);
         graduationYear.clear();
     }
 
 
-    public void degreeType() {
+    public void findByDegree() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByType(typeChoice.getValue()));
         tableView.setItems(alumnusEntities);
         typeChoice.setValue("");
     }
 
-    public void findByDistrictTypeYear() {
+    public void findByDegreeDistrictYear() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(),district.getText(),typeChoice.getValue()));
         tableView.setItems(alumnusEntities);
         clear();
     }
 
-    public void districtName() {
+    public void findByDistrict() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(district.getText()));
         tableView.setItems(alumnusEntities);
         district.clear();
