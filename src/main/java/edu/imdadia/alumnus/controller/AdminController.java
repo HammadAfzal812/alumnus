@@ -12,12 +12,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -41,8 +43,8 @@ public class AdminController implements Initializable {
     private TableColumn<AdminEntity, String> phoneNumberColum;
     @FXML
     private TableColumn<AdminEntity, String> idCardColum;
-//    @FXML
-//    private BorderPane rootBorderPane;
+    @FXML
+    private BorderPane rootBorderPane;
 
     @FXML
     private TextField name;
@@ -240,7 +242,13 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    public void currentAdmin() {
-        stageManager.switchScene(FxmlView.ADMIN_INFO);
+    public void currentAdmin() throws IOException {
+        switchView(FxmlView.ADMIN_INFO);
+    }
+    @FXML
+    private void switchView(final FxmlView fxmlView) throws IOException {
+        final Parent view = springFXMLLoader.load(fxmlView.getFxmlFile());
+        stageManager.getStage().setTitle(fxmlView.getTitle());
+        rootBorderPane.setCenter(view);
     }
 }
