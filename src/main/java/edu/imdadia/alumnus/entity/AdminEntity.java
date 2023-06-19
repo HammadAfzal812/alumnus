@@ -17,7 +17,8 @@ public class AdminEntity {
     @Id
     @Column(name = "admin_id")
     private Integer adminId;
-
+    @Column(name ="district")
+    private String district;
     @Column(name = "admin_Name")
     private String adminName;
 

@@ -276,6 +276,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Vehari");
             choiceDistrictList.add("Wazirabad");
             choiceDistrictList.add("Islamabad");
+            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
         }else if (provinceChoice.getValue().equals("KPk")){
             choiceDistrictList.add("Abbottabad");
             choiceDistrictList.add("Bajaur");
@@ -308,6 +309,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Upper Chitral");
             choiceDistrictList.add("Upper Dir");
             choiceDistrictList.add("Upper Kohistan");
+            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
         }else if (provinceChoice.getValue().equals("Sindh")){
             choiceDistrictList.add("Badin");
             choiceDistrictList.add("Dadu");
@@ -338,6 +340,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Karachi West");
             choiceDistrictList.add("Korangi");
             choiceDistrictList.add("Malir");
+            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
         }else if (provinceChoice.getValue().equals("Balochictan")){
             choiceDistrictList.add("Awaran");
             choiceDistrictList.add("Barkhan");
@@ -372,6 +375,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Washuk");
             choiceDistrictList.add("Zhob");
             choiceDistrictList.add("Ziarat");
+            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
         }else if (provinceChoice.getValue().equals("Gilgit")){
 
             choiceDistrictList.add("Astore");
@@ -388,6 +392,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Shigar");
             choiceDistrictList.add("Skardu");
             choiceDistrictList.add("Tangir");
+            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
         }else if (provinceChoice.getValue().equals("Azad Kashmir")){
             choiceDistrictList.add("Bagh");
             choiceDistrictList.add("Bhimber");
@@ -399,6 +404,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Neelum");
             choiceDistrictList.add("Poonch");
             choiceDistrictList.add("Sudhnutti");
+            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
         }
         districtChoice.getItems().addAll(choiceDistrictList);
         setUpTable();
