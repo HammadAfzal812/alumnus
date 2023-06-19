@@ -112,7 +112,7 @@
          </font>
       </Button>
       <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" prefHeight="25.0" prefWidth="182.0" />
-      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" />
+      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" onDragDone="districtChoice" />
       <Label layoutX="5.0" layoutY="180.0" text="Graduation Year">
          <font>
             <Font name="System Bold" size="18.0" />

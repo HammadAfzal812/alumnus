@@ -7,7 +7,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,7 @@ public class HomeController {
     @FXML
     private BorderPane rootBorderPane;
 
-    private SpringFXMLLoader springFXMLLoader;
+    private final SpringFXMLLoader springFXMLLoader;
     @FXML
     private MenuItem adminManagement;
     @FXML
@@ -35,7 +34,8 @@ public class HomeController {
     private final StageManager stageManager;
 
 
-    public HomeController(@Lazy final StageManager stageManager) {
+    public HomeController(SpringFXMLLoader springFXMLLoader, @Lazy final StageManager stageManager) {
+        this.springFXMLLoader = springFXMLLoader;
         this.stageManager = stageManager;
     }
 
@@ -62,7 +62,7 @@ public class HomeController {
 
     @FXML
     public void currentAdmin() throws IOException {
-        stageManager.switchScene(FxmlView.ADMIN_INFO);
+        switchView(FxmlView.ADMIN_INFO);
     }
 
     @FXML
