@@ -153,9 +153,6 @@ public class AlumnusController implements Initializable {
     }
 
 
-
-
-
     private void setUpTable() {
         ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
         alumnusEntityObservableList.stream().sorted();
@@ -189,17 +186,184 @@ public class AlumnusController implements Initializable {
         choiceProvincrList.add("Sindh");
         choiceProvincrList.add("Balochictan");
         choiceProvincrList.add("Gilgit");
-        choiceProvincrList.add("Fata");
-        choiceProvincrList.add("Kashmir");
-        choiceProvincrList.add("federal");
-
+        choiceProvincrList.add("Azad Kashmir");
+        choiceProvincrList.add("Islamabad");
         provinceChoice.getItems().addAll(choiceProvincrList);
 
-        choiceDistrictList.add("Mufti");
-        choiceDistrictList.add("Scholar");
-        choiceDistrictList.add("Reader");
-        choiceDistrictList.add("Hafiz");
-        districtChoice.getItems().addAll(choiceDegreeTypeList);
+
+        choiceDistrictList.add("Attock");
+        choiceDistrictList.add("Bahawalnagar");
+        choiceDistrictList.add("BahawalPur");
+        choiceDistrictList.add("Bakkhar");
+        choiceDistrictList.add("Chakwal");
+        choiceDistrictList.add("chiniot");
+        choiceDistrictList.add("Dera Ghazi Khan");
+        choiceDistrictList.add("Faislabad");
+        choiceDistrictList.add("Gujranwala");
+        choiceDistrictList.add("Gujrat");
+        choiceDistrictList.add("Hafizabad");
+        choiceDistrictList.add("Jhang");
+        choiceDistrictList.add("Jhelum");
+        choiceDistrictList.add("Kasur");
+        choiceDistrictList.add("Khanewal");
+        choiceDistrictList.add("KhUshab");
+        choiceDistrictList.add("Kot Adu");
+        choiceDistrictList.add("Lahore");
+        choiceDistrictList.add("Layyah");
+        choiceDistrictList.add("Lodhran");
+        choiceDistrictList.add("Mandi Bahauddin");
+        choiceDistrictList.add("Mianwali");
+        choiceDistrictList.add("Multan");
+        choiceDistrictList.add("Murree");
+        choiceDistrictList.add("Muzaffargarh");
+        choiceDistrictList.add("Narowal");
+        choiceDistrictList.add("Nankana Sahib");
+        choiceDistrictList.add("Okara");
+        choiceDistrictList.add("Pakpattan");
+        choiceDistrictList.add("Rahim Yar Khan ");
+        choiceDistrictList.add("Rajanpur");
+        choiceDistrictList.add("Rawalpindi");
+        choiceDistrictList.add("Sahiwal");
+        choiceDistrictList.add("sargoda");
+        choiceDistrictList.add("Sheikhupura");
+        choiceDistrictList.add("Sialkot");
+        choiceDistrictList.add("TalaGang");
+        choiceDistrictList.add("Taunsa");
+        choiceDistrictList.add("Toba Tek Singh");
+        choiceDistrictList.add("Vehari");
+        choiceDistrictList.add("Wazirabad");
+
+
+        choiceDistrictList.add("Abbottabad");
+        choiceDistrictList.add("Bajaur");
+        choiceDistrictList.add("Bannu");
+        choiceDistrictList.add("Batgram");
+        choiceDistrictList.add("Buner");
+        choiceDistrictList.add("Charsadda");
+        choiceDistrictList.add("Dera Ismail Khan");
+        choiceDistrictList.add("Hangu");
+        choiceDistrictList.add("Hariur");
+        choiceDistrictList.add("Karak");
+        choiceDistrictList.add("Kyber");
+        choiceDistrictList.add("Kohat");
+        choiceDistrictList.add("Kolai Pallas");
+        choiceDistrictList.add("Kurram");
+        choiceDistrictList.add("Lakki Marwat");
+        choiceDistrictList.add("Lower Chitral");
+        choiceDistrictList.add("Lower Dir");
+        choiceDistrictList.add("Lower Kohistan");
+        choiceDistrictList.add("Malakand");
+        choiceDistrictList.add("North Wazirstan");
+        choiceDistrictList.add("Nowshera");
+        choiceDistrictList.add("Peshawar");
+        choiceDistrictList.add("Sangla");
+        choiceDistrictList.add("South Wazirastan");
+        choiceDistrictList.add("Swabi");
+        choiceDistrictList.add("Swat");
+        choiceDistrictList.add("Tank");
+        choiceDistrictList.add("Tor Ghar");
+        choiceDistrictList.add("Upper Chitral");
+        choiceDistrictList.add("Upper Dir");
+        choiceDistrictList.add("Upper Kohistan");
+
+
+        choiceDistrictList.add("Badin");
+        choiceDistrictList.add("Dadu");
+        choiceDistrictList.add("Ghotki");
+        choiceDistrictList.add("Hyderabad");
+        choiceDistrictList.add("Jacobadad");
+        choiceDistrictList.add("Jamshoro");
+        choiceDistrictList.add("Karachi Central");
+        choiceDistrictList.add("Kashmore");
+        choiceDistrictList.add("Khairpur");
+        choiceDistrictList.add("Larkana");
+        choiceDistrictList.add("Matiari");
+        choiceDistrictList.add("Mirpur Khas");
+        choiceDistrictList.add("Naushahro Firoze");
+        choiceDistrictList.add("Shaheed Benazirabad");
+        choiceDistrictList.add("Qambar Shahdadkot");
+        choiceDistrictList.add("Sanghar");
+        choiceDistrictList.add("Shikarpur");
+        choiceDistrictList.add("Sukkur");
+        choiceDistrictList.add("Tando Allahyar");
+        choiceDistrictList.add("Tando Muhammad Khan");
+        choiceDistrictList.add("Tharparkar");
+        choiceDistrictList.add("Thatta");
+        choiceDistrictList.add("Umerkot");
+        choiceDistrictList.add("Sujawal");
+        choiceDistrictList.add("Karachi East");
+        choiceDistrictList.add("Karachi South");
+        choiceDistrictList.add("Karachi West");
+        choiceDistrictList.add("Korangi");
+        choiceDistrictList.add("Malir");
+
+
+        choiceDistrictList.add("Awaran");
+        choiceDistrictList.add("Barkhan");
+        choiceDistrictList.add("Chagai");
+        choiceDistrictList.add("Dera Bugti");
+        choiceDistrictList.add("Duki");
+        choiceDistrictList.add("Gwadar");
+        choiceDistrictList.add("Harnai");
+        choiceDistrictList.add("Jafrabad");
+        choiceDistrictList.add("Jhal Magsi");
+        choiceDistrictList.add("Kachhi");
+        choiceDistrictList.add("Kalat");
+        choiceDistrictList.add("Kech");
+        choiceDistrictList.add("Kharan");
+        choiceDistrictList.add("Khuzdar");
+        choiceDistrictList.add("Killa Abdullah");
+        choiceDistrictList.add("Kohlu");
+        choiceDistrictList.add("Lasbela");
+        choiceDistrictList.add("Loralai");
+        choiceDistrictList.add("Mastung");
+        choiceDistrictList.add("Musakhel");
+        choiceDistrictList.add("Naseerabad");
+        choiceDistrictList.add("Nushki");
+        choiceDistrictList.add("Panjgur");
+        choiceDistrictList.add("Pishin");
+        choiceDistrictList.add("Qillaa Saaifullah");
+        choiceDistrictList.add("Quetta");
+        choiceDistrictList.add("Shaheed Skindarabaad");
+        choiceDistrictList.add("Sherani");
+        choiceDistrictList.add("Sibbi");
+        choiceDistrictList.add("Sohbatpur");
+        choiceDistrictList.add("Washuk");
+        choiceDistrictList.add("Zhob");
+        choiceDistrictList.add("Ziarat");
+
+
+
+        choiceDistrictList.add("Bagh");
+        choiceDistrictList.add("Bhimber");
+        choiceDistrictList.add("Hattian");
+        choiceDistrictList.add("Haveli");
+        choiceDistrictList.add("Kotli");
+        choiceDistrictList.add("Mirpur");
+        choiceDistrictList.add("Muzaffarabad");
+        choiceDistrictList.add("Neelum");
+        choiceDistrictList.add("Poonch");
+        choiceDistrictList.add("Sudhnutti");
+
+
+
+        choiceDistrictList.add("Astore");
+        choiceDistrictList.add("Darel");
+        choiceDistrictList.add("Diamer");
+        choiceDistrictList.add("Ghanche");
+        choiceDistrictList.add("Ghizer");
+        choiceDistrictList.add("Gilgit");
+        choiceDistrictList.add("Gupis Yasin");
+        choiceDistrictList.add("Hunza");
+        choiceDistrictList.add("Kharmang");
+        choiceDistrictList.add("Nagar");
+        choiceDistrictList.add("Roundu");
+        choiceDistrictList.add("Shigar");
+        choiceDistrictList.add("Skardu");
+        choiceDistrictList.add("Tangir");
+
+
+        districtChoice.getItems().addAll(choiceDistrictList);
         setUpTable();
     }
 
@@ -217,7 +381,7 @@ public class AlumnusController implements Initializable {
     }
 
     public void findByDegreeDistrictYear() {
-        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(),district.getText(),typeChoice.getValue()));
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(), district.getText(), typeChoice.getValue()));
         tableView.setItems(alumnusEntities);
         clear();
     }
@@ -229,7 +393,7 @@ public class AlumnusController implements Initializable {
     }
 
     @FXML
-    private void clear(){
+    private void clear() {
         typeChoice.setValue("");
         id.clear();
         name.clear();
@@ -242,7 +406,7 @@ public class AlumnusController implements Initializable {
 
     }
 
-    public void findAll(){
+    public void findAll() {
         setUpTable();
     }
 }
