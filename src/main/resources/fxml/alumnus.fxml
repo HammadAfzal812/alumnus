@@ -114,13 +114,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" onAction="#districtChoice" prefHeight="25.0" prefWidth="182.0" />
-      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" />
-      <Label layoutX="5.0" layoutY="180.0" text="Graduation Year">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
+      <Label layoutX="5.0" layoutY="180.0" text="Graduation Year"/>
+
       <Button fx:id="findByDateAndDigree" layoutX="3.0" layoutY="635.0" mnemonicParsing="false" onAction="#findByDegreeDistrictYear" prefHeight="47.0" prefWidth="385.0" text="Find By District,Degree Type,Year">
          <font>
             <Font name="System Bold" size="18.0" />
