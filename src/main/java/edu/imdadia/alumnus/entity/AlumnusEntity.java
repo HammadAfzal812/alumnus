@@ -1,15 +1,15 @@
 package edu.imdadia.alumnus.entity;
 import lombok.Data;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(schema ="alumnus", name = "alumnus")
 public class AlumnusEntity {
 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DataManagement_SEQ_GEN")
+    @SequenceGenerator(name = "DataManagement_SEQ_GEN", sequenceName = "DataManagement_ID_SEQ")
     @Id
     @Column(name = "alumnus_id")
     private Integer alumnusId;

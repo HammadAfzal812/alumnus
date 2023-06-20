@@ -83,7 +83,6 @@ public class AdminController implements Initializable {
                 JavaFXUtils.showWarningMessage("password and confirm password required");
             } else if (passwordTxt.getText().equals(confirmPasswordTxt.getText())) {
                 AdminEntity adminEntity = new AdminEntity();
-                adminEntity.setAdminId(Integer.valueOf(id.getText()));
                 adminEntity.setAdminName(name.getText());
                 adminEntity.setFatherName(fatherName.getText());
                 adminEntity.setAddress(address.getText());
