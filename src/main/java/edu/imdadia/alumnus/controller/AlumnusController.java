@@ -113,6 +113,7 @@ public class AlumnusController implements Initializable {
             alumnus.setPhoneNumber(phoneNumber.getText());
             alumnus.setDistrict(districtChoice.getValue());
             alumnus.setGraduationYear(graduationYear.getText());
+            alumnus.setProvince(provinceChoice.getValue());
             alumnus.setType(typeChoice.getValue());
             Optional<AlumnusEntity> employeeEntity = alumnusRepo.findByIdCardNumber(idCard.getText());
             if (employeeEntity != null) {
