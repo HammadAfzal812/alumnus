@@ -62,6 +62,8 @@ public class AlumnusController implements Initializable {
 
     @FXML
     private TableColumn<AlumnusEntity, String> graduationYearColum;
+    @FXML
+    private TableColumn<AlumnusEntity, String> province;
 
     @FXML
     private ChoiceBox<String> typeChoice;
@@ -94,7 +96,6 @@ public class AlumnusController implements Initializable {
         this.stageManager = stageManager;
         this.alumnusService = alumnusService;
         this.springFXMLLoader = springFXMLLoader;
-
         this.alumnusRepo = alumnusRepo;
     }
 
@@ -105,7 +106,6 @@ public class AlumnusController implements Initializable {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type");
         } else {
             AlumnusEntity alumnus = new AlumnusEntity();
-            alumnus.setAlumnusId(1);
             alumnus.setAlumnusName(name.getText());
             alumnus.setFatherName(fatherName.getText());
             alumnus.setPermanentAddress(permanentAddress.getText());
@@ -113,6 +113,7 @@ public class AlumnusController implements Initializable {
             alumnus.setPhoneNumber(phoneNumber.getText());
             alumnus.setDistrict(districtChoice.getValue());
             alumnus.setGraduationYear(graduationYear.getText());
+            alumnus.setProvince(provinceChoice.getValue());
             alumnus.setType(typeChoice.getValue());
             Optional<AlumnusEntity> employeeEntity = alumnusRepo.findByIdCardNumber(idCard.getText());
             if (employeeEntity != null) {
@@ -146,6 +147,7 @@ public class AlumnusController implements Initializable {
         this.districtColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getDistrict())));
         this.typeColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getType())));
         this.graduationYearColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getGraduationYear())));
+        this.province.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getProvince())));
         this.tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 populateRecord(newSelection);

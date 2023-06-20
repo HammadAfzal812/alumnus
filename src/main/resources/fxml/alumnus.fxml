@@ -40,7 +40,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="410.0" layoutY="1.0" prefHeight="681.0" prefWidth="763.0">
+      <TableView fx:id="tableView" layoutX="410.0" layoutY="1.0" prefHeight="681.0" prefWidth="905.0">
          <columns>
             <TableColumn fx:id="nameColum" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="fatherNameColum" prefWidth="75.0" text="S/O" />
@@ -51,6 +51,7 @@
             <TableColumn fx:id="typeColum" prefWidth="57.0" text="Type" />
             <TableColumn fx:id="districtColum" prefWidth="51.0" text="District" />
             <TableColumn fx:id="permanentAddressColum" prefWidth="141.0" text="Permanent Address" />
+            <TableColumn fx:id="province" prefWidth="141.0" text="Province" />
          </columns>
       </TableView>
       <Label layoutY="271.0" text="Province">
@@ -113,7 +114,9 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="209.0" layoutY="580.0" mnemonicParsing="false" onAction="#findAll" prefHeight="47.0" prefWidth="176.0" text="Find All Data">
+      <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" onAction="#districtChoice" prefHeight="25.0" prefWidth="182.0" />
+      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" />
+      <Label layoutX="5.0" layoutY="180.0" text="Graduation Year">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
