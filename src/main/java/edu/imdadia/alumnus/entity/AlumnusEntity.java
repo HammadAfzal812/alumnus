@@ -38,4 +38,7 @@ public class AlumnusEntity {
     @Column(name = "Type")
     private String type;
 
+    @Column(name = "Province")
+    private String province;
+
 }
