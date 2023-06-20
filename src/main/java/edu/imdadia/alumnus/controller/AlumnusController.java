@@ -429,5 +429,6 @@ public class AlumnusController implements Initializable {
         permanentAddress.setText(String.valueOf(alumnusEntity.getPermanentAddress()));
         graduationYear.setText(String.valueOf(alumnusEntity.getGraduationYear()));
         typeChoice.setValue(alumnusEntity.getType());
+        districtChoice.setValue(alumnusEntity.getType());
     }
 }
