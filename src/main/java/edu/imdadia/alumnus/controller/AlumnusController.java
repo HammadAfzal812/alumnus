@@ -86,8 +86,6 @@ public class AlumnusController implements Initializable {
     @FXML
     private TextField graduationYear;
     @FXML
-    private TextField district;
-    @FXML
     private TextField idCard;
     private final SpringFXMLLoader springFXMLLoader;
     private final AlumnusRepo alumnusRepo;
@@ -138,7 +136,6 @@ public class AlumnusController implements Initializable {
             fatherName.setText(alumnus.getFatherName());
             phoneNumber.setText(String.valueOf(alumnus.getPhoneNumber()));
             permanentAddress.setText(alumnus.getPermanentAddress());
-            district.setText(alumnus.getDistrict());
             graduationYear.setText(alumnus.getGraduationYear());
             typeChoice.getValue();
             idCard.setText(String.valueOf(alumnus.getIdCardNumber()));
@@ -211,13 +208,14 @@ public class AlumnusController implements Initializable {
     }
 
     public void findByDegreeDistrictYear() {
-        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(), district.getText(), typeChoice.getValue()));
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(), districtChoice.getValue(), typeChoice.getValue()));
         tableView.setItems(alumnusEntities);
         clear();
     }
 
     public void findByDistrict() {
-        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(district.getText()));
+        this.districtChoice();
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(districtChoice.getValue()));
         tableView.setItems(alumnusEntities);
         clear();
     }
