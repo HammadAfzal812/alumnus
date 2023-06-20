@@ -126,24 +126,6 @@ public class AlumnusController implements Initializable {
         }
     }
 
-    @FXML
-    public void searchByName() {
-        Optional<AlumnusEntity> s = alumnusService.findByAlumnusName(name.getText());
-        AlumnusEntity alumnus = s.orElse(null);
-        if (alumnus != null) {
-            name.setText(String.valueOf(alumnus.getAlumnusName()));
-            id.setText(String.valueOf(alumnus.getAlumnusId()));
-            fatherName.setText(alumnus.getFatherName());
-            phoneNumber.setText(String.valueOf(alumnus.getPhoneNumber()));
-            permanentAddress.setText(alumnus.getPermanentAddress());
-            graduationYear.setText(alumnus.getGraduationYear());
-            typeChoice.getValue();
-            idCard.setText(String.valueOf(alumnus.getIdCardNumber()));
-        } else {
-            JavaFXUtils.showError("Alumnus with Name " + name.getText() + " does not exist");
-            clear();
-        }
-    }
 
     @FXML
     public void back() {

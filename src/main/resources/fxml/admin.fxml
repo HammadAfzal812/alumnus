@@ -18,51 +18,52 @@
             </font>
         </Label>
         <TextField fx:id="id" layoutX="98.0" layoutY="27.0" prefHeight="31.0" prefWidth="169.0" promptText="ID" />
-        <Label layoutX="10.0" layoutY="65.0" prefHeight="31.0" prefWidth="50.0" text="Name">
+        <Label layoutX="12.0" layoutY="81.0" prefHeight="31.0" prefWidth="50.0" text="Name">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="name" layoutX="98.0" layoutY="65.0" prefHeight="31.0" prefWidth="169.0" promptText="Name" />
-        <Label layoutX="10.0" layoutY="110.0" text="S/O">
+        <TextField fx:id="name" layoutX="98.0" layoutY="81.0" prefHeight="31.0" prefWidth="169.0" promptText="Name" />
+      <TextField fx:id="name1" layoutX="100.0" layoutY="126.0" prefHeight="31.0" prefWidth="169.0" promptText="User Name" />
+        <Label layoutX="12.0" layoutY="175.0" text="S/O">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="fatherName" layoutX="98.0" layoutY="105.0" prefHeight="30.0" prefWidth="169.0" promptText="Father Name" />
-        <Label layoutX="6.0" layoutY="151.0" text="Adress">
+        <TextField fx:id="fatherName" layoutX="100.0" layoutY="170.0" prefHeight="30.0" prefWidth="169.0" promptText="Father Name" />
+        <Label layoutX="11.0" layoutY="217.0" text="Adress">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="address" layoutX="98.0" layoutY="146.0" prefHeight="31.0" prefWidth="169.0" promptText="Address" />
-        <Label layoutX="4.0" layoutY="193.0" text="ID Card">
+        <TextField fx:id="address" layoutX="100.0" layoutY="212.0" prefHeight="31.0" prefWidth="169.0" promptText="Address" />
+        <Label layoutX="11.0" layoutY="261.0" text="ID Card">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="idCard" layoutX="98.0" layoutY="188.0" prefHeight="31.0" prefWidth="169.0" promptText="ID Card Number" />
-        <Label layoutX="7.0" layoutY="238.0" text="Ph Number">
+        <TextField fx:id="idCard" layoutX="98.0" layoutY="256.0" prefHeight="31.0" prefWidth="169.0" promptText="ID Card Number" />
+        <Label layoutX="3.0" layoutY="307.0" text="Ph Number">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="phoneNumber" layoutX="98.0" layoutY="233.0" prefHeight="30.0" prefWidth="169.0" promptText="Phone Number " />
-        <Label layoutX="4.0" layoutY="281.0" text="Password">
+        <TextField fx:id="phoneNumber" layoutX="100.0" layoutY="302.0" prefHeight="30.0" prefWidth="169.0" promptText="Phone Number " />
+        <Label layoutX="10.0" layoutY="342.0" text="Password">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="passwordField" layoutX="99.0" layoutY="276.0" prefHeight="31.0" prefWidth="169.0" promptText="Password" />
+        <PasswordField fx:id="passwordField" layoutX="100.0" layoutY="337.0" prefHeight="31.0" prefWidth="169.0" promptText="Password" />
         <TextField fx:id="passwordTxt" layoutX="98.0" layoutY="276.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
-        <Label layoutX="7.0" layoutY="326.0" text="Confirm ">
+        <Label layoutX="6.0" layoutY="383.0" text="Confirm ">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="confirmPasswordField" layoutX="98.0" layoutY="321.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" />
+        <PasswordField fx:id="confirmPasswordField" layoutX="98.0" layoutY="378.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" />
         <TextField fx:id="confirmPasswordTxt" layoutX="98.0" layoutY="321.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
-        <CheckBox fx:id="showConfirmPasswordBox" layoutX="98.0" layoutY="362.0" mnemonicParsing="false" onAction="#showConfirmPasswordBox" text="Show" />
+        <CheckBox fx:id="showConfirmPasswordBox" layoutX="75.0" layoutY="416.0" mnemonicParsing="false" onAction="#showConfirmPasswordBox" text="Show" />
       <Button layoutX="6.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByNameButton" prefHeight="30.0" prefWidth="127.0" text="Search By Name">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -103,7 +104,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-        <TableView fx:id="adminsTable" layoutX="296.0" layoutY="9.0" prefHeight="686.0" prefWidth="681.0" onMouseClicked="#populayeFields">
+        <TableView fx:id="adminsTable" layoutX="296.0" layoutY="9.0" onMouseClicked="#populayeFields" prefHeight="686.0" prefWidth="681.0">
             <columns>
                 <TableColumn fx:id="idColum" prefWidth="39.0" text="ID" />
                 <TableColumn fx:id="nameColum" prefWidth="89.0" text="Name" />
@@ -113,5 +114,10 @@
                 <TableColumn fx:id="idCardColum" prefWidth="152.0" text="ID Card" />
             </columns>
         </TableView>
+      <Label layoutX="3.0" layoutY="126.0" prefHeight="31.0" prefWidth="81.0" text="User Name">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

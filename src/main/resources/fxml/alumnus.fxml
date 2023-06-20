@@ -40,7 +40,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="410.0" layoutY="1.0" prefHeight="681.0" prefWidth="763.0"  >
+      <TableView fx:id="tableView" layoutX="410.0" layoutY="1.0" prefHeight="681.0" prefWidth="763.0">
          <columns>
             <TableColumn fx:id="nameColum" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="fatherNameColum" prefWidth="75.0" text="S/O" />
@@ -70,38 +70,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" onAction="#districtChoice" prefHeight="25.0" prefWidth="182.0" />
+      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" />
       <ChoiceBox fx:id="typeChoice" layoutX="198.0" layoutY="366.0" prefHeight="25.0" prefWidth="182.0" />
       <Button layoutX="5.0" layoutY="400.0" mnemonicParsing="false" onAction="#add" prefHeight="47.0" prefWidth="188.0" text="Add Alumnus">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="209.0" layoutY="456.0" mnemonicParsing="false" onAction="#clear" prefHeight="47.0" prefWidth="176.0" text="Clear">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="304.0" layoutY="515.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="80.0" text="Back">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="456.0" mnemonicParsing="false" onAction="#findByDegree" prefHeight="47.0" prefWidth="188.0" text="Find   By   Degree">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="515.0" mnemonicParsing="false" onAction="#findByYear" prefHeight="47.0" prefWidth="188.0" text="Find   By  Year">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="findByDateAndDigree" layoutX="3.0" layoutY="635.0" mnemonicParsing="false" onAction="#findByDegreeDistrictYear" prefHeight="47.0" prefWidth="385.0" text="Find By District,Degree Type,Year">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="580.0" mnemonicParsing="false" onAction="#findByDistrict" prefHeight="47.0" prefWidth="188.0" text="Find     By    district">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -111,14 +83,32 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" prefHeight="25.0" prefWidth="182.0" onAction="#districtChoice" />
-      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0"  />
-      <Label layoutX="5.0" layoutY="180.0" text="Graduation Year">
+      <Button layoutX="5.0" layoutY="456.0" mnemonicParsing="false" onAction="#findByDegree" prefHeight="47.0" prefWidth="188.0" text="Find   By   Degree">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
-      </Label>
+      </Button>
+      <Button layoutX="209.0" layoutY="456.0" mnemonicParsing="false" onAction="#clear" prefHeight="47.0" prefWidth="176.0" text="Clear">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="5.0" layoutY="515.0" mnemonicParsing="false" onAction="#findByYear" prefHeight="47.0" prefWidth="188.0" text="Find   By  Year">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
       <Button layoutX="209.0" layoutY="515.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="80.0" text="Delete">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="304.0" layoutY="515.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="80.0" text="Back">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="5.0" layoutY="580.0" mnemonicParsing="false" onAction="#findByDistrict" prefHeight="47.0" prefWidth="188.0" text="Find     By    district">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -128,5 +118,15 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="findByDateAndDigree" layoutX="3.0" layoutY="635.0" mnemonicParsing="false" onAction="#findByDegreeDistrictYear" prefHeight="47.0" prefWidth="385.0" text="Find By District,Degree Type,Year">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="5.0" layoutY="180.0" text="Graduation Year">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
