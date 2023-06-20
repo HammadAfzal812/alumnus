@@ -103,7 +103,7 @@ public class AlumnusController implements Initializable {
 
     @FXML
     public void add() {
-        if ( name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || district.getText().equals("") || idCard.getText().equals("")) {
+        if (name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || idCard.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type");
         } else {
             AlumnusEntity alumnus = new AlumnusEntity();
@@ -113,7 +113,7 @@ public class AlumnusController implements Initializable {
             alumnus.setPermanentAddress(permanentAddress.getText());
             alumnus.setIdCardNumber(idCard.getText());
             alumnus.setPhoneNumber(phoneNumber.getText());
-            alumnus.setDistrict("Fad");
+            alumnus.setDistrict(districtChoice.getValue());
             alumnus.setGraduationYear(graduationYear.getText());
             alumnus.setType(typeChoice.getValue());
             Optional<AlumnusEntity> employeeEntity = alumnusRepo.findByIdCardNumber(idCard.getText());
@@ -121,6 +121,7 @@ public class AlumnusController implements Initializable {
                 alumnusService.save(alumnus);
                 JavaFXUtils.showSuccessMessage("Alumnus added successfully");
                 this.clear();
+                setUpTable();
             } else {
                 JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
             }
@@ -166,6 +167,11 @@ public class AlumnusController implements Initializable {
         this.districtColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getDistrict())));
         this.typeColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getType())));
         this.graduationYearColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getGraduationYear())));
+        this.tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                populateRecord(newSelection);
+            }
+        });
     }
 
 
@@ -187,7 +193,8 @@ public class AlumnusController implements Initializable {
         choiceProvincrList.add("Gilgit");
         choiceProvincrList.add("Azad Kashmir");
         provinceChoice.getItems().addAll(choiceProvincrList);
-
+//        provinceChoice.setItems(FXCollections.observableList(choiceProvincrList));
+        setUpTable();
     }
 
     public void findByYear() {
@@ -212,28 +219,29 @@ public class AlumnusController implements Initializable {
     public void findByDistrict() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(district.getText()));
         tableView.setItems(alumnusEntities);
-        district.clear();
+        clear();
     }
 
     @FXML
     private void clear() {
         typeChoice.setValue("");
-        id.clear();
+        districtChoice.setValue("");
+        provinceChoice.setValue("");
         name.clear();
         fatherName.clear();
         idCard.clear();
         permanentAddress.clear();
-        district.clear();
         phoneNumber.clear();
         graduationYear.clear();
 
     }
+
     @FXML
-    private void districtChoice(){
+    private void districtChoice() {
         final List<String> choiceDistrictList = new ArrayList<>();
-        if (provinceChoice.getValue().equals("")){
+        if (provinceChoice.getValue().equals("")) {
             JavaFXUtils.showError("please chose province first than chose district");
-        }else if (provinceChoice.getValue().equals("Punjab")){
+        } else if (provinceChoice.getValue().equals("Punjab")) {
             choiceDistrictList.add("Attock");
             choiceDistrictList.add("Bahawalnagar");
             choiceDistrictList.add("BahawalPur");
@@ -277,7 +285,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Wazirabad");
             choiceDistrictList.add("Islamabad");
             districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
-        }else if (provinceChoice.getValue().equals("KPk")){
+        } else if (provinceChoice.getValue().equals("KPk")) {
             choiceDistrictList.add("Abbottabad");
             choiceDistrictList.add("Bajaur");
             choiceDistrictList.add("Bannu");
@@ -310,7 +318,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Upper Dir");
             choiceDistrictList.add("Upper Kohistan");
             districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
-        }else if (provinceChoice.getValue().equals("Sindh")){
+        } else if (provinceChoice.getValue().equals("Sindh")) {
             choiceDistrictList.add("Badin");
             choiceDistrictList.add("Dadu");
             choiceDistrictList.add("Ghotki");
@@ -341,7 +349,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Korangi");
             choiceDistrictList.add("Malir");
             districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
-        }else if (provinceChoice.getValue().equals("Balochictan")){
+        } else if (provinceChoice.getValue().equals("Balochictan")) {
             choiceDistrictList.add("Awaran");
             choiceDistrictList.add("Barkhan");
             choiceDistrictList.add("Chagai");
@@ -376,7 +384,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Zhob");
             choiceDistrictList.add("Ziarat");
             districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
-        }else if (provinceChoice.getValue().equals("Gilgit")){
+        } else if (provinceChoice.getValue().equals("Gilgit")) {
 
             choiceDistrictList.add("Astore");
             choiceDistrictList.add("Darel");
@@ -393,7 +401,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Skardu");
             choiceDistrictList.add("Tangir");
             districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
-        }else if (provinceChoice.getValue().equals("Azad Kashmir")){
+        } else if (provinceChoice.getValue().equals("Azad Kashmir")) {
             choiceDistrictList.add("Bagh");
             choiceDistrictList.add("Bhimber");
             choiceDistrictList.add("Hattian");
@@ -414,17 +422,14 @@ public class AlumnusController implements Initializable {
     public void findAll() {
         setUpTable();
     }
-    public void populayeFields(){
-        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) {
-                name.setText(newVal.getAlumnusName());
-                fatherName.setText(newVal.getFatherName());
-                phoneNumber.setText(newVal.getPhoneNumber());
-                idCard.setText(newVal.getIdCardNumber());
-                graduationYear.setText(newVal.getGraduationYear());
-                district.setText(newVal.getDistrict());
-            }
-        });
 
+    private void populateRecord(AlumnusEntity alumnusEntity) {
+        name.setText(String.valueOf(alumnusEntity.getAlumnusName()));
+        fatherName.setText(alumnusEntity.getFatherName());
+        idCard.setText(String.valueOf(alumnusEntity.getIdCardNumber()));
+        phoneNumber.setText(String.valueOf(alumnusEntity.getPhoneNumber()));
+        permanentAddress.setText(String.valueOf(alumnusEntity.getPermanentAddress()));
+        graduationYear.setText(String.valueOf(alumnusEntity.getGraduationYear()));
+        typeChoice.setValue(alumnusEntity.getType());
     }
 }
