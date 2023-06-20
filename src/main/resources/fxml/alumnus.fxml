@@ -40,7 +40,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="410.0" layoutY="1.0" prefHeight="681.0" prefWidth="763.0">
+      <TableView fx:id="tableView" layoutX="410.0" layoutY="1.0" prefHeight="681.0" prefWidth="763.0"  >
          <columns>
             <TableColumn fx:id="nameColum" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="fatherNameColum" prefWidth="75.0" text="S/O" />
@@ -111,8 +111,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" prefHeight="25.0" prefWidth="182.0" />
-      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" onDragDone="#districtChoice" />
+      <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" prefHeight="25.0" prefWidth="182.0" onAction="#districtChoice" />
+      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0"  />
       <Label layoutX="5.0" layoutY="180.0" text="Graduation Year">
          <font>
             <Font name="System Bold" size="18.0" />

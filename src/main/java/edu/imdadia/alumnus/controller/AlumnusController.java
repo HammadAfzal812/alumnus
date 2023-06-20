@@ -16,6 +16,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import org.bouncycastle.asn1.dvcs.DVCSObjectIdentifiers;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
@@ -28,7 +29,6 @@ import java.util.ResourceBundle;
 
 @Controller
 public class AlumnusController implements Initializable {
-    private final AlumnusEntity alumnusEntity;
     private final StageManager stageManager;
     private final AlumnusService alumnusService;
 
@@ -96,24 +96,24 @@ public class AlumnusController implements Initializable {
         this.stageManager = stageManager;
         this.alumnusService = alumnusService;
         this.springFXMLLoader = springFXMLLoader;
-        this.alumnusEntity = new AlumnusEntity();
+
         this.alumnusRepo = alumnusRepo;
     }
 
 
     @FXML
     public void add() {
-        if (id.getText().equals("") || name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || district.getText().equals("") || idCard.getText().equals("")) {
+        if ( name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || district.getText().equals("") || idCard.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type");
         } else {
             AlumnusEntity alumnus = new AlumnusEntity();
-            alumnus.setAlumnusId(Integer.valueOf(id.getText()));
+            alumnus.setAlumnusId(1);
             alumnus.setAlumnusName(name.getText());
             alumnus.setFatherName(fatherName.getText());
             alumnus.setPermanentAddress(permanentAddress.getText());
             alumnus.setIdCardNumber(idCard.getText());
             alumnus.setPhoneNumber(phoneNumber.getText());
-            alumnus.setDistrict(district.getText());
+            alumnus.setDistrict("Fad");
             alumnus.setGraduationYear(graduationYear.getText());
             alumnus.setType(typeChoice.getValue());
             Optional<AlumnusEntity> employeeEntity = alumnusRepo.findByIdCardNumber(idCard.getText());
@@ -410,7 +410,21 @@ public class AlumnusController implements Initializable {
         setUpTable();
     }
 
+
     public void findAll() {
         setUpTable();
+    }
+    public void populayeFields(){
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                name.setText(newVal.getAlumnusName());
+                fatherName.setText(newVal.getFatherName());
+                phoneNumber.setText(newVal.getPhoneNumber());
+                idCard.setText(newVal.getIdCardNumber());
+                graduationYear.setText(newVal.getGraduationYear());
+                district.setText(newVal.getDistrict());
+            }
+        });
+
     }
 }
