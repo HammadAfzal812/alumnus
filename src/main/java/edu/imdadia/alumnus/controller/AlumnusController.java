@@ -96,7 +96,6 @@ public class AlumnusController implements Initializable {
         this.stageManager = stageManager;
         this.alumnusService = alumnusService;
         this.springFXMLLoader = springFXMLLoader;
-
         this.alumnusRepo = alumnusRepo;
     }
 
