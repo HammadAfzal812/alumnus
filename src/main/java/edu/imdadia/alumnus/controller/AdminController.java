@@ -251,4 +251,17 @@ public class AdminController implements Initializable {
         stageManager.getStage().setTitle(fxmlView.getTitle());
         rootBorderPane.setCenter(view);
     }
+    public void populayeFields(){
+        adminsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                name.setText(newVal.getAdminName());
+                fatherName.setText(newVal.getFatherName());
+                phoneNumber.setText(newVal.getPhoneNumber());
+                idCard.setText(newVal.getIdCardNumber());
+                id.setText(String.valueOf(newVal.getAdminId()));
+                phoneNumber.setText(String.valueOf(newVal.getAdminId()));
+            }
+        });
+
+    }
 }
