@@ -32,8 +32,6 @@ public class AdminController implements Initializable {
     @FXML
     private TableView<AdminEntity> adminsTable;
     @FXML
-    private TableColumn<AdminEntity, String> idColum;
-    @FXML
     private TableColumn<AdminEntity, String> nameColum;
     @FXML
     private TableColumn<AdminEntity, String> fatherNameColum;
@@ -44,10 +42,14 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<AdminEntity, String> idCardColum;
     @FXML
+    private TableColumn<AdminEntity, String> userNameColum;
+    @FXML
     private BorderPane rootBorderPane;
 
     @FXML
     private TextField name;
+    @FXML
+    private TextField userName;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -56,8 +58,6 @@ public class AdminController implements Initializable {
     private PasswordField confirmPasswordField;
     @FXML
     private TextField confirmPasswordTxt;
-    @FXML
-    private TextField id;
     @FXML
     private TextField fatherName;
     @FXML
@@ -76,9 +76,12 @@ public class AdminController implements Initializable {
 
     @FXML
     public void addButton() {
-        if (id.getText().equals("") || name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("")) {
+        if ( name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
-        } else if (showConfirmPasswordBox.isSelected()) {
+        } else if (adminService.findByUserName(userName.getText())!=null){
+            JavaFXUtils.showError("User name already defined please use any other user name");
+            userName.requestFocus();
+        }else if (showConfirmPasswordBox.isSelected()) {
             if (passwordTxt.equals("") || confirmPasswordTxt.equals("")) {
                 JavaFXUtils.showWarningMessage("password and confirm password required");
             } else if (passwordTxt.getText().equals(confirmPasswordTxt.getText())) {
@@ -99,7 +102,6 @@ public class AdminController implements Initializable {
                 JavaFXUtils.showWarningMessage("password and confirm password required");
             } else if (passwordField.getText().equals(confirmPasswordField.getText())) {
                 AdminEntity adminEntity = new AdminEntity();
-                adminEntity.setAdminId(Integer.valueOf(id.getText()));
                 adminEntity.setAdminName(name.getText());
                 adminEntity.setFatherName(fatherName.getText());
                 adminEntity.setAddress(address.getText());
@@ -116,33 +118,13 @@ public class AdminController implements Initializable {
         }
     }
 
-
-    @FXML
-    public void searchByIdButton() {
-        Optional<AdminEntity> s = adminRepo.findByAdminId(Integer.valueOf(id.getText()));
-        AdminEntity adminEntity = s.orElse(null);
-        if (adminEntity != null) {
-            searchedAdmin = adminEntity;
-            id.setText(String.valueOf(searchedAdmin.getAdminId()));
-            name.setText(searchedAdmin.getAdminName());
-            fatherName.setText(searchedAdmin.getFatherName());
-            phoneNumber.setText(String.valueOf(searchedAdmin.getPhoneNumber()));
-            address.setText(searchedAdmin.getAddress());
-            idCard.setText(String.valueOf(searchedAdmin.getIdCardNumber()));
-        } else {
-            JavaFXUtils.showError("Admin with Id " + id.getText() + " does not exist");
-            clearFields();
-        }
-    }
-
     @FXML
     public void searchByNameButton() {
-        Optional<AdminEntity> s = adminRepo.findByAdminNameIgnoreCase(name.getText());
+        Optional<AdminEntity> s = adminRepo.findByAdminNameIgnoreCase(userName.getText());
         AdminEntity adminEntity = s.orElse(null);
         if (adminEntity != null) {
             searchedAdmin = adminEntity;
             name.setText(String.valueOf(searchedAdmin.getAdminName()));
-            id.setText(String.valueOf(searchedAdmin.getAdminId()));
             fatherName.setText(searchedAdmin.getFatherName());
             phoneNumber.setText(String.valueOf(searchedAdmin.getPhoneNumber()));
             address.setText(searchedAdmin.getAddress());
@@ -163,7 +145,6 @@ public class AdminController implements Initializable {
     }
 
     public void clearFields() {
-        id.clear();
         name.clear();
         fatherName.clear();
         idCard.clear();
@@ -210,12 +191,13 @@ public class AdminController implements Initializable {
         ObservableList<AdminEntity> adminEntityList = FXCollections.observableArrayList(adminRepo.findAll());
         adminEntityList.stream().sorted();
         adminsTable.setItems(adminEntityList);
-        this.idColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAdminId())));
         this.nameColum.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAdminName()));
         this.fatherNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getFatherName())));
         this.addressColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAddress())));
         this.phoneNumberColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPhoneNumber())));
         this.idCardColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCardNumber())));
+        this.userNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getUserName())));
+        populayeFields();
     }
 
     @FXML
@@ -224,8 +206,8 @@ public class AdminController implements Initializable {
             final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
                     "Delete Confirmation", "Are you sure you want to delete?");
             if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
-                adminService.deleteById(Integer.valueOf(id.getText()));
-                JavaFXUtils.showWarningMessage("Admin With " + id.getText() + " Deleted Successfully");
+                adminService.deleteByUserName(userName.getText());
+                JavaFXUtils.showWarningMessage("Admin With " + userName.getText() + " Deleted Successfully");
                 setUpTable();
                 clearFields();
             }
@@ -250,6 +232,7 @@ public class AdminController implements Initializable {
         stageManager.getStage().setTitle(fxmlView.getTitle());
         rootBorderPane.setCenter(view);
     }
+    @FXML
     public void populayeFields(){
         adminsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
@@ -257,8 +240,9 @@ public class AdminController implements Initializable {
                 fatherName.setText(newVal.getFatherName());
                 phoneNumber.setText(newVal.getPhoneNumber());
                 idCard.setText(newVal.getIdCardNumber());
-                id.setText(String.valueOf(newVal.getAdminId()));
-                phoneNumber.setText(String.valueOf(newVal.getAdminId()));
+                userName.setText(String.valueOf(newVal.getUserName()));
+                address.setText(String.valueOf(newVal.getAddress()));
+
             }
         });
 

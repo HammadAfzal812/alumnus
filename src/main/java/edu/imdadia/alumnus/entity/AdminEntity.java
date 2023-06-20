@@ -19,7 +19,6 @@ public class AdminEntity {
     private String district;
     @Column(name = "admin_Name")
     private String adminName;
-    @Id
     @Column(name ="user_Name")
     private String userName;
 

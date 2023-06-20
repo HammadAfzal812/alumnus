@@ -11,9 +11,12 @@ public interface AdminService {
         Optional<AdminEntity> findByAdminId(Integer id);
         Optional<AdminEntity> findByAdminNameIgnoreCaseAndPassword(String name, String password);
         Optional<AdminEntity> findByIdCardNumber(Integer idNumber);
-     public void deleteByAdminNameIgnoreCaseAndIdCardNumber(String name,String idCard);
-     public void deleteById(Integer id);
+    Optional<AdminEntity> findByUserName(String name);
+     public void deleteByAdminNameIgnoreCaseAndIdCardNumber(String name,Integer idCard);
+
+     public void deleteByUserName(String userName);
      public void deleteAll();
-   void save(AdminEntity adminEntity);
+
+    void save(AdminEntity adminEntity);
 }
 
