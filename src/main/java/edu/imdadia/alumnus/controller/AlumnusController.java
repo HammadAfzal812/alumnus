@@ -106,7 +106,7 @@ public class AlumnusController implements Initializable {
             if (employeeEntity != null) {
                 JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
             } else {
-                if (districtChoice.getItems().size()==0){
+                if (districtChoiceBox.getItems().size()==0){
                    this.districtChoice();
                 }else{
                     alumnus.setAlumnusName(name.getText());
@@ -403,7 +403,7 @@ public class AlumnusController implements Initializable {
         if (choiceDistrictList.isEmpty()){
             JavaFXUtils.showError("please select province first");
         }else{
-            districtChoice.getItems().addAll(choiceDistrictList);
+            districtChoiceBox.getItems().addAll(choiceDistrictList);
             setUpTable();
         }
         districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
