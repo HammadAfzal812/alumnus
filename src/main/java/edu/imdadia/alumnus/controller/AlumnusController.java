@@ -99,7 +99,7 @@ public class AlumnusController implements Initializable {
 
     @FXML
     public void add() {
-        if (name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || idCard.getText().equals("")||provinceChoice.getValue().equals("")) {
+        if (name.getText().equals("") || fatherName.getText().equals("") || graduationYear.getText().equals("") || permanentAddress.getText().equals("") || phoneNumber.getText().equals("") || idCard.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type,provience");
         } else {
             AlumnusEntity alumnus = new AlumnusEntity();
