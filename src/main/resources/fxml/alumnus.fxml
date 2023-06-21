@@ -72,7 +72,7 @@
          </font>
       </Label>
       <ChoiceBox fx:id="provinceChoice" layoutX="198.0" layoutY="272.0" onAction="#districtChoice" prefHeight="25.0" prefWidth="182.0" />
-      <ChoiceBox fx:id="districtChoice" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" />
+      <ChoiceBox fx:id="districtChoiceBox" layoutX="198.0" layoutY="316.0" prefHeight="25.0" prefWidth="182.0" />
       <ChoiceBox fx:id="typeChoice" layoutX="198.0" layoutY="366.0" prefHeight="25.0" prefWidth="182.0" />
       <Button layoutX="5.0" layoutY="400.0" mnemonicParsing="false" onAction="#add" prefHeight="47.0" prefWidth="188.0" text="Add Alumnus">
          <font>

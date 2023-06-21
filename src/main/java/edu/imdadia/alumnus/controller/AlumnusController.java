@@ -13,7 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import org.bouncycastle.asn1.dvcs.DVCSObjectIdentifiers;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
@@ -69,7 +68,7 @@ public class AlumnusController implements Initializable {
     private ChoiceBox<String> provinceChoice;
 
     @FXML
-    private ChoiceBox<String> districtChoice;
+    private ChoiceBox<String> districtChoiceBox;
 
 
     @FXML
@@ -108,7 +107,7 @@ public class AlumnusController implements Initializable {
             alumnus.setPermanentAddress(permanentAddress.getText());
             alumnus.setIdCardNumber(idCard.getText());
             alumnus.setPhoneNumber(phoneNumber.getText());
-            alumnus.setDistrict(districtChoice.getValue());
+            alumnus.setDistrict(districtChoiceBox.getValue());
             alumnus.setGraduationYear(graduationYear.getText());
             alumnus.setProvince(provinceChoice.getValue());
             alumnus.setType(typeChoice.getValue());
@@ -132,10 +131,11 @@ public class AlumnusController implements Initializable {
 
 
     private void setUpTable() {
-        ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
-        alumnusEntityObservableList.stream().sorted();
-        tableView.setItems(alumnusEntityObservableList);
+
+
         this.idColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAlumnusId())));
+        this.nameColum.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAlumnusName()));
+
         this.nameColum.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAlumnusName()));
         this.fatherNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getFatherName())));
         this.permanentAddressColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPermanentAddress())));
@@ -170,8 +170,11 @@ public class AlumnusController implements Initializable {
         choiceProvincrList.add("Balochictan");
         choiceProvincrList.add("Gilgit");
         choiceProvincrList.add("Azad Kashmir");
-        provinceChoice.getItems().addAll(choiceProvincrList);
-//        provinceChoice.setItems(FXCollections.observableList(choiceProvincrList));
+//        provinceChoice.getItems().addAll(choiceProvincrList);
+        provinceChoice.setItems(FXCollections.observableList(choiceProvincrList));
+        ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
+        alumnusEntityObservableList.stream().sorted();
+        tableView.setItems(alumnusEntityObservableList);
         setUpTable();
     }
 
@@ -189,23 +192,23 @@ public class AlumnusController implements Initializable {
     }
 
     public void findByDegreeDistrictYear() {
-        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(), districtChoice.getValue(), typeChoice.getValue()));
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(), districtChoiceBox.getValue(), typeChoice.getValue()));
         tableView.setItems(alumnusEntities);
         clear();
     }
 
     public void findByDistrict() {
-        this.districtChoice();
-        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(districtChoice.getValue()));
+        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(districtChoiceBox.getValue()));
         tableView.setItems(alumnusEntities);
+
         clear();
     }
 
     @FXML
     private void clear() {
         typeChoice.setValue("");
-        districtChoice.setValue("");
         provinceChoice.setValue("");
+        districtChoiceBox.setValue("");
         name.clear();
         fatherName.clear();
         idCard.clear();
@@ -218,7 +221,7 @@ public class AlumnusController implements Initializable {
     @FXML
     private void districtChoice() {
         final List<String> choiceDistrictList = new ArrayList<>();
-        if (provinceChoice.getValue().equals("")) {
+        if (provinceChoice.getValue().equals(null)) {
             JavaFXUtils.showError("please chose province first than chose district");
         } else if (provinceChoice.getValue().equals("Punjab")) {
             choiceDistrictList.add("Attock");
@@ -263,7 +266,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Vehari");
             choiceDistrictList.add("Wazirabad");
             choiceDistrictList.add("Islamabad");
-            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
+            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         } else if (provinceChoice.getValue().equals("KPk")) {
             choiceDistrictList.add("Abbottabad");
             choiceDistrictList.add("Bajaur");
@@ -296,7 +299,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Upper Chitral");
             choiceDistrictList.add("Upper Dir");
             choiceDistrictList.add("Upper Kohistan");
-            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
+            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         } else if (provinceChoice.getValue().equals("Sindh")) {
             choiceDistrictList.add("Badin");
             choiceDistrictList.add("Dadu");
@@ -327,7 +330,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Karachi West");
             choiceDistrictList.add("Korangi");
             choiceDistrictList.add("Malir");
-            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
+            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         } else if (provinceChoice.getValue().equals("Balochictan")) {
             choiceDistrictList.add("Awaran");
             choiceDistrictList.add("Barkhan");
@@ -362,7 +365,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Washuk");
             choiceDistrictList.add("Zhob");
             choiceDistrictList.add("Ziarat");
-            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
+            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         } else if (provinceChoice.getValue().equals("Gilgit")) {
 
             choiceDistrictList.add("Astore");
@@ -379,7 +382,7 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Shigar");
             choiceDistrictList.add("Skardu");
             choiceDistrictList.add("Tangir");
-            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
+            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         } else if (provinceChoice.getValue().equals("Azad Kashmir")) {
             choiceDistrictList.add("Bagh");
             choiceDistrictList.add("Bhimber");
@@ -391,14 +394,19 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Neelum");
             choiceDistrictList.add("Poonch");
             choiceDistrictList.add("Sudhnutti");
-            districtChoice.setItems(FXCollections.observableList(choiceDistrictList));
+            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         }
-        districtChoice.getItems().addAll(choiceDistrictList);
+        districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
+
+//        districtChoiceBox.getItems().addAll(choiceDistrictList);
         setUpTable();
     }
 
 
     public void findAll() {
+        ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
+        alumnusEntityObservableList.stream().sorted();
+        tableView.setItems(alumnusEntityObservableList);
         setUpTable();
     }
 
@@ -410,7 +418,7 @@ public class AlumnusController implements Initializable {
         permanentAddress.setText(String.valueOf(alumnusEntity.getPermanentAddress()));
         graduationYear.setText(String.valueOf(alumnusEntity.getGraduationYear()));
         typeChoice.setValue(alumnusEntity.getType());
-        districtChoice.setValue(alumnusEntity.getDistrict());
+        districtChoiceBox.setValue(alumnusEntity.getDistrict());
     }
 
 

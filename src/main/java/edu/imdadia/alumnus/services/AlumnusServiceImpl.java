@@ -16,7 +16,7 @@ public class AlumnusServiceImpl implements AlumnusService {
 
     @Override
     public List<AlumnusEntity> findAllByDistrict(String district) {
-        return alumnusRepo.findAllByDistrict(district);
+        return alumnusRepo.findByDistrict(district);
     }
 
     @Override

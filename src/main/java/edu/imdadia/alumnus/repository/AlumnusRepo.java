@@ -13,7 +13,7 @@ public interface AlumnusRepo extends JpaRepository<AlumnusEntity, Integer> {
     Optional<AlumnusEntity> findByIdCardNumber(String idCard);
     Optional<AlumnusEntity>findByAlumnusNameAndFatherName(String name,String fatherName);
 
-    List<AlumnusEntity> findAllByDistrict(String district);
+    List<AlumnusEntity> findByDistrict(String district);
 
     List<AlumnusEntity> findByType(String type);
 
