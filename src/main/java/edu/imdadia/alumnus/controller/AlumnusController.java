@@ -106,23 +106,23 @@ public class AlumnusController implements Initializable {
             if (employeeEntity != null) {
                 JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
             } else {
-                if (districtChoiceBox.getItems().size()==0){
-                   this.districtChoice();
-                }else{
-                    alumnus.setAlumnusName(name.getText());
-                    alumnus.setFatherName(fatherName.getText());
-                    alumnus.setPermanentAddress(permanentAddress.getText());
-                    alumnus.setIdCardNumber(idCard.getText());
-                    alumnus.setPhoneNumber(phoneNumber.getText());
-                    alumnus.setDistrict(districtChoiceBox.getValue());
-                    alumnus.setGraduationYear(graduationYear.getText());
-                    alumnus.setProvince(provinceChoice.getValue());
-                    alumnus.setType(typeChoice.getValue());
-                    alumnusService.save(alumnus);
-                    JavaFXUtils.showSuccessMessage("Alumnus added successfully");
-                    clear();
-                    setUpTable();
-                }
+////                if (districtChoiceBox.getItems().size()==0){
+////                   this.districtChoice();
+//                }else{
+                alumnus.setAlumnusName(name.getText());
+                alumnus.setFatherName(fatherName.getText());
+                alumnus.setPermanentAddress(permanentAddress.getText());
+                alumnus.setIdCardNumber(idCard.getText());
+                alumnus.setPhoneNumber(phoneNumber.getText());
+                alumnus.setDistrict(districtChoiceBox.getValue());
+                alumnus.setGraduationYear(graduationYear.getText());
+                alumnus.setProvince(provinceChoice.getValue());
+                alumnus.setType(typeChoice.getValue());
+                alumnusService.save(alumnus);
+                JavaFXUtils.showSuccessMessage("Alumnus added successfully");
+                clear();
+                fullList();
+                setUpTable();
             }
         }
     }
@@ -135,11 +135,8 @@ public class AlumnusController implements Initializable {
 
 
     private void setUpTable() {
-
-
         this.idColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getAlumnusId())));
         this.nameColum.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAlumnusName()));
-
         this.nameColum.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAlumnusName()));
         this.fatherNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getFatherName())));
         this.permanentAddressColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPermanentAddress())));
@@ -177,9 +174,7 @@ public class AlumnusController implements Initializable {
         choiceProvincrList.add("Azad Kashmir");
 //        provinceChoice.getItems().addAll(choiceProvincrList);
         provinceChoice.setItems(FXCollections.observableList(choiceProvincrList));
-        ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
-        alumnusEntityObservableList.stream().sorted();
-        tableView.setItems(alumnusEntityObservableList);
+        fullList();
         setUpTable();
     }
 
@@ -401,9 +396,9 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Sudhnutti");
             districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         }
-        if (choiceDistrictList.isEmpty()){
+        if (choiceDistrictList.isEmpty()) {
             JavaFXUtils.showError("please select province first");
-        }else{
+        } else {
             districtChoiceBox.getItems().addAll(choiceDistrictList);
             setUpTable();
         }
@@ -414,10 +409,14 @@ public class AlumnusController implements Initializable {
     }
 
 
-    public void findAll() {
+    private void fullList() {
         ObservableList<AlumnusEntity> alumnusEntityObservableList = FXCollections.observableArrayList(alumnusRepo.findAll());
         alumnusEntityObservableList.stream().sorted();
         tableView.setItems(alumnusEntityObservableList);
+    }
+
+    public void findAll() {
+        fullList();
         setUpTable();
     }
 
@@ -441,28 +440,29 @@ public class AlumnusController implements Initializable {
             if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
                 alumnusService.deleteByAlumnusIdCardNumber(Integer.valueOf(idCard.getText()));
                 JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
+                fullList();
                 setUpTable();
-            clear();
+                clear();
             }
         } catch (Exception e) {
             JavaFXUtils.showError(e.getMessage());
         }
 
     }
+
     @FXML
-    public void update(){
-//       AlumnusEntity oldEntity=alumnusService.findByIdCardNumber(idCard.getText());
-//       AlumnusEntity updatedEntity= new AlumnusEntity();
-//       updatedEntity.setAlumnusId(oldEntity.get().getAlumnusId());
-//       updatedEntity.setAlumnusName(oldEntity.get().getAlumnusName());
-//       updatedEntity.setDistrict(oldEntity.get().getDistrict());
-//       updatedEntity.setType(oldEntity.get().getType());
-//       updatedEntity.setIdCardNumber(oldEntity.get().getIdCardNumber());
-//       updatedEntity.setPhoneNumber(oldEntity.get().getPhoneNumber());
-//       updatedEntity.setFatherName(oldEntity.get().getFatherName());
-//       updatedEntity.setPermanentAddress(oldEntity.get().getPermanentAddress());
-//       updatedEntity.setProvince(oldEntity.get().getProvince());
-//       updatedEntity.setGraduationYear(oldEntity.get().getGraduationYear());
-//       alumnusService.save(updatedEntity);
+    public void update() {
+       AlumnusEntity oldEntity=alumnusService.findByIdCardNumber(idCard.getText());
+       AlumnusEntity updatedEntity= new AlumnusEntity();
+       updatedEntity.setAlumnusId(oldEntity.getAlumnusId());
+       updatedEntity.setAlumnusName(oldEntity.getAlumnusName());
+       updatedEntity.setDistrict(oldEntity.getDistrict());
+       updatedEntity.setType(oldEntity.getType());
+       updatedEntity.setIdCardNumber(oldEntity.getIdCardNumber());
+       updatedEntity.setPhoneNumber(oldEntity.getPhoneNumber());
+       updatedEntity.setFatherName(oldEntity.getFatherName());
+       updatedEntity.setPermanentAddress(oldEntity.getPermanentAddress());
+       updatedEntity.setProvince(oldEntity.getProvince());
+       updatedEntity.setGraduationYear(oldEntity.getGraduationYear());
     }
 }
