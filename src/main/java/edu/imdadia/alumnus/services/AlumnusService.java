@@ -24,5 +24,7 @@ public interface AlumnusService {
     List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear,String District ,String Type);
 
     public void deleteByAlumnusIdCardNumber(Integer idCard);
+    Optional<AlumnusEntity> findByIdCardNumber(Integer idCard);
+
 
 }
