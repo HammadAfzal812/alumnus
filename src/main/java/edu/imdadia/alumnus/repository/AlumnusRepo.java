@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface AlumnusRepo extends JpaRepository<AlumnusEntity, Integer> {
     Optional<AlumnusEntity> findByAlumnusName(String name);
 
-    Optional<AlumnusEntity> findByIdCardNumber(String idCard);
+    Optional<AlumnusEntity> findByIdCardNumber(Integer idCard);
     Optional<AlumnusEntity>findByAlumnusNameAndFatherName(String name,String fatherName);
 
     List<AlumnusEntity> findByDistrict(String district);

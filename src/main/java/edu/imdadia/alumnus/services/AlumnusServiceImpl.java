@@ -69,4 +69,9 @@ public class AlumnusServiceImpl implements AlumnusService {
     public void deleteByAlumnusIdCardNumber(Integer idCard) {
 
     }
+
+    @Override
+    public Optional<AlumnusEntity> findByIdCardNumber(Integer idCard) {
+        return alumnusRepo.findByIdCardNumber(idCard);
+    }
 }
