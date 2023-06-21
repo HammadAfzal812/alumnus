@@ -188,18 +188,21 @@ public class AlumnusController implements Initializable {
     public void findByDegree() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByType(typeChoice.getValue()));
         tableView.setItems(alumnusEntities);
+        setUpTable();
         typeChoice.setValue("");
     }
 
     public void findByDegreeDistrictYear() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findByGraduationYearAndDistrictAndType(graduationYear.getText(), districtChoiceBox.getValue(), typeChoice.getValue()));
         tableView.setItems(alumnusEntities);
+        setUpTable();
         clear();
     }
 
     public void findByDistrict() {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(districtChoiceBox.getValue()));
         tableView.setItems(alumnusEntities);
+        setUpTable();
 
         clear();
     }
@@ -399,7 +402,10 @@ public class AlumnusController implements Initializable {
         if (choiceDistrictList.isEmpty()) {
             JavaFXUtils.showError("please select province first");
         } else {
+            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
+
             districtChoiceBox.getItems().addAll(choiceDistrictList);
+
             setUpTable();
         }
         districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
