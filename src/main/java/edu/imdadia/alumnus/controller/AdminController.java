@@ -154,6 +154,7 @@ public class AdminController implements Initializable {
         phoneNumber.clear();
         passwordTxt.clear();
         confirmPasswordTxt.clear();
+        userName.clear();
     }
 
 
