@@ -114,7 +114,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="5.0" layoutY="180.0" text="Graduation Year"/>
 
       <Button fx:id="findByDateAndDigree" layoutX="3.0" layoutY="635.0" mnemonicParsing="false" onAction="#findByDegreeDistrictYear" prefHeight="47.0" prefWidth="385.0" text="Find By District,Degree Type,Year">
          <font>
@@ -126,5 +125,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="209.0" layoutY="580.0" mnemonicParsing="false" onAction="#findAll" prefHeight="47.0" prefWidth="176.0" text="Find All Data">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
