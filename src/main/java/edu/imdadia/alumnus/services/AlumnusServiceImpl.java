@@ -64,4 +64,9 @@ public class AlumnusServiceImpl implements AlumnusService {
     public List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear, String District, String Type) {
         return alumnusRepo.findByGraduationYearAndDistrictAndType(GraduationYear, District ,Type);
     }
+
+    @Override
+    public void deleteByAlumnusIdCardNumber(Integer idCard) {
+
+    }
 }

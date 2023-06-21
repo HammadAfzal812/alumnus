@@ -12,10 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.bouncycastle.asn1.dvcs.DVCSObjectIdentifiers;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
@@ -414,5 +411,23 @@ public class AlumnusController implements Initializable {
         graduationYear.setText(String.valueOf(alumnusEntity.getGraduationYear()));
         typeChoice.setValue(alumnusEntity.getType());
         districtChoice.setValue(alumnusEntity.getType());
+    }
+
+
+    @FXML
+    public void removeButton() {
+        try {
+            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
+                    "Delete Confirmation", "Are you sure you want to delete?");
+            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
+                alumnusService.deleteByAlumnusIdCardNumber(Integer.valueOf(idCard.getText()));
+                JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
+                setUpTable();
+            clear();
+            }
+        } catch (Exception e) {
+            JavaFXUtils.showError(e.getMessage());
+        }
+
     }
 }

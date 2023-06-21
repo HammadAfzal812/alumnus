@@ -99,7 +99,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="209.0" layoutY="515.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="80.0" text="Delete">
+      <Button layoutX="209.0" layoutY="515.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="47.0" prefWidth="80.0" text="Delete">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
