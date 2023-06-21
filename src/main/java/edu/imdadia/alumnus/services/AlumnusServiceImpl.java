@@ -71,7 +71,8 @@ public class AlumnusServiceImpl implements AlumnusService {
     }
 
     @Override
-    public Optional<AlumnusEntity> findByIdCardNumber(Integer idCard) {
-        return alumnusRepo.findByIdCardNumber(idCard);
+    public AlumnusEntity findByIdCardNumber(String idCard) {
+        return alumnusRepo.findByIdCardNumber(idCard).orElse(null);
+
     }
 }

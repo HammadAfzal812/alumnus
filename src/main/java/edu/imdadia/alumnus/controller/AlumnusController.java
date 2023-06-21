@@ -102,7 +102,7 @@ public class AlumnusController implements Initializable {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , PhoneNumber , GraduationYear ,Permanent Address , District,Type,provience");
         } else {
             AlumnusEntity alumnus = new AlumnusEntity();
-            Optional<AlumnusEntity> employeeEntity = alumnusService.findByIdCardNumber(Integer.valueOf(idCard.getText()));
+            AlumnusEntity employeeEntity = alumnusService.findByIdCardNumber((idCard.getText()));
             if (employeeEntity != null) {
                 JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
             } else {
@@ -120,7 +120,7 @@ public class AlumnusController implements Initializable {
                     alumnus.setType(typeChoice.getValue());
                     alumnusService.save(alumnus);
                     JavaFXUtils.showSuccessMessage("Alumnus added successfully");
-                    this.clear();
+                    clear();
                     setUpTable();
                 }
             }
@@ -166,7 +166,8 @@ public class AlumnusController implements Initializable {
         choiceDegreeTypeList.add("Scholar");
         choiceDegreeTypeList.add("Reader");
         choiceDegreeTypeList.add("Hafiz");
-        typeChoice.getItems().addAll(choiceDegreeTypeList);
+//        typeChoice.getItems().addAll(choiceDegreeTypeList);
+        typeChoice.setItems(FXCollections.observableList(choiceDegreeTypeList));
 
         choiceProvincrList.add("Punjab");
         choiceProvincrList.add("KPk");
@@ -450,18 +451,18 @@ public class AlumnusController implements Initializable {
     }
     @FXML
     public void update(){
-       Optional<AlumnusEntity> oldEntity=alumnusService.findByIdCardNumber(Integer.valueOf(idCard.getText()));
-       AlumnusEntity updatedEntity= new AlumnusEntity();
-       updatedEntity.setAlumnusId(oldEntity.get().getAlumnusId());
-       updatedEntity.setAlumnusName(oldEntity.get().getAlumnusName());
-       updatedEntity.setDistrict(oldEntity.get().getDistrict());
-       updatedEntity.setType(oldEntity.get().getType());
-       updatedEntity.setIdCardNumber(oldEntity.get().getIdCardNumber());
-       updatedEntity.setPhoneNumber(oldEntity.get().getPhoneNumber());
-       updatedEntity.setFatherName(oldEntity.get().getFatherName());
-       updatedEntity.setPermanentAddress(oldEntity.get().getPermanentAddress());
-       updatedEntity.setProvince(oldEntity.get().getProvince());
-       updatedEntity.setGraduationYear(oldEntity.get().getGraduationYear());
-       alumnusService.save(updatedEntity);
+//       AlumnusEntity oldEntity=alumnusService.findByIdCardNumber(idCard.getText());
+//       AlumnusEntity updatedEntity= new AlumnusEntity();
+//       updatedEntity.setAlumnusId(oldEntity.get().getAlumnusId());
+//       updatedEntity.setAlumnusName(oldEntity.get().getAlumnusName());
+//       updatedEntity.setDistrict(oldEntity.get().getDistrict());
+//       updatedEntity.setType(oldEntity.get().getType());
+//       updatedEntity.setIdCardNumber(oldEntity.get().getIdCardNumber());
+//       updatedEntity.setPhoneNumber(oldEntity.get().getPhoneNumber());
+//       updatedEntity.setFatherName(oldEntity.get().getFatherName());
+//       updatedEntity.setPermanentAddress(oldEntity.get().getPermanentAddress());
+//       updatedEntity.setProvince(oldEntity.get().getProvince());
+//       updatedEntity.setGraduationYear(oldEntity.get().getGraduationYear());
+//       alumnusService.save(updatedEntity);
     }
 }
