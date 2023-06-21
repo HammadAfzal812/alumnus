@@ -448,4 +448,20 @@ public class AlumnusController implements Initializable {
         }
 
     }
+    @FXML
+    public void update(){
+       Optional<AlumnusEntity> oldEntity=alumnusService.findByIdCardNumber(Integer.valueOf(idCard.getText()));
+       AlumnusEntity updatedEntity= new AlumnusEntity();
+       updatedEntity.setAlumnusId(oldEntity.get().getAlumnusId());
+       updatedEntity.setAlumnusName(oldEntity.get().getAlumnusName());
+       updatedEntity.setDistrict(oldEntity.get().getDistrict());
+       updatedEntity.setType(oldEntity.get().getType());
+       updatedEntity.setIdCardNumber(oldEntity.get().getIdCardNumber());
+       updatedEntity.setPhoneNumber(oldEntity.get().getPhoneNumber());
+       updatedEntity.setFatherName(oldEntity.get().getFatherName());
+       updatedEntity.setPermanentAddress(oldEntity.get().getPermanentAddress());
+       updatedEntity.setProvince(oldEntity.get().getProvince());
+       updatedEntity.setGraduationYear(oldEntity.get().getGraduationYear());
+       alumnusService.save(updatedEntity);
+    }
 }

@@ -65,7 +65,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="209.0" layoutY="400.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="176.0" text="Update">
+      <Button layoutX="209.0" layoutY="400.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="176.0" text="Update" onAction="#update">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
