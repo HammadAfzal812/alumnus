@@ -474,6 +474,9 @@ public class AlumnusController implements Initializable {
            JavaFXUtils.showError("Alumnus not found to update");
        }else{
            alumnusService.save(updatedEntity);
+           JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
+           setUpTable();
+           clearFields();
        }
     }
 }

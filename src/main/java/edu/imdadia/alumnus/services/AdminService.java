@@ -1,9 +1,10 @@
 package edu.imdadia.alumnus.services;
 
 import edu.imdadia.alumnus.entity.AdminEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public interface AdminService {
 
         Optional<AdminEntity> findByAdminNameIgnoreCase(String Name);

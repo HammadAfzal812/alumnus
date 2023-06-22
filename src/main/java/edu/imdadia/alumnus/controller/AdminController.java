@@ -256,17 +256,17 @@ public class AdminController implements Initializable {
         updatedEntity.setAdminId(oldEntity.get().getAdminId());
         updatedEntity.setUserName(oldEntity.get().getUserName());
         updatedEntity.setDistrict(oldEntity.get().getDistrict());
-
         updatedEntity.setIdCardNumber(oldEntity.get().getIdCardNumber());
-        updatedEntity.setPhoneNumber(oldEntity.get());
-        updatedEntity.setFatherName(oldEntity.getFatherName());
-        updatedEntity.setPermanentAddress(oldEntity.getPermanentAddress());
-        updatedEntity.setProvince(oldEntity.getProvince());
-        updatedEntity.setGraduationYear(oldEntity.getGraduationYear());
+        updatedEntity.setPhoneNumber(oldEntity.get().getPhoneNumber());
+        updatedEntity.setFatherName(oldEntity.get().getFatherName());
+        updatedEntity.setAddress(oldEntity.get().getAddress());
         if (updatedEntity==null){
             JavaFXUtils.showError("Alumnus not found to update");
         }else{
-            alumnusService.save(updatedEntity);
+            adminService.save(updatedEntity);
+            JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
+            setUpTable();
+            clearFields();
         }
     }
 }
