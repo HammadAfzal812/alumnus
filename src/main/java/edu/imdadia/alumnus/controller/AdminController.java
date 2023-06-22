@@ -3,7 +3,6 @@ package edu.imdadia.alumnus.controller;
 import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AdminEntity;
-import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.enumuration.FxmlView;
 import edu.imdadia.alumnus.repository.AdminRepo;
 import edu.imdadia.alumnus.services.AdminService;
@@ -79,7 +78,7 @@ public class AdminController implements Initializable {
     public void addButton() {
         if ( name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
-        } else if (adminService.findByUserName(userName.getText())!=null||adminService.findByIdCardNumber(Integer.valueOf(idCard.getText()))!=null){
+        } else if (adminService.findByUserName(userName.getText()).orElse(null)!=null||adminService.findByIdCardNumber(idCard.getText()).orElse(null)!=null){
             JavaFXUtils.showError("User name already defined please use any other user name or Id card number already defiene");
             userName.requestFocus();
         }else if (showConfirmPasswordBox.isSelected()) {
@@ -93,7 +92,8 @@ public class AdminController implements Initializable {
                 adminEntity.setPassword(passwordField.getText());
                 adminEntity.setPhoneNumber(phoneNumber.getText());
                 adminEntity.setUserName(userName.getText());
-                adminEntity.setIdCardNumber(idCard.getText());
+                System.out.printf(adminEntity.getUserName());
+                               adminEntity.setIdCardNumber((idCard.getText()));
                 adminService.save(adminEntity);
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
                 this.clearFields();
@@ -246,7 +246,7 @@ public class AdminController implements Initializable {
                 name.setText(newVal.getAdminName());
                 fatherName.setText(newVal.getFatherName());
                 phoneNumber.setText(newVal.getPhoneNumber());
-                idCard.setText(newVal.getIdCardNumber());
+                idCard.setText(String.valueOf(newVal.getIdCardNumber()));
                 userName.setText(String.valueOf(newVal.getUserName()));
                 address.setText(String.valueOf(newVal.getAddress()));
 
@@ -256,7 +256,7 @@ public class AdminController implements Initializable {
     }
     @FXML
     public void update() {
-        Optional<AdminEntity> oldEntity=adminService.findByIdCardNumber(Integer.valueOf(idCard.getText()));
+        Optional<AdminEntity> oldEntity=adminService.findByIdCardNumber(idCard.getText());
         AdminEntity updatedEntity= new AdminEntity();
         updatedEntity.setAdminId(oldEntity.get().getAdminId());
         updatedEntity.setUserName(oldEntity.get().getUserName());

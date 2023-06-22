@@ -73,8 +73,7 @@ public class AlumnusController implements Initializable {
 
     @FXML
     private TextField name;
-    @FXML
-    private TextField id;
+
     @FXML
     private TextField fatherName;
     @FXML
@@ -85,13 +84,12 @@ public class AlumnusController implements Initializable {
     private TextField graduationYear;
     @FXML
     private TextField idCard;
-    private final SpringFXMLLoader springFXMLLoader;
     private final AlumnusRepo alumnusRepo;
 
-    public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService, SpringFXMLLoader springFXMLLoader, AlumnusRepo alumnusRepo) {
+    public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService,  AlumnusRepo alumnusRepo) {
         this.stageManager = stageManager;
         this.alumnusService = alumnusService;
-        this.springFXMLLoader = springFXMLLoader;
+
         this.alumnusRepo = alumnusRepo;
     }
 
@@ -146,6 +144,7 @@ public class AlumnusController implements Initializable {
         this.typeColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getType())));
         this.graduationYearColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getGraduationYear())));
         this.province.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getProvince())));
+
         this.tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 populateRecord(newSelection);
@@ -224,7 +223,7 @@ public class AlumnusController implements Initializable {
     @FXML
     private void districtChoice() {
         final List<String> choiceDistrictList = new ArrayList<>();
-        if (provinceChoice.getValue().equals(null)) {
+        if (provinceChoice.getItems().size() == 0) {
             JavaFXUtils.showError("please chose province first than chose district");
         } else if (provinceChoice.getValue().equals("Punjab")) {
             choiceDistrictList.add("Attock");
@@ -399,15 +398,15 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Sudhnutti");
             districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         }
-        if (choiceDistrictList.isEmpty()) {
-            JavaFXUtils.showError("please select province first");
-        } else {
-            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
-
-            districtChoiceBox.getItems().addAll(choiceDistrictList);
-
-            setUpTable();
-        }
+//        if (choiceDistrictList.isEmpty()) {
+//            JavaFXUtils.showError("please select province first");
+//        } else {
+//            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
+//
+////            districtChoiceBox.getItems().addAll(choiceDistrictList);
+//
+//            setUpTable();
+//        }
         districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
 
 //        districtChoiceBox.getItems().addAll(choiceDistrictList);
@@ -444,7 +443,7 @@ public class AlumnusController implements Initializable {
             final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
                     "Delete Confirmation", "Are you sure you want to delete?");
             if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
-                alumnusService.deleteByAlumnusIdCardNumber(Integer.valueOf(idCard.getText()));
+                alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
                 JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
                 fullList();
                 setUpTable();
@@ -458,25 +457,25 @@ public class AlumnusController implements Initializable {
 
     @FXML
     public void update() {
-       AlumnusEntity oldEntity=alumnusService.findByIdCardNumber(idCard.getText());
-       AlumnusEntity updatedEntity= new AlumnusEntity();
-       updatedEntity.setAlumnusId(oldEntity.getAlumnusId());
-       updatedEntity.setAlumnusName(oldEntity.getAlumnusName());
-       updatedEntity.setDistrict(oldEntity.getDistrict());
-       updatedEntity.setType(oldEntity.getType());
-       updatedEntity.setIdCardNumber(oldEntity.getIdCardNumber());
-       updatedEntity.setPhoneNumber(oldEntity.getPhoneNumber());
-       updatedEntity.setFatherName(oldEntity.getFatherName());
-       updatedEntity.setPermanentAddress(oldEntity.getPermanentAddress());
-       updatedEntity.setProvince(oldEntity.getProvince());
-       updatedEntity.setGraduationYear(oldEntity.getGraduationYear());
-       if (updatedEntity==null){
-           JavaFXUtils.showError("Alumnus not found to update");
-       }else{
-           alumnusService.save(updatedEntity);
-           JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
-           setUpTable();
-           clear();
-       }
+//       AlumnusEntity oldEntity=alumnusService.findByIdCardNumber(idCard.getText());
+//       AlumnusEntity updatedEntity= new AlumnusEntity();
+//       updatedEntity.setAlumnusId(oldEntity.getAlumnusId());
+//       updatedEntity.setAlumnusName(oldEntity.getAlumnusName());
+//       updatedEntity.setDistrict(oldEntity.getDistrict());
+//       updatedEntity.setType(oldEntity.getType());
+//       updatedEntity.setIdCardNumber(oldEntity.getIdCardNumber());
+//       updatedEntity.setPhoneNumber(oldEntity.getPhoneNumber());
+//       updatedEntity.setFatherName(oldEntity.getFatherName());
+//       updatedEntity.setPermanentAddress(oldEntity.getPermanentAddress());
+//       updatedEntity.setProvince(oldEntity.getProvince());
+//       updatedEntity.setGraduationYear(oldEntity.getGraduationYear());
+//       if (updatedEntity==null){
+//           JavaFXUtils.showError("Alumnus not found to update");
+//       }else{
+//           alumnusService.save(updatedEntity);
+//           JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
+//           setUpTable();
+//           clear();
+//       }
     }
 }

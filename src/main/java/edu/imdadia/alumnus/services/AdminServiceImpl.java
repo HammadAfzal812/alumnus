@@ -33,7 +33,7 @@ private final AdminRepo adminRepo;
     }
 
     @Override
-    public Optional<AdminEntity> findByIdCardNumber(Integer idNumber) {
+    public Optional<AdminEntity> findByIdCardNumber(String idNumber) {
         return adminRepo.findByIdCardNumber(idNumber);
     }
 
