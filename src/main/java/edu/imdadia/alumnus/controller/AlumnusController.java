@@ -470,5 +470,10 @@ public class AlumnusController implements Initializable {
        updatedEntity.setPermanentAddress(oldEntity.getPermanentAddress());
        updatedEntity.setProvince(oldEntity.getProvince());
        updatedEntity.setGraduationYear(oldEntity.getGraduationYear());
+       if (updatedEntity==null){
+           JavaFXUtils.showError("Alumnus not found to update");
+       }else{
+           alumnusService.save(updatedEntity);
+       }
     }
 }

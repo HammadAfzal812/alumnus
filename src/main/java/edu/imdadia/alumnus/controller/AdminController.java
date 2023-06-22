@@ -3,6 +3,7 @@ package edu.imdadia.alumnus.controller;
 import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AdminEntity;
+import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.enumuration.FxmlView;
 import edu.imdadia.alumnus.repository.AdminRepo;
 import edu.imdadia.alumnus.services.AdminService;
@@ -247,5 +248,25 @@ public class AdminController implements Initializable {
             }
         });
 
+    }
+    @FXML
+    public void update() {
+        Optional<AdminEntity> oldEntity=adminService.findByIdCardNumber(Integer.valueOf(idCard.getText()));
+        AdminEntity updatedEntity= new AdminEntity();
+        updatedEntity.setAdminId(oldEntity.get().getAdminId());
+        updatedEntity.setUserName(oldEntity.get().getUserName());
+        updatedEntity.setDistrict(oldEntity.get().getDistrict());
+
+        updatedEntity.setIdCardNumber(oldEntity.get().getIdCardNumber());
+        updatedEntity.setPhoneNumber(oldEntity.get());
+        updatedEntity.setFatherName(oldEntity.getFatherName());
+        updatedEntity.setPermanentAddress(oldEntity.getPermanentAddress());
+        updatedEntity.setProvince(oldEntity.getProvince());
+        updatedEntity.setGraduationYear(oldEntity.getGraduationYear());
+        if (updatedEntity==null){
+            JavaFXUtils.showError("Alumnus not found to update");
+        }else{
+            alumnusService.save(updatedEntity);
+        }
     }
 }
