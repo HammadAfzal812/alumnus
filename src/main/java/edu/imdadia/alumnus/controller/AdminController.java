@@ -79,8 +79,8 @@ public class AdminController implements Initializable {
     public void addButton() {
         if ( name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
-        } else if (adminService.findByUserName(userName.getText())!=null){
-            JavaFXUtils.showError("User name already defined please use any other user name");
+        } else if (adminService.findByUserName(userName.getText())!=null||adminService.findByIdCardNumber(Integer.valueOf(idCard.getText()))!=null){
+            JavaFXUtils.showError("User name already defined please use any other user name or Id card number already defiene");
             userName.requestFocus();
         }else if (showConfirmPasswordBox.isSelected()) {
             if (passwordTxt.equals("") || confirmPasswordTxt.equals("")) {
@@ -92,6 +92,7 @@ public class AdminController implements Initializable {
                 adminEntity.setAddress(address.getText());
                 adminEntity.setPassword(passwordField.getText());
                 adminEntity.setPhoneNumber(phoneNumber.getText());
+                adminEntity.setUserName(userName.getText());
                 adminEntity.setIdCardNumber(idCard.getText());
                 adminService.save(adminEntity);
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
@@ -208,10 +209,14 @@ public class AdminController implements Initializable {
             final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
                     "Delete Confirmation", "Are you sure you want to delete?");
             if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
-                adminService.deleteByUserName(userName.getText());
-                JavaFXUtils.showWarningMessage("Admin With " + userName.getText() + " Deleted Successfully");
-                setUpTable();
-                clearFields();
+              if ( adminService.findByUserName(userName.getText())==null){
+                  JavaFXUtils.showError("Admin with user name "+userName.getText()+"not found");
+              }else{
+                  adminService.deleteByUserName(userName.getText());
+                  JavaFXUtils.showWarningMessage("Admin With " + userName.getText() + " Deleted Successfully");
+                  setUpTable();
+                  clearFields();
+              }
             }
         } catch (Exception e) {
             JavaFXUtils.showError(e.getMessage());

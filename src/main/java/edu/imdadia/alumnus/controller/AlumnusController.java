@@ -476,7 +476,7 @@ public class AlumnusController implements Initializable {
            alumnusService.save(updatedEntity);
            JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
            setUpTable();
-           clearFields();
+           clear();
        }
     }
 }
