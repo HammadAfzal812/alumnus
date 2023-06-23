@@ -76,7 +76,7 @@ public class AdminController implements Initializable {
 
     @FXML
     public void addButton() {
-        if ( name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("")) {
+        if ( name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("") || address.getText().equals("")|| userName.getText().equals("") )  {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
         } else if (adminService.findByUserName(userName.getText()).orElse(null)!=null||adminService.findByIdCardNumber(idCard.getText()).orElse(null)!=null){
             JavaFXUtils.showError("User name already defined please use any other user name or Id card number already defiene");
@@ -93,7 +93,7 @@ public class AdminController implements Initializable {
                 adminEntity.setPhoneNumber(phoneNumber.getText());
                 adminEntity.setUserName(userName.getText());
                 System.out.printf(adminEntity.getUserName());
-                               adminEntity.setIdCardNumber((idCard.getText()));
+                adminEntity.setIdCardNumber((idCard.getText()));
                 adminService.save(adminEntity);
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
                 this.clearFields();

@@ -434,6 +434,7 @@ public class AlumnusController implements Initializable {
         graduationYear.setText(String.valueOf(alumnusEntity.getGraduationYear()));
         typeChoice.setValue(alumnusEntity.getType());
         districtChoiceBox.setValue(alumnusEntity.getDistrict());
+        provinceChoice.setValue(alumnusEntity.getProvince());
     }
 
 
