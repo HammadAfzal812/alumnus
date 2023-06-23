@@ -452,6 +452,7 @@ public class AlumnusController implements Initializable {
         updatedEntity.setPermanentAddress(permanentAddress.getText());
         updatedEntity.setProvince(provinceChoice.getValue());
         updatedEntity.setDistrict(districtChoiceBox.getValue());
+        updatedEntity.setType(typeChoice.getValue());
         updatedEntity.setGraduationYear(graduationYear.getText());
        if (updatedEntity==null){
            JavaFXUtils.showError("Alumnus not found to update with id card number "+idCard.getText());

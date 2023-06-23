@@ -257,8 +257,8 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    public void currentAdmin(){
-        stageManager.switchScene(FxmlView.ADMIN_INFO);
+    public void currentAdmin() throws IOException {
+        switchView(FxmlView.ADMIN_INFO);
     }
     @FXML
     private void switchView(final FxmlView fxmlView) throws IOException {
