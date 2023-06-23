@@ -3,7 +3,6 @@ package edu.imdadia.alumnus.controller;
 import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AdminEntity;
-import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.enumuration.FxmlView;
 import edu.imdadia.alumnus.repository.AdminRepo;
 import edu.imdadia.alumnus.services.AdminService;
@@ -123,13 +122,14 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    public void searchByNameButton() {
-        Optional<AdminEntity> s = adminRepo.findByAdminNameIgnoreCase(userName.getText());
+    public void searchByUserNameButton() {
+        Optional<AdminEntity> s = adminRepo.findByUserName(userName.getText());
         AdminEntity adminEntity = s.orElse(null);
         if (adminEntity != null) {
             searchedAdmin = adminEntity;
             name.setText(String.valueOf(searchedAdmin.getAdminName()));
             fatherName.setText(searchedAdmin.getFatherName());
+            userName.setText(searchedAdmin.getUserName());
             phoneNumber.setText(String.valueOf(searchedAdmin.getPhoneNumber()));
             address.setText(searchedAdmin.getAddress());
             idCard.setText(String.valueOf(searchedAdmin.getIdCardNumber()));
@@ -137,6 +137,31 @@ public class AdminController implements Initializable {
             JavaFXUtils.showError("Admin with Name " + name.getText() + " does not exist");
             clearFields();
         }
+    }
+
+    @FXML
+    public void searchByIdCardButton() {
+        Optional<AdminEntity> s = adminRepo.findByIdCardNumber(String.valueOf(Integer.valueOf(idCard.getText())));
+        AdminEntity adminEntity = s.orElse(null);
+        if (adminEntity != null) {
+            searchedAdmin = adminEntity;
+            name.setText(searchedAdmin.getAdminName());
+            fatherName.setText(searchedAdmin.getFatherName());
+            userName.setText(searchedAdmin.getUserName());
+            phoneNumber.setText(String.valueOf(searchedAdmin.getPhoneNumber()));
+            address.setText(searchedAdmin.getAddress());
+            idCard.setText(String.valueOf(searchedAdmin.getIdCardNumber()));
+        } else {
+            JavaFXUtils.showError("Admin with Id " + idCard.getText() + " does not exist");
+            clearFields();
+        }
+    }
+
+    @FXML
+    public void removeByIdCardButton() {
+        adminService.deleteAll();
+        setUpTable();
+        clearFields();
     }
 
 
@@ -205,26 +230,26 @@ public class AdminController implements Initializable {
         populayeFields();
     }
 
-    @FXML
-    public void removeButton() {
-        try {
-            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
-                    "Delete Confirmation", "Are you sure you want to delete?");
-            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
-              if ( adminService.findByUserName(userName.getText())==null){
-                  JavaFXUtils.showError("Admin with user name "+userName.getText()+"not found");
-              }else{
-                  adminService.deleteByUserName(userName.getText());
-                  JavaFXUtils.showWarningMessage("Admin With " + userName.getText() + " Deleted Successfully");
-                  setUpTable();
-                  clearFields();
-              }
-            }
-        } catch (Exception e) {
-            JavaFXUtils.showError(e.getMessage());
-        }
-
-    }
+//    @FXML
+//    public void removeButton() {
+//        try {
+//            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
+//                    "Delete Confirmation", "Are you sure you want to delete?");
+//            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
+//              if ( adminService.findByUserName(userName.getText())==null){
+//                  JavaFXUtils.showError("Admin with user name "+userName.getText()+"not found");
+//              }else{
+//                  adminService.deleteByUserName(userName.getText());
+//                  JavaFXUtils.showWarningMessage("Admin With " + userName.getText() + " Deleted Successfully");
+//                  setUpTable();
+//                  clearFields();
+//              }
+//            }
+//        } catch (Exception e) {
+//            JavaFXUtils.showError(e.getMessage());
+//        }
+//
+//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -232,8 +257,8 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    public void currentAdmin() throws IOException {
-        switchView(FxmlView.ADMIN_INFO);
+    public void currentAdmin(){
+        stageManager.switchScene(FxmlView.ADMIN_INFO);
     }
     @FXML
     private void switchView(final FxmlView fxmlView) throws IOException {

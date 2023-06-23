@@ -58,37 +58,37 @@
         <PasswordField fx:id="confirmPasswordField" layoutX="100.0" layoutY="378.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" />
         <TextField fx:id="confirmPasswordTxt" layoutX="100.0" layoutY="378.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
         <CheckBox fx:id="showConfirmPasswordBox" layoutX="75.0" layoutY="416.0" mnemonicParsing="false" onAction="#showConfirmPasswordBox" text="Show" />
-      <Button layoutX="6.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByNameButton" prefHeight="30.0" prefWidth="127.0" text="Search By Name">
+      <Button layoutX="6.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByUserNameButton" prefHeight="30.0" prefWidth="161.0" text="Search By User Name">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="146.0" layoutY="440.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Search By Id">
+        <Button layoutX="2.0" layoutY="483.0" mnemonicParsing="false" onAction="#searchByIdCardButton" prefHeight="30.0" prefWidth="151.0" text="Search By ID Card">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="12.0" layoutY="498.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
+        <Button layoutX="13.0" layoutY="520.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-      <Button layoutX="73.0" layoutY="498.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="30.0" prefWidth="53.0" text="Clear">
+      <Button layoutX="74.0" layoutY="520.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="30.0" prefWidth="53.0" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="148.0" layoutY="498.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="120.0" text="Log Out">
+        <Button layoutX="144.0" layoutY="520.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="120.0" text="Log Out">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="6.0" layoutY="560.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="30.0" prefWidth="127.0" text="Remove By ID">
+        <Button layoutX="5.0" layoutY="567.0" mnemonicParsing="false" onAction="#removeByIdCardButton" prefHeight="30.0" prefWidth="151.0" text="Remove By ID Card">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="192.0" layoutY="560.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="62.0" text="Back">
+        <Button layoutX="193.0" layoutY="567.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="62.0" text="Back">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
