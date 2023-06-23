@@ -1,6 +1,4 @@
 package edu.imdadia.alumnus.controller;
-
-import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.enumuration.FxmlView;
@@ -104,9 +102,7 @@ public class AlumnusController implements Initializable {
             if (employeeEntity != null) {
                 JavaFXUtils.showError("Alumnus with Id card number " + idCard.getText() + " already added");
             } else {
-////                if (districtChoiceBox.getItems().size()==0){
-////                   this.districtChoice();
-//                }else{
+
                 alumnus.setAlumnusName(name.getText());
                 alumnus.setFatherName(fatherName.getText());
                 alumnus.setPermanentAddress(permanentAddress.getText());
@@ -171,7 +167,6 @@ public class AlumnusController implements Initializable {
         choiceProvincrList.add("Balochictan");
         choiceProvincrList.add("Gilgit");
         choiceProvincrList.add("Azad Kashmir");
-//        provinceChoice.getItems().addAll(choiceProvincrList);
         provinceChoice.setItems(FXCollections.observableList(choiceProvincrList));
         fullList();
         setUpTable();
@@ -398,18 +393,8 @@ public class AlumnusController implements Initializable {
             choiceDistrictList.add("Sudhnutti");
             districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         }
-//        if (choiceDistrictList.isEmpty()) {
-//            JavaFXUtils.showError("please select province first");
-//        } else {
-//            districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
-//
-////            districtChoiceBox.getItems().addAll(choiceDistrictList);
-//
-//            setUpTable();
-//        }
-        districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
 
-//        districtChoiceBox.getItems().addAll(choiceDistrictList);
+        districtChoiceBox.setItems(FXCollections.observableList(choiceDistrictList));
         setUpTable();
     }
 
