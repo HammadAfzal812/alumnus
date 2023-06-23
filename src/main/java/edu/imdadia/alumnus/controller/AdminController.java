@@ -92,7 +92,7 @@ public class AdminController implements Initializable {
                 adminEntity.setPassword(passwordField.getText());
                 adminEntity.setPhoneNumber(phoneNumber.getText());
                 adminEntity.setUserName(userName.getText());
-                System.out.printf(adminEntity.getUserName());
+//                System.out.printf(adminEntity.getUserName());
                 adminEntity.setIdCardNumber((idCard.getText()));
                 adminService.save(adminEntity);
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
@@ -110,6 +110,7 @@ public class AdminController implements Initializable {
                 adminEntity.setPassword(passwordField.getText());
                 adminEntity.setPhoneNumber(phoneNumber.getText());
                 adminEntity.setIdCardNumber(idCard.getText());
+                adminEntity.setUserName(userName.getText());
                 adminService.save(adminEntity);
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
                 this.clearFields();

@@ -158,7 +158,6 @@ public class AlumnusController implements Initializable {
         choiceDegreeTypeList.add("Scholar");
         choiceDegreeTypeList.add("Reader");
         choiceDegreeTypeList.add("Hafiz");
-//        typeChoice.getItems().addAll(choiceDegreeTypeList);
         typeChoice.setItems(FXCollections.observableList(choiceDegreeTypeList));
 
         choiceProvincrList.add("Punjab");
