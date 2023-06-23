@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class AlumnusServiceImpl implements AlumnusService {
     private final AlumnusRepo alumnusRepo;
@@ -29,8 +30,7 @@ public class AlumnusServiceImpl implements AlumnusService {
 
         try {
             alumnusRepo.save(alumnusEntity);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -47,7 +47,7 @@ public class AlumnusServiceImpl implements AlumnusService {
 
     @Override
     public Optional<AlumnusEntity> findByAlumnusNameAndFatherName(String name, String fatherName) {
-        return alumnusRepo.findByAlumnusNameAndFatherName(name,fatherName);
+        return alumnusRepo.findByAlumnusNameAndFatherName(name, fatherName);
     }
 
     @Override
@@ -62,12 +62,17 @@ public class AlumnusServiceImpl implements AlumnusService {
 
     @Override
     public List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear, String District, String Type) {
-        return alumnusRepo.findByGraduationYearAndDistrictAndType(GraduationYear, District ,Type);
+        return alumnusRepo.findByGraduationYearAndDistrictAndType(GraduationYear, District, Type);
     }
 
     @Override
-    public void deleteByAlumnusIdCardNumber(Integer idCard) {
+    public void deleteByAlumnusIdCardNumber(String idCard) {
+       try {
+           alumnusRepo.deleteByIdCardNumber(idCard);
 
+       }catch (Exception e){
+           System.out.printf(e.getMessage());;
+       }
     }
 
     @Override

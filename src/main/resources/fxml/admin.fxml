@@ -12,12 +12,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1072.0" style="-fx-background-color: skyBlue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.imdadia.alumnus.controller.AdminController">
     <children>
-        <Label layoutX="15.0" layoutY="28.0" prefHeight="30.0" prefWidth="40.0" text="ID">
-            <font>
-                <Font name="System Bold" size="15.0" />
-            </font>
-        </Label>
-        <TextField fx:id="id" layoutX="98.0" layoutY="27.0" prefHeight="31.0" prefWidth="169.0" promptText="ID" />
         <Label layoutX="12.0" layoutY="81.0" prefHeight="31.0" prefWidth="50.0" text="Name">
             <font>
                 <Font name="System Bold" size="15.0" />
@@ -55,46 +49,46 @@
             </font>
         </Label>
         <PasswordField fx:id="passwordField" layoutX="100.0" layoutY="337.0" prefHeight="31.0" prefWidth="169.0" promptText="Password" />
-        <TextField fx:id="passwordTxt" layoutX="98.0" layoutY="276.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
+        <TextField fx:id="passwordTxt" layoutX="100.0" layoutY="337.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
         <Label layoutX="6.0" layoutY="383.0" text="Confirm ">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="confirmPasswordField" layoutX="98.0" layoutY="378.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" text="ud" />
-        <TextField fx:id="confirmPasswordTxt" layoutX="98.0" layoutY="321.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
+        <PasswordField fx:id="confirmPasswordField" layoutX="100.0" layoutY="378.0" prefHeight="31.0" prefWidth="169.0" promptText="Confirm Password" />
+        <TextField fx:id="confirmPasswordTxt" layoutX="100.0" layoutY="378.0" prefHeight="30.0" prefWidth="169.0" visible="false" />
         <CheckBox fx:id="showConfirmPasswordBox" layoutX="75.0" layoutY="416.0" mnemonicParsing="false" onAction="#showConfirmPasswordBox" text="Show" />
-      <Button layoutX="6.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByNameButton" prefHeight="30.0" prefWidth="127.0" text="Search By Name">
+      <Button layoutX="6.0" layoutY="440.0" mnemonicParsing="false" onAction="#searchByUserNameButton" prefHeight="30.0" prefWidth="161.0" text="Search By User Name">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="146.0" layoutY="440.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Search By Id">
+        <Button layoutX="2.0" layoutY="483.0" mnemonicParsing="false" onAction="#searchByIdCardButton" prefHeight="30.0" prefWidth="151.0" text="Search By ID Card">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="12.0" layoutY="498.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
+        <Button layoutX="13.0" layoutY="520.0" mnemonicParsing="false" onAction="#addButton" prefHeight="30.0" prefWidth="53.0" text="Add">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-      <Button layoutX="73.0" layoutY="498.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="30.0" prefWidth="53.0" text="Clear">
+      <Button layoutX="74.0" layoutY="520.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="30.0" prefWidth="53.0" text="Clear">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="148.0" layoutY="498.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="120.0" text="Log Out">
+        <Button layoutX="144.0" layoutY="520.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="120.0" text="Log Out">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="6.0" layoutY="560.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="30.0" prefWidth="127.0" text="Remove By ID">
+        <Button layoutX="5.0" layoutY="567.0" mnemonicParsing="false" onAction="#removeByIdCardButton" prefHeight="30.0" prefWidth="151.0" text="Remove By ID Card">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="192.0" layoutY="560.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="62.0" text="Back">
+        <Button layoutX="193.0" layoutY="567.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="62.0" text="Back">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -111,7 +105,6 @@
       </Button>
         <TableView fx:id="adminsTable" layoutX="296.0" layoutY="9.0" onMouseClicked="#populayeFields" prefHeight="686.0" prefWidth="681.0">
             <columns>
-                <TableColumn fx:id="idColum" prefWidth="39.0" text="ID" />
                 <TableColumn fx:id="nameColum" prefWidth="89.0" text="Name" />
                 <TableColumn fx:id="fatherNameColum" prefWidth="107.0" text="S/O" />
                 <TableColumn fx:id="addressColum" prefWidth="157.0" text="Adress" />

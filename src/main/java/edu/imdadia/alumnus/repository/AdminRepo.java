@@ -14,13 +14,9 @@ public interface AdminRepo extends JpaRepository<AdminEntity, Integer> {
         Optional<AdminEntity> findByAdminNameIgnoreCase(String Name);
         Optional<AdminEntity> findByAdminNameIgnoreCaseAndFatherNameIgnoreCase(String name, String fatherName);
         Optional<AdminEntity> findByAdminId(Integer id);
-
         Optional<AdminEntity> findByAdminNameIgnoreCaseAndPassword(String name, String password);
-        Optional<AdminEntity> findByIdCardNumber(Integer idNumber);
-        Optional<AdminEntity>deleteByUserName(String userName);
-        Optional<AdminEntity>deleteByAdminNameIgnoreCaseAndIdCardNumber(String userName,Integer idCard);
-
+        AdminEntity deleteByUserName(String userName);
+        Optional<AdminEntity> findByIdCardNumber(String idNumber);
         Optional<AdminEntity>findByUserName(String name);
-
 
 }

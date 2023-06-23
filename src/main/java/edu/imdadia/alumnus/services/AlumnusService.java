@@ -1,11 +1,10 @@
 package edu.imdadia.alumnus.services;
 
 import edu.imdadia.alumnus.entity.AlumnusEntity;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-@Service
+
 public interface AlumnusService {
     List<AlumnusEntity> findAllByDistrict(String district);
 
@@ -23,7 +22,7 @@ public interface AlumnusService {
 
     List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear,String District ,String Type);
 
-    public void deleteByAlumnusIdCardNumber(Integer idCard);
+    public void deleteByAlumnusIdCardNumber(String idCard);
     AlumnusEntity findByIdCardNumber(String idCard);
 
 

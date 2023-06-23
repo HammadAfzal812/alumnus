@@ -32,21 +32,6 @@ private final AdminRepo adminRepo;
         return adminRepo.findByAdminNameIgnoreCaseAndPassword(name,password);
     }
 
-    @Override
-    public Optional<AdminEntity> findByIdCardNumber(Integer idNumber) {
-        return adminRepo.findByIdCardNumber(idNumber);
-    }
-
-    @Override
-    public Optional<AdminEntity> findByUserName(String name) {
-        return adminRepo.findByUserName(name);
-    }
-
-    @Override
-    public void deleteByAdminNameIgnoreCaseAndIdCardNumber(String name, Integer idCard) {
-        adminRepo.deleteByAdminNameIgnoreCaseAndIdCardNumber(name,idCard);
-
-    }
 
 
     @Override
@@ -66,6 +51,17 @@ private final AdminRepo adminRepo;
     public void deleteAll() {
         adminRepo.deleteAll();
     }
+
+    @Override
+    public Optional<AdminEntity> findByIdCardNumber(String idNumber) {
+        return adminRepo.findByIdCardNumber(idNumber);
+    }
+
+    @Override
+    public Optional<AdminEntity> findByUserName(String name) {
+        return adminRepo.findByUserName(name);
+    }
+
 
 
 }
