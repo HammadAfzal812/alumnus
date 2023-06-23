@@ -105,7 +105,6 @@
       </Button>
         <TableView fx:id="adminsTable" layoutX="296.0" layoutY="9.0" onMouseClicked="#populayeFields" prefHeight="686.0" prefWidth="681.0">
             <columns>
-                <TableColumn fx:id="idColum" prefWidth="39.0" text="ID" />
                 <TableColumn fx:id="nameColum" prefWidth="89.0" text="Name" />
                 <TableColumn fx:id="fatherNameColum" prefWidth="107.0" text="S/O" />
                 <TableColumn fx:id="addressColum" prefWidth="157.0" text="Adress" />

@@ -3,6 +3,7 @@ package edu.imdadia.alumnus.controller;
 import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AdminEntity;
+import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.enumuration.FxmlView;
 import edu.imdadia.alumnus.repository.AdminRepo;
 import edu.imdadia.alumnus.services.AdminService;
@@ -257,22 +258,40 @@ public class AdminController implements Initializable {
     }
     @FXML
     public void update() {
-        Optional<AdminEntity> oldEntity=adminService.findByIdCardNumber(idCard.getText());
-        AdminEntity updatedEntity= new AdminEntity();
+        Optional<AdminEntity> oldEntity = adminService.findByIdCardNumber(idCard.getText());
+        oldEntity.toString();
+        AdminEntity updatedEntity = new AdminEntity();
         updatedEntity.setAdminId(oldEntity.get().getAdminId());
-        updatedEntity.setUserName(oldEntity.get().getUserName());
-        updatedEntity.setDistrict(oldEntity.get().getDistrict());
-        updatedEntity.setIdCardNumber(oldEntity.get().getIdCardNumber());
-        updatedEntity.setPhoneNumber(oldEntity.get().getPhoneNumber());
-        updatedEntity.setFatherName(oldEntity.get().getFatherName());
-        updatedEntity.setAddress(oldEntity.get().getAddress());
-        if (updatedEntity==null){
-            JavaFXUtils.showError("Alumnus not found to update");
-        }else{
-            adminService.save(updatedEntity);
-            JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
-            setUpTable();
-            clearFields();
+        updatedEntity.setUserName(userName.getText());
+        updatedEntity.setIdCardNumber(idCard.getText());
+        updatedEntity.setPhoneNumber(phoneNumber.getText());
+        updatedEntity.setFatherName(fatherName.getText());
+        updatedEntity.setAddress(address.getText());
+        updatedEntity.setAdminName(name.getText());
+        if (passwordField.getText().equals(confirmPasswordField.getText())) {
+            if (passwordField.getText().equals(oldEntity.get().getPassword())) {
+                updatedEntity.setPassword(oldEntity.get().getPassword());
+                if (updatedEntity == null) {
+                    JavaFXUtils.showError("Alumnus not found to update");
+                } else {
+
+                    adminService.save(updatedEntity);
+                    JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
+                    fullList();
+                    setUpTable();
+                    clearFields();
+                }
+            }else{
+                JavaFXUtils.showError("please enter corretc password sam as old password");
+            }
+        }else {
+            JavaFXUtils.showError("password and confirm password should equal");
         }
+    }
+
+    public void fullList(){
+        ObservableList<AdminEntity> adminEntityObservableList = FXCollections.observableArrayList(adminRepo.findAll());
+        adminEntityObservableList.stream().sorted();
+        adminsTable.setItems(adminEntityObservableList);
     }
 }

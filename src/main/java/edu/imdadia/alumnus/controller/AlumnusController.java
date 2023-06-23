@@ -145,8 +145,8 @@ public class AlumnusController implements Initializable {
             if (newSelection != null) {
                 populateRecord(newSelection);
             }
-        });
-    }
+        });    }
+
 
 
     @Override
@@ -442,25 +442,25 @@ public class AlumnusController implements Initializable {
 
     @FXML
     public void update() {
-//       AlumnusEntity oldEntity=alumnusService.findByIdCardNumber(idCard.getText());
-//       AlumnusEntity updatedEntity= new AlumnusEntity();
-//       updatedEntity.setAlumnusId(oldEntity.getAlumnusId());
-//       updatedEntity.setAlumnusName(oldEntity.getAlumnusName());
-//       updatedEntity.setDistrict(oldEntity.getDistrict());
-//       updatedEntity.setType(oldEntity.getType());
-//       updatedEntity.setIdCardNumber(oldEntity.getIdCardNumber());
-//       updatedEntity.setPhoneNumber(oldEntity.getPhoneNumber());
-//       updatedEntity.setFatherName(oldEntity.getFatherName());
-//       updatedEntity.setPermanentAddress(oldEntity.getPermanentAddress());
-//       updatedEntity.setProvince(oldEntity.getProvince());
-//       updatedEntity.setGraduationYear(oldEntity.getGraduationYear());
-//       if (updatedEntity==null){
-//           JavaFXUtils.showError("Alumnus not found to update");
-//       }else{
-//           alumnusService.save(updatedEntity);
-//           JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
-//           setUpTable();
-//           clear();
-//       }
+  Optional<AlumnusEntity> oldEntity = Optional.ofNullable(alumnusService.findByIdCardNumber(idCard.getText()));
+        AlumnusEntity updatedEntity = new AlumnusEntity();
+        updatedEntity.setAlumnusId(oldEntity.get().getAlumnusId());
+        updatedEntity.setAlumnusName(name.getText());
+        updatedEntity.setIdCardNumber(idCard.getText());
+        updatedEntity.setPhoneNumber(phoneNumber.getText());
+        updatedEntity.setFatherName(fatherName.getText());
+        updatedEntity.setPermanentAddress(permanentAddress.getText());
+        updatedEntity.setProvince(provinceChoice.getValue());
+        updatedEntity.setDistrict(districtChoiceBox.getValue());
+        updatedEntity.setGraduationYear(graduationYear.getText());
+       if (updatedEntity==null){
+           JavaFXUtils.showError("Alumnus not found to update with id card number "+idCard.getText());
+       }else{
+           alumnusService.save(updatedEntity);
+           JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
+           setUpTable();
+           fullList();
+           clear();
+       }
     }
 }
