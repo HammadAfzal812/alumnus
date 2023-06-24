@@ -21,6 +21,8 @@ public class AdminInfoController implements Initializable {
 
     }
 
+
+
     public void setText(){
         String admin=LoginController.adminEntity.getAdminName()+"\n \n \n"+LoginController.adminEntity.getFatherName()
                 +"\n\n\n"+LoginController.adminEntity.getAddress();

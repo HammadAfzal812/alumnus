@@ -1,5 +1,4 @@
 package edu.imdadia.alumnus.controller;
-
 import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AdminEntity;
@@ -18,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -307,7 +305,7 @@ public class AdminController implements Initializable {
                     clearFields();
                 }
             }else{
-                JavaFXUtils.showError("please enter corretc password sam as old password");
+                JavaFXUtils.showError("please enter correct password sam as old password");
             }
         }else {
             JavaFXUtils.showError("password and confirm password should equal");

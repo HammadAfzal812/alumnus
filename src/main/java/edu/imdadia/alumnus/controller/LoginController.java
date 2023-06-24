@@ -65,13 +65,13 @@ public class LoginController {
             for (int i = 0; i < allAdmins.size(); ) {
                 for (AdminEntity a : allAdmins) {
                     if (check.isSelected()){
-                        if (a.getPassword().equals(plainPassword.getText()) && a.getUserName().equals(username.getText())) {
+                        if (a.getPassword().equals(plainPassword.getText()) && a.getAdminName().equals(username.getText())) {
                             stageManager.switchScene(FxmlView.HOME);
                             adminEntity = a;
                             break;
                         }
                     } else if (!check.isSelected()){
-                        if (a.getPassword().equals(password.getText()) && a.getUserName().equals(username.getText())) {
+                        if (a.getPassword().equals(password.getText()) && a.getAdminName().equals(username.getText())) {
                             stageManager.switchScene(FxmlView.HOME);
                             adminEntity = a;
                             break;
