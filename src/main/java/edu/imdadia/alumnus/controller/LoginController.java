@@ -32,7 +32,7 @@ public class LoginController {
     @FXML
     private CheckBox check;
     private final AdminService adminService;
-    public static AdminEntity adminEntity = null;
+    public static AdminEntity adminEntity = new AdminEntity();
     private final AdminRepo adminRepo;
 
     public void initialize() {

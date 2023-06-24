@@ -23,7 +23,7 @@ public class AlumnusEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "idCard_number")
+    @Column(name = "ID_CARD_NUMBER")
     private String idCardNumber;
 
     @Column(name = "permanent_Address")

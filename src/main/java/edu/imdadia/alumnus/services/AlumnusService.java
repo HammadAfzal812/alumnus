@@ -22,7 +22,7 @@ public interface AlumnusService {
 
     List<AlumnusEntity> findByGraduationYearAndDistrictAndType(String GraduationYear,String District ,String Type);
 
-    public void deleteByAlumnusIdCardNumber(String idCard);
+    void deleteByAlumnusIdCardNumber(String idCard);
     AlumnusEntity findByIdCardNumber(String idCard);
 
 

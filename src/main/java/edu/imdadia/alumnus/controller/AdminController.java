@@ -256,14 +256,9 @@ public class AdminController implements Initializable {
 
     @FXML
     public void currentAdmin() throws IOException {
-        switchView(FxmlView.ADMIN_INFO);
+        stageManager.switchScene(FxmlView.ADMIN_INFO);
     }
-    @FXML
-    private void switchView(final FxmlView fxmlView) throws IOException {
-        final Parent view = springFXMLLoader.load(fxmlView.getFxmlFile());
-        stageManager.getStage().setTitle(fxmlView.getTitle());
-        rootBorderPane.setCenter(view);
-    }
+
     @FXML
     public void populayeFields(){
         adminsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {

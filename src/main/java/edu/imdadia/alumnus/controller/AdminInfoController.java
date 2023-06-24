@@ -16,6 +16,8 @@ public class AdminInfoController implements Initializable {
     private TextArea textArea;
 
 
+
+
     public AdminInfoController(@Lazy StageManager stageManager) {
         this.stageManager = stageManager;
 
