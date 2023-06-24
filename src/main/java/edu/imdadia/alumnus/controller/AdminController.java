@@ -1,4 +1,6 @@
 package edu.imdadia.alumnus.controller;
+
+import com.ctc.wstx.util.StringUtil;
 import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AdminEntity;
@@ -15,8 +17,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -74,12 +78,12 @@ public class AdminController implements Initializable {
 
     @FXML
     public void addButton() {
-        if ( name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("") || address.getText().equals("")|| userName.getText().equals("") )  {
+        if (name.getText().equals("") || fatherName.getText().equals("") || idCard.getText().equals("") || phoneNumber.getText().equals("") || address.getText().equals("") || userName.getText().equals("")) {
             JavaFXUtils.showWarningMessage("Any field of the following fields should not be null ID  , Name , Father Name , IDCard number , Password , Confirm password ,phone number ");
-        } else if (adminService.findByUserName(userName.getText()).orElse(null)!=null||adminService.findByIdCardNumber(idCard.getText()).orElse(null)!=null){
+        } else if (adminService.findByUserName(userName.getText()).orElse(null) != null || adminService.findByIdCardNumber(idCard.getText()).orElse(null) != null) {
             JavaFXUtils.showError("User name already defined please use any other user name or Id card number already defiene");
             userName.requestFocus();
-        }else if (showConfirmPasswordBox.isSelected()) {
+        } else if (showConfirmPasswordBox.isSelected()) {
             if (passwordTxt.equals("") || confirmPasswordTxt.equals("")) {
                 JavaFXUtils.showWarningMessage("password and confirm password required");
             } else if (passwordTxt.getText().equals(confirmPasswordTxt.getText())) {
@@ -155,12 +159,17 @@ public class AdminController implements Initializable {
         }
     }
 
-    @FXML
-    public void removeByIdCardButton() {
-        adminService.deleteAll();
-        setUpTable();
-        clearFields();
-    }
+//    @FXML
+//    public void removeByIdCardButton() {
+//        if (StringUtils.isBlank(idCard.getText())) {
+//            JavaFXUtils.showError("PLEASE ENTER ID");
+//        } else {
+//            adminService.deleteByIdCardNumber((idCard.getText()));
+//            JavaFXUtils.showSuccessMessage("DATA DELETE SUCCESSFULLY");
+//        }
+//        setUpTable();
+//        clearFields();
+//    }
 
 
     public AdminController(@Lazy StageManager stageManager, AdminService adminService, AdminRepo adminRepo, SpringFXMLLoader springFXMLLoader) {
@@ -228,27 +237,6 @@ public class AdminController implements Initializable {
         populayeFields();
     }
 
-//    @FXML
-//    public void removeButton() {
-//        try {
-//            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
-//                    "Delete Confirmation", "Are you sure you want to delete?");
-//            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
-//              if ( adminService.findByUserName(userName.getText())==null){
-//                  JavaFXUtils.showError("Admin with user name "+userName.getText()+"not found");
-//              }else{
-//                  adminService.deleteByUserName(userName.getText());
-//                  JavaFXUtils.showWarningMessage("Admin With " + userName.getText() + " Deleted Successfully");
-//                  setUpTable();
-//                  clearFields();
-//              }
-//            }
-//        } catch (Exception e) {
-//            JavaFXUtils.showError(e.getMessage());
-//        }
-//
-//    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
@@ -260,7 +248,7 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    public void populayeFields(){
+    public void populayeFields() {
         adminsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
                 name.setText(newVal.getAdminName());
@@ -274,6 +262,7 @@ public class AdminController implements Initializable {
         });
 
     }
+
     @FXML
     public void update() {
         Optional<AdminEntity> oldEntity = adminService.findByIdCardNumber(idCard.getText());
@@ -299,17 +288,41 @@ public class AdminController implements Initializable {
                     setUpTable();
                     clearFields();
                 }
-            }else{
+            } else {
                 JavaFXUtils.showError("please enter correct password sam as old password");
             }
-        }else {
+        } else {
             JavaFXUtils.showError("password and confirm password should equal");
         }
     }
 
-    public void fullList(){
+    public void fullList() {
         ObservableList<AdminEntity> adminEntityObservableList = FXCollections.observableArrayList(adminRepo.findAll());
         adminEntityObservableList.stream().sorted();
         adminsTable.setItems(adminEntityObservableList);
+    }
+
+
+//    @FXML
+//    public void removeByIdCardButton() {
+//        try {
+//            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
+//                    "Delete Confirmation", "Are you sure you want to delete?");
+//            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
+//                adminService.deleteByIdCardNumber(idCard.getText());
+//                JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
+//                fullList();
+//                setUpTable();
+//                clearFields();
+//            }
+//        } catch (Exception e) {
+//            JavaFXUtils.showError(e.getMessage());
+//        }
+//
+//    }
+
+    public void removeByIdCardButton() {
+        adminService.deleteAll();
+        clearFields();
     }
 }

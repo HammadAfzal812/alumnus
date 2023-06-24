@@ -34,7 +34,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="permanentAddress" layoutX="198.0" layoutY="137.0" prefHeight="25.0" prefWidth="182.0" promptText="Permanent Address"/>
+      <TextField fx:id="permanentAddress" layoutX="198.0" layoutY="137.0" prefHeight="25.0" prefWidth="182.0" promptText="Permanent Address" />
       <Label layoutX="5.0" layoutY="136.0" text="PermanentAddress ">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -65,7 +65,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="209.0" layoutY="400.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="176.0" text="Update" onAction="#update">
+      <Button layoutX="209.0" layoutY="400.0" mnemonicParsing="false" onAction="#update" prefHeight="47.0" prefWidth="176.0" text="Update">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -75,7 +75,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="209.0" layoutY="456.0" mnemonicParsing="false" onAction="#clear" prefHeight="47.0" prefWidth="176.0" text="Clear">
+      <Button layoutX="209.0" layoutY="456.0" mnemonicParsing="false" onAction="#clear" prefHeight="47.0" prefWidth="80.0" text="Clear">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -85,12 +85,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="209.0" layoutY="515.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="47.0" prefWidth="80.0" text="Delete">
+      <Button layoutX="209.0" layoutY="515.0" mnemonicParsing="false" onAction="#removeButton" prefHeight="47.0" prefWidth="176.0" text="Delete By ID Card">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="304.0" layoutY="515.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="80.0" text="Back">
+      <Button layoutX="305.0" layoutY="456.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="80.0" text="Back">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -116,7 +116,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="tableView" layoutX="410.0" layoutY="1.0" prefHeight="681.0" prefWidth="905.0">
+      <TableView fx:id="tableView" layoutX="420.0" layoutY="4.0" prefHeight="685.0" prefWidth="907.0">
          <columns>
             <TableColumn fx:id="nameColum" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="fatherNameColum" prefWidth="75.0" text="S/O" />
