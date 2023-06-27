@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -153,7 +152,6 @@ public class AlumnusController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         final List<String> choiceDegreeTypeList = new ArrayList<>();
         final List<String> choiceProvincrList = new ArrayList<>();
-
         choiceDegreeTypeList.add("Mufti");
         choiceDegreeTypeList.add("Scholar");
         choiceDegreeTypeList.add("Reader");
@@ -423,24 +421,6 @@ public class AlumnusController implements Initializable {
 
 
     @FXML
-    public void removeButton() {
-        try {
-            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
-                    "Delete Confirmation", "Are you sure you want to delete?");
-            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
-                alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
-                JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
-                fullList();
-                setUpTable();
-                clear();
-            }
-        } catch (Exception e) {
-            JavaFXUtils.showError(e.getMessage());
-        }
-
-    }
-
-    @FXML
     public void update() {
   Optional<AlumnusEntity> oldEntity = Optional.ofNullable(alumnusService.findByIdCardNumber(idCard.getText()));
         AlumnusEntity updatedEntity = new AlumnusEntity();
@@ -463,5 +443,28 @@ public class AlumnusController implements Initializable {
            fullList();
            clear();
        }
+    }
+
+    @FXML
+//    public void removeButton() {
+//        try {
+//            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
+//                    "Delete Confirmation", "Are you sure you want to delete?");
+//            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
+//                alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
+//                JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
+//                fullList();
+//                setUpTable();
+//                clear();
+//            }
+//        } catch (Exception e) {
+//            JavaFXUtils.showError(e.getMessage());
+//        }
+//
+//    }
+
+    public void removeButton() {
+        alumnusService.deleteAll();
+        clear();
     }
 }

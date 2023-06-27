@@ -16,10 +16,14 @@ public class AdminInfoController implements Initializable {
     private TextArea textArea;
 
 
+
+
     public AdminInfoController(@Lazy StageManager stageManager) {
         this.stageManager = stageManager;
 
     }
+
+
 
     public void setText(){
         String admin=LoginController.adminEntity.getAdminName()+"\n \n \n"+LoginController.adminEntity.getFatherName()

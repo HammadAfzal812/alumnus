@@ -2,7 +2,9 @@ package edu.imdadia.alumnus.services;
 
 import edu.imdadia.alumnus.entity.AdminEntity;
 import edu.imdadia.alumnus.repository.AdminRepo;
+import edu.imdadia.alumnus.util.JavaFXUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,26 +14,6 @@ import java.util.Optional;
 public class AdminServiceImpl implements AdminService {
 
 private final AdminRepo adminRepo;
-    @Override
-    public Optional<AdminEntity> findByAdminNameIgnoreCase(String name) {
-        return adminRepo.findByAdminNameIgnoreCase(name);
-    }
-
-    @Override
-    public Optional<AdminEntity> findByAdminNameIgnoreCaseAndFatherNameIgnoreCase(String name, String fatherName) {
-        return adminRepo.findByAdminNameIgnoreCaseAndFatherNameIgnoreCase(name,fatherName);
-    }
-
-    @Override
-    public Optional<AdminEntity> findByAdminId(Integer id) {
-        return adminRepo.findByAdminId(id);
-    }
-
-    @Override
-    public Optional<AdminEntity> findByAdminNameIgnoreCaseAndPassword(String name, String password) {
-        return adminRepo.findByAdminNameIgnoreCaseAndPassword(name,password);
-    }
-
 
 
     @Override
@@ -40,6 +22,16 @@ private final AdminRepo adminRepo;
     }
 
 
+    @Override
+    public void deleteByIdCardNumber(String idCard) {
+       try {
+           adminRepo.deleteByIdCardNumber(idCard);
+       }catch (EmptyResultDataAccessException e){
+           JavaFXUtils.showWarningMessage("----------------");
+       }catch (Exception e){
+           JavaFXUtils.showWarningMessage("----------------");
+       }
+    }
 
     @Override
     public void deleteByUserName(String userName) {
