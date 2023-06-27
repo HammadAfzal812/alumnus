@@ -103,7 +103,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-        <TableView fx:id="adminsTable" layoutX="296.0" layoutY="-5.0" onMouseClicked="#populayeFields" prefHeight="686.0" prefWidth="681.0">
+        <TableView fx:id="adminsTable" layoutX="296.0" layoutY="-5.0" onMouseClicked="#populayeFields" prefHeight="720.0" prefWidth="775.0">
             <columns>
                 <TableColumn fx:id="nameColum" prefWidth="89.0" text="Name" />
                 <TableColumn fx:id="fatherNameColum" prefWidth="107.0" text="S/O" />
