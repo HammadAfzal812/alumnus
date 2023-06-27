@@ -33,7 +33,7 @@ public class JavaFXApplication extends Application {
      * on startup. Example: Functional tests on main window.
      */
     protected void displayInitialScene() {
-        stageManager.switchScene(FxmlView.HOME);
+        stageManager.switchScene(FxmlView.LOGIN);
     }
 
 
