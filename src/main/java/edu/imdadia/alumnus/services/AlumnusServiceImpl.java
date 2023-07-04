@@ -22,6 +22,7 @@ public class AlumnusServiceImpl implements AlumnusService {
 
     @Override
     public List<AlumnusEntity> findAllByType(String type) {
+
         return alumnusRepo.findByType(type);
     }
 

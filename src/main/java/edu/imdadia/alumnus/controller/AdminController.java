@@ -286,6 +286,7 @@ public class AdminController implements Initializable {
                 } else {
 
                     adminService.save(updatedEntity);
+                    LoginController.allAdmins.add(updatedEntity);
                     JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
                     fullList();
                     setUpTable();
@@ -325,9 +326,15 @@ public class AdminController implements Initializable {
 //    }
 
     public void removeByIdCardButton() {
-        adminService.deleteAll();
-        clearFields();
-        fullList();
-        setUpTable();
+        Optional<AdminEntity> toRemove=adminService.findByIdCardNumber(idCard.getText());
+        if (toRemove==null){
+            JavaFXUtils.showError("Admin not found to remove ");
+        }else{
+            adminService.deleteByIdCardNumber(idCard.getText());
+            LoginController.allAdmins.remove(toRemove);
+            clearFields();
+            fullList();
+            setUpTable();
+        }
     }
 }
