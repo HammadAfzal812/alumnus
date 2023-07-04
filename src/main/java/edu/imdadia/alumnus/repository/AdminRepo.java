@@ -15,5 +15,4 @@ public interface AdminRepo extends JpaRepository<AdminEntity, Integer> {
         Optional<AdminEntity> deleteByIdCardNumber(String idCard);
         Optional<AdminEntity> findByIdCardNumber(String idNumber);
         Optional<AdminEntity>findByUserName(String name);
-
 }

@@ -100,6 +100,7 @@ public class AdminController implements Initializable {
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
                 this.clearFields();
                 setUpTable();
+                fullList();
             }
         } else if (!showConfirmPasswordBox.isSelected()) {
             if (passwordField.equals("") || confirmPasswordField.equals("")) {
@@ -117,6 +118,7 @@ public class AdminController implements Initializable {
                 JavaFXUtils.showSuccessMessage("Admin added successfully");
                 this.clearFields();
                 setUpTable();
+                fullList();
             } else {
                 JavaFXUtils.showError("password confirm password not match");
             }
@@ -240,6 +242,7 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
+        fullList();
     }
 
     @FXML
@@ -324,5 +327,7 @@ public class AdminController implements Initializable {
     public void removeByIdCardButton() {
         adminService.deleteAll();
         clearFields();
+        fullList();
+        setUpTable();
     }
 }

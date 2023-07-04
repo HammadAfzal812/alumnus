@@ -3,6 +3,7 @@ package edu.imdadia.alumnus.services;
 import edu.imdadia.alumnus.entity.AdminEntity;
 
 
+import java.util.List;
 import java.util.Optional;
 
 public interface AdminService {
@@ -13,5 +14,6 @@ public interface AdminService {
     Optional<AdminEntity> findByIdCardNumber(String idNumber);
     Optional<AdminEntity> findByUserName(String name);
     void save(AdminEntity adminEntity);
+    List<AdminEntity>findAll();
 }
 

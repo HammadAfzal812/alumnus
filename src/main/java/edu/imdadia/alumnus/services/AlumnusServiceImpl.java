@@ -35,25 +35,11 @@ public class AlumnusServiceImpl implements AlumnusService {
         }
     }
 
-    @Override
-    public void delete(AlumnusEntity alumnusEntity) {
-        alumnusRepo.delete(alumnusEntity);
-    }
 
-    @Override
-    public Optional<AlumnusEntity> findByAlumnusName(String name) {
-        return alumnusRepo.findByAlumnusName(name);
-    }
-
-    @Override
-    public Optional<AlumnusEntity> findByAlumnusNameAndFatherName(String name, String fatherName) {
-        return alumnusRepo.findByAlumnusNameAndFatherName(name, fatherName);
-    }
-
-    @Override
-    public List<AlumnusEntity> findByType(String type) {
-        return alumnusRepo.findByType(type);
-    }
+//    @Override
+//    public List<AlumnusEntity> findByType(String type) {
+//        return alumnusRepo.findByType(type);
+//    }
 
     @Override
     public List<AlumnusEntity> findByGraduationYear(String year) {
@@ -79,5 +65,10 @@ public class AlumnusServiceImpl implements AlumnusService {
     public AlumnusEntity findByIdCardNumber(String idCard) {
         return alumnusRepo.findByIdCardNumber(idCard).orElse(null);
 
+    }
+
+    @Override
+    public void deleteAll() {
+        alumnusRepo.deleteAll();
     }
 }

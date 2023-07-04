@@ -1,7 +1,9 @@
 package edu.imdadia.alumnus;
 
 import edu.imdadia.alumnus.config.StageManager;
+import edu.imdadia.alumnus.controller.LoginController;
 import edu.imdadia.alumnus.enumuration.FxmlView;
+import edu.imdadia.alumnus.util.JavaFXUtils;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -33,7 +35,12 @@ public class JavaFXApplication extends Application {
      * on startup. Example: Functional tests on main window.
      */
     protected void displayInitialScene() {
-        stageManager.switchScene(FxmlView.LOGIN);
+            if (LoginController.allAdmins==null){
+                stageManager.switchScene(FxmlView.ADMIN);
+                JavaFXUtils.showWarningMessage("please add an Admin because there is no admin");
+            }else {
+                stageManager.switchScene(FxmlView.LOGIN);
+            }
     }
 
 

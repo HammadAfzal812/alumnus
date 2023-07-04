@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +20,11 @@ private final AdminRepo adminRepo;
     @Override
     public void save(AdminEntity admin) {
         adminRepo.save(admin);
+    }
+
+    @Override
+    public List<AdminEntity> findAll() {
+        return adminRepo.findAll();
     }
 
 

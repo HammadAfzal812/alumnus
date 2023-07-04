@@ -33,10 +33,13 @@ public class LoginController {
     private CheckBox check;
     private final AdminService adminService;
     public static AdminEntity adminEntity = new AdminEntity();
+    public static List<AdminEntity> allAdmins;
     private final AdminRepo adminRepo;
 
     public void initialize() {
         this.plainPassword.setVisible(false);
+        allAdmins=adminService.findAll();
+
     }
 
     public LoginController(@Lazy final StageManager stageManager, AdminService adminService, AdminRepo adminRepo) {
@@ -58,20 +61,20 @@ public class LoginController {
             this.password.requestFocus();
             return;
         }
-        List<AdminEntity> allAdmins = adminRepo.findAll();
-        if (allAdmins.size() < 1) {
+        if (allAdmins==null) {
+            JavaFXUtils.showWarningMessage("please add an Admin because there is no admin");
             stageManager.switchScene(FxmlView.ADMIN);
         } else {
             for (int i = 0; i < allAdmins.size(); ) {
                 for (AdminEntity a : allAdmins) {
                     if (check.isSelected()){
-                        if (a.getPassword().equals(plainPassword.getText()) && a.getAdminName().equals(username.getText())) {
+                        if (a.getPassword().equals(plainPassword.getText()) && a.getUserName().equalsIgnoreCase(username.getText())) {
                             stageManager.switchScene(FxmlView.HOME);
                             adminEntity = a;
                             break;
                         }
                     } else if (!check.isSelected()){
-                        if (a.getPassword().equals(password.getText()) && a.getAdminName().equals(username.getText())) {
+                        if (a.getPassword().equals(password.getText()) && a.getUserName().equalsIgnoreCase(username.getText())) {
                             stageManager.switchScene(FxmlView.HOME);
                             adminEntity = a;
                             break;
