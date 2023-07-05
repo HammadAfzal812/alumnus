@@ -63,14 +63,14 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="6.0" layoutY="504.0" mnemonicParsing="false" onAction="#searchByIdCardButton" prefHeight="40.0" prefWidth="161.0" text="Search By ID Card">
+
+        <Button layoutX="185.0" layoutY="408.0" mnemonicParsing="false" onAction="#addButton" prefHeight="40.0" prefWidth="101.0" text="Add">
+
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-
-        <Button layoutX="185.0" layoutY="408.0" mnemonicParsing="false" onAction="#addButton" prefHeight="40.0" prefWidth="101.0" text="Add">
-
+        <Button layoutX="7.0" layoutY="456.0" mnemonicParsing="false" onAction="#searchByIdCardButton" prefHeight="40.0" prefWidth="161.0" text="Search By ID Card">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -81,7 +81,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-        <Button layoutX="4.0" layoutY="456.0" mnemonicParsing="false" onAction="#removeByIdCardButton" prefHeight="40.0" prefWidth="161.0" text="Remove By ID Card">
+        <Button layoutX="7.0" layoutY="504.0" mnemonicParsing="false" onAction="#removeByIdCardButton" prefHeight="40.0" prefWidth="161.0" text="Remove By ID Card">
 
             <font>
                 <Font name="System Bold" size="14.0" />
