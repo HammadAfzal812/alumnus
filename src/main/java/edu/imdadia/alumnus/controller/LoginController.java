@@ -61,10 +61,8 @@ public class LoginController {
             this.password.requestFocus();
             return;
         }
-        if (allAdmins==null) {
-            JavaFXUtils.showWarningMessage("please add an Admin because there is no admin");
-            stageManager.switchScene(FxmlView.ADMIN);
-        } else {
+        if (allAdmins!=null) {
+
             for (int i = 0; i < allAdmins.size(); ) {
                 for (AdminEntity a : allAdmins) {
                     if (check.isSelected()){
@@ -87,7 +85,9 @@ public class LoginController {
                 }
                 break;
             }
-
+        } else {
+            JavaFXUtils.showWarningMessage("please add an Admin because there is no admin");
+            stageManager.switchScene(FxmlView.ADMIN);
         }
     }
 

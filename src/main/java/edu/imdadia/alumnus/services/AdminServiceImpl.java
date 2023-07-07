@@ -30,13 +30,7 @@ private final AdminRepo adminRepo;
 
     @Override
     public void deleteByIdCardNumber(String idCard) {
-       try {
            adminRepo.deleteByIdCardNumber(idCard);
-       }catch (EmptyResultDataAccessException e){
-           JavaFXUtils.showWarningMessage("----------------");
-       }catch (Exception e){
-           JavaFXUtils.showWarningMessage("----------------");
-       }
     }
 
     @Override

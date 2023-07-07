@@ -35,12 +35,8 @@ public class JavaFXApplication extends Application {
      * on startup. Example: Functional tests on main window.
      */
     protected void displayInitialScene() {
-            if (LoginController.allAdmins==null){
-                stageManager.switchScene(FxmlView.ADMIN);
-                JavaFXUtils.showWarningMessage("please add an Admin because there is no admin");
-            }else {
                 stageManager.switchScene(FxmlView.LOGIN);
-            }
+
     }
 
 

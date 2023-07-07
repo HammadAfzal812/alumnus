@@ -194,7 +194,6 @@ public class AlumnusController implements Initializable {
         ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(districtChoiceBox.getValue()));
         tableView.setItems(alumnusEntities);
         setUpTable();
-
         clear();
     }
 
@@ -464,7 +463,8 @@ public class AlumnusController implements Initializable {
 //    }
 
     public void removeButton() {
-        alumnusService.deleteAll();
+        alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
         clear();
+        fullList();
     }
 }

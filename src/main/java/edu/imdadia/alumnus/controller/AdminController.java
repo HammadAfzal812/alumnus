@@ -326,15 +326,10 @@ public class AdminController implements Initializable {
 //    }
 
     public void removeByIdCardButton() {
-        Optional<AdminEntity> toRemove=adminService.findByIdCardNumber(idCard.getText());
-        if (toRemove==null){
-            JavaFXUtils.showError("Admin not found to remove ");
-        }else{
             adminService.deleteByIdCardNumber(idCard.getText());
-            LoginController.allAdmins.remove(toRemove);
             clearFields();
             fullList();
             setUpTable();
-        }
+
     }
 }
