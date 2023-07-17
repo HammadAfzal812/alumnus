@@ -1,7 +1,9 @@
 package edu.imdadia.alumnus.services;
 import edu.imdadia.alumnus.entity.AlumnusEntity;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+@Service
 public interface AlumnusService {
     List<AlumnusEntity> findAllByDistrict(String district);
 
@@ -15,6 +17,7 @@ public interface AlumnusService {
     AlumnusEntity findByIdCardNumber(String idCard);
 
     void deleteAll();
+    List<AlumnusEntity>findAll();
 
 
 }

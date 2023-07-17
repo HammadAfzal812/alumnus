@@ -93,7 +93,7 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-      <Button id="currentAdmin" fx:id="currentAdmin" layoutX="7.0" layoutY="553.0" mnemonicParsing="false" onAction="#currentAdmin" prefHeight="40.0" prefWidth="161.0" text="Current Admin">
+      <Button   layoutX="7.0" layoutY="553.0" mnemonicParsing="false" onAction="#currentAdmin" prefHeight="40.0" prefWidth="161.0" text="Current Admin">
           <font>
               <Font name="System Bold" size="14.0" />
           </font>
@@ -103,12 +103,12 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-      <Button id="currentAdmin" layoutX="114.0" layoutY="627.0" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="141.0" text="Update">
+      <Button  layoutX="114.0" layoutY="627.0" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="141.0" text="Update">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-        <TableView fx:id="adminsTable" layoutX="296.0" layoutY="3.0" onMouseClicked="#populayeFields" prefHeight="658.0" prefWidth="773.0">
+        <TableView fx:id="adminsTable" layoutX="296.0" layoutY="3.0" onMouseClicked="#populateFields" prefHeight="658.0" prefWidth="773.0">
             <columns>
                 <TableColumn fx:id="nameColum" prefWidth="89.0" text="Name" />
                 <TableColumn fx:id="fatherNameColum" prefWidth="107.0" text="S/O" />

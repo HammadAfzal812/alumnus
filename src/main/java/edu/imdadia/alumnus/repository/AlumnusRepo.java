@@ -18,7 +18,7 @@ public interface AlumnusRepo extends JpaRepository<AlumnusEntity, Integer> {
     List<AlumnusEntity> findByType(String type);
 
     List<AlumnusEntity> findByGraduationYear(String type);
-    List<AlumnusEntity> deleteAlumnusEntityByIdCardNumber(String idCard);
+    void deleteAlumnusEntityByIdCardNumber(String idCard);
 
 
 

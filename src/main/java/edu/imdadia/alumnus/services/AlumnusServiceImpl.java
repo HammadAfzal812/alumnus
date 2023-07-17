@@ -54,12 +54,7 @@ public class AlumnusServiceImpl implements AlumnusService {
 
     @Override
     public void deleteByAlumnusIdCardNumber(String idCard) {
-       try {
            alumnusRepo.deleteAlumnusEntityByIdCardNumber(idCard);
-
-       }catch (Exception e){
-           System.out.printf(e.getMessage());;
-       }
     }
 
     @Override
@@ -71,5 +66,10 @@ public class AlumnusServiceImpl implements AlumnusService {
     @Override
     public void deleteAll() {
         alumnusRepo.deleteAll();
+    }
+
+    @Override
+    public List<AlumnusEntity> findAll() {
+        return alumnusRepo.findAll();
     }
 }

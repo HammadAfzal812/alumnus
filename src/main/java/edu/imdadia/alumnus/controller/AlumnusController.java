@@ -189,12 +189,18 @@ public class AlumnusController implements Initializable {
         setUpTable();
         clear();
     }
-
+    @FXML
     public void findByDistrict() {
-        ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(districtChoiceBox.getValue()));
-        tableView.setItems(alumnusEntities);
-        setUpTable();
-        clear();
+        List<AlumnusEntity>findedAlumnus=alumnusService.findAllByDistrict(districtChoiceBox.getValue());
+        if (findedAlumnus.size()>0){
+            System.out.println("kamyaab");
+            ObservableList<AlumnusEntity> alumnusEntities = FXCollections.observableArrayList(alumnusService.findAllByDistrict(districtChoiceBox.getValue()));
+            tableView.setItems(alumnusEntities);
+            setUpTable();
+            clear();
+        }else {
+            System.out.println("nakam");
+        }
     }
 
     @FXML
@@ -445,26 +451,27 @@ public class AlumnusController implements Initializable {
     }
 
     @FXML
-//    public void removeButton() {
-//        try {
-//            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
-//                    "Delete Confirmation", "Are you sure you want to delete?");
-//            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
-//                alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
-//                JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
-//                fullList();
-//                setUpTable();
-//                clear();
-//            }
-//        } catch (Exception e) {
-//            JavaFXUtils.showError(e.getMessage());
-//        }
-//
-//    }
-
     public void removeButton() {
-        alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
-        clear();
-        fullList();
+        try {
+            final Optional<ButtonType> deleteConfirmation = JavaFXUtils.showAlert(Alert.AlertType.CONFIRMATION,
+                    "Delete Confirmation", "Are you sure you want to delete?");
+            if (deleteConfirmation.isPresent() && deleteConfirmation.get() == ButtonType.OK) {
+                alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
+                JavaFXUtils.showWarningMessage("Alumnus With " + idCard.getText() + " Deleted Successfully");
+                fullList();
+                clear();
+                setUpTable();
+            }
+        } catch (Exception e) {
+            JavaFXUtils.showError(e.getMessage());
+        }
+
     }
+//    @FXML
+//    public void removeButton() {
+//        alumnusService.deleteByAlumnusIdCardNumber(idCard.getText());
+//        setUpTable();
+//        fullList();
+//        clear();
+//    }
 }

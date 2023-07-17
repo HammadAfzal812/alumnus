@@ -161,17 +161,17 @@ public class AdminController implements Initializable {
         }
     }
 
-//    @FXML
-//    public void removeByIdCardButton() {
-//        if (StringUtils.isBlank(idCard.getText())) {
-//            JavaFXUtils.showError("PLEASE ENTER ID");
-//        } else {
-//            adminService.deleteByIdCardNumber((idCard.getText()));
-//            JavaFXUtils.showSuccessMessage("DATA DELETE SUCCESSFULLY");
-//        }
-//        setUpTable();
-//        clearFields();
-//    }
+    @FXML
+    public void removeByIdCardButton() {
+        if (StringUtils.isBlank(idCard.getText())) {
+            JavaFXUtils.showError("PLEASE ENTER ID");
+        } else {
+            adminService.deleteByIdCardNumber((idCard.getText()));
+            JavaFXUtils.showSuccessMessage("DATA DELETE SUCCESSFULLY");
+        }
+        setUpTable();
+        clearFields();
+    }
 
 
     public AdminController(@Lazy StageManager stageManager, AdminService adminService, AdminRepo adminRepo, SpringFXMLLoader springFXMLLoader) {
@@ -236,7 +236,7 @@ public class AdminController implements Initializable {
         this.phoneNumberColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPhoneNumber())));
         this.idCardColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getIdCardNumber())));
         this.userNameColum.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getUserName())));
-        populayeFields();
+        populateFields();
     }
 
     @Override
@@ -251,7 +251,7 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    public void populayeFields() {
+    public void populateFields() {
         adminsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
                 name.setText(newVal.getAdminName());
@@ -287,7 +287,7 @@ public class AdminController implements Initializable {
 
                     adminService.save(updatedEntity);
                     LoginController.allAdmins.add(updatedEntity);
-                    JavaFXUtils.showSuccessMessage("Alumnus updated success fully");
+                    JavaFXUtils.showSuccessMessage("Admin updated success fully");
                     fullList();
                     setUpTable();
                     clearFields();
@@ -325,11 +325,12 @@ public class AdminController implements Initializable {
 //
 //    }
 
-    public void removeByIdCardButton() {
-            adminService.deleteByIdCardNumber(idCard.getText());
-            clearFields();
-            fullList();
-            setUpTable();
+//    public void removeByIdCardButton() {
+//            adminService.deleteByIdCardNumber(idCard.getText());
+//            clearFields();
+//            fullList();
+//            setUpTable();
+//
+//    }
 
-    }
 }
