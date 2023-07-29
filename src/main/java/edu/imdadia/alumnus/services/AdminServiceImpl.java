@@ -53,8 +53,5 @@ private final AdminRepo adminRepo;
     public Optional<AdminEntity> findByUserName(String name) {
         return adminRepo.findByUserName(name);
     }
-
-
-
 }
 

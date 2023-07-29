@@ -1,4 +1,5 @@
 package edu.imdadia.alumnus.controller;
+import edu.imdadia.alumnus.config.SpringFXMLLoader;
 import edu.imdadia.alumnus.config.StageManager;
 import edu.imdadia.alumnus.entity.AlumnusEntity;
 import edu.imdadia.alumnus.enumuration.FxmlView;
@@ -10,9 +11,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +29,7 @@ import java.util.ResourceBundle;
 public class AlumnusController implements Initializable {
     private final StageManager stageManager;
     private final AlumnusService alumnusService;
+
 
     @FXML
     private TableView<AlumnusEntity> tableView;
@@ -83,7 +89,8 @@ public class AlumnusController implements Initializable {
     private TextField idCard;
     private final AlumnusRepo alumnusRepo;
 
-    public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService,  AlumnusRepo alumnusRepo) {
+
+    public AlumnusController(@Lazy StageManager stageManager, AlumnusService alumnusService, AlumnusRepo alumnusRepo) {
         this.stageManager = stageManager;
         this.alumnusService = alumnusService;
 
@@ -474,4 +481,5 @@ public class AlumnusController implements Initializable {
 //        fullList();
 //        clear();
 //    }
+
 }
